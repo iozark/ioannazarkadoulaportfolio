@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Cursor
+.cursor/cache/
+.cursor/history/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Node (if used later)
+node_modules/
+
+# Build folders
+dist/
+build/
+
+# Research previews
+.tmp-pdf-preview/

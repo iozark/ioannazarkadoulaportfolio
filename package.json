@@ -1,0 +1,8 @@
+{
+  "name": "ioanna-portfolio",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "serve": "npx --yes serve dist -l 4173"
+  }
+}

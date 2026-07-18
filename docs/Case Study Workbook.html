@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<title>Master Product Design Case Study Workbook — Ioanna</title>
+<style>
+:root{
+  --ink:#14141c; --paper:#faf9f7; --card:#ffffff;
+  --primary:#0A00AF; --accent:#FE5000; --muted:#6b6b76; --line:#e6e4e0;
+  --bad:#c0392b; --good:#0f7a4d;
+}
+*{box-sizing:border-box;}
+body{
+  font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  max-width:920px;margin:0 auto;padding:48px 28px 100px;
+  background:var(--paper);color:var(--ink);line-height:1.65;
+}
+header.hero{border-bottom:4px solid var(--primary);padding-bottom:22px;margin-bottom:8px;}
+header.hero h1{font-size:28px;margin:0 0 6px;letter-spacing:-.3px;}
+header.hero .sub{color:var(--muted);font-size:15px;max-width:640px;}
+header.hero .meta{margin-top:14px;font-size:12.5px;color:var(--muted);}
+
+.intro-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 26px;margin:26px 0;}
+.intro-card h2{font-size:15px;color:var(--primary);margin:0 0 10px;}
+.intro-card ul{margin:0;padding-left:20px;font-size:14px;}
+.intro-card li{margin-bottom:7px;}
+.why-box{background:#fff8f4;border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin-top:14px;font-size:13.5px;}
+.priority-box{background:#eef0ff;border-left:4px solid var(--primary);border-radius:0 8px 8px 0;padding:12px 16px;margin-top:10px;font-size:13.5px;}
+
+nav.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin:28px 0 44px;}
+nav.toc h2{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin:0 0 10px;}
+nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:28px;font-size:13.8px;}
+nav.toc li{margin-bottom:6px;break-inside:avoid;}
+nav.toc a{color:var(--ink);text-decoration:none;}
+nav.toc a:hover{color:var(--primary);}
+nav.toc .star{color:var(--accent);}
+
+section.sec{margin:56px 0;border-top:1px solid var(--line);padding-top:36px;}
+h2.sec-title{font-size:22px;color:var(--primary);margin:0 0 4px;display:flex;align-items:baseline;gap:10px;}
+h2.sec-title .num{font-size:13px;background:var(--primary);color:#fff;padding:2px 9px;border-radius:6px;font-weight:700;flex-shrink:0;}
+h2.sec-title .stars{color:var(--accent);font-size:15px;}
+p.sec-intro{color:#3a3a42;font-size:14.5px;margin:10px 0 22px;max-width:720px;}
+
+.block{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 22px;margin:14px 0;}
+.block h3{font-size:13px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);margin:0 0 12px;}
+.block.questions h3{color:var(--primary);}
+.block.expects h3{color:var(--good);}
+.block ul{margin:0;padding-left:20px;font-size:14px;}
+.block li{margin-bottom:7px;}
+
+.example-block{background:#f4f6ff;border-left:4px solid var(--primary);border-radius:0 8px 8px 0;padding:14px 18px;margin:14px 0;font-size:14px;}
+.example-block b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--primary);margin-bottom:6px;}
+
+.mistakes-block{background:#fdf4f3;border-left:4px solid var(--bad);border-radius:0 8px 8px 0;padding:14px 18px;margin:14px 0;font-size:14px;}
+.mistakes-block b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--bad);margin-bottom:6px;}
+.mistakes-block ul{margin:0;padding-left:20px;}
+.mistakes-block li{margin-bottom:6px;}
+.mistakes-block li::marker{content:"✗  ";}
+
+.reflection-box{
+  background:#fffaf0;border:2px dashed #e0b96b;border-radius:10px;
+  padding:16px 20px;margin-top:18px;font-size:13.8px;
+}
+.reflection-box b{color:var(--accent);}
+.reflection-box textarea{
+  display:block;width:100%;margin-top:10px;min-height:60px;
+  border:1px solid var(--line);border-radius:6px;padding:8px;font-family:inherit;font-size:13.5px;
+  background:#fff;resize:vertical;
+}
+
+.roadmap{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px 28px;margin-top:50px;}
+.roadmap h2{color:var(--primary);font-size:19px;margin:0 0 14px;}
+.roadmap ol{padding-left:22px;font-size:14.5px;}
+.roadmap li{margin-bottom:10px;}
+.roadmap .goal{margin-top:16px;font-style:italic;color:var(--muted);font-size:13.5px;}
+
+footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);text-align:center;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Master Product Design Case Study Workbook</h1>
+  <div class="sub">Ioanna Product Design Framework — 17 sections. Ερωτήσεις, παραδείγματα, τι περιμένει ένας Design Manager, και τα πιο συνηθισμένα λάθη — για case studies στο επίπεδο Revolut, Wise, Stripe.</div>
+  <div class="meta">2026</div>
+</header>
+
+<div class="intro-card">
+  <h2>Πώς να χρησιμοποιήσεις αυτό το workbook</h2>
+  <p style="font-size:14px;margin-top:0;">Αυτό δεν είναι template με κενά προς συμπλήρωση — είναι βιβλίο εργασίας. Για κάθε ενότητα:</p>
+  <ul>
+    <li>Διάβασε τις ερωτήσεις και απάντησέ τες πρώτα ελεύθερα, σε bullets, χωρίς να νοιάζεσαι για τη διατύπωση.</li>
+    <li>Σύγκρινε την απάντησή σου με το «Τι περιμένει ένας Design Manager» — τι λείπει;</li>
+    <li>Διάβασε το παράδειγμα καλής απάντησης για ύφος και βάθος, όχι για να το αντιγράψεις.</li>
+    <li>Έλεγξε τα συνηθισμένα λάθη — αν κάνεις ένα από αυτά, διόρθωσέ το πριν προχωρήσεις.</li>
+    <li>Κλείσε κάθε section με ένα «Product Designer Reflection» — 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.</li>
+  </ul>
+  <div class="why-box"><b>💡 Γιατί το reflection box μετράει:</b> Οποιοσδήποτε μπορεί να δείξει το τελικό design. Το reflection δείχνει τη διαδικασία σκέψης — και αυτό ακριβώς ψάχνουν Design Managers σε senior ρόλους.</div>
+  <div class="priority-box">Section 10 (Design Decisions) και Section 16 (Reflection) είναι τα δύο πιο σημαντικά — αν έχεις χρόνο μόνο για δύο sections, να είναι αυτά.</div>
+</div>
+
+<nav class="toc">
+  <h2>Περιεχόμενα</h2>
+  <ol><li><a href="#s01">01 — Hero</a></li><li><a href="#s02">02 — Business Context</a></li><li><a href="#s03">03 — The Problem</a></li><li><a href="#s04">04 — Constraints</a></li><li><a href="#s05">05 — Users</a></li><li><a href="#s06">06 — Research</a></li><li><a href="#s07">07 — Success Metrics</a></li><li><a href="#s08">08 — Design Strategy</a></li><li><a href="#s09">09 — Information Architecture</a></li><li><a href="#s10">10 — Design Decisions <span class="star">★</span></a></li><li><a href="#s11">11 — Design System</a></li><li><a href="#s12">12 — Accessibility</a></li><li><a href="#s13">13 — Prototype</a></li><li><a href="#s14">14 — Technical Collaboration</a></li><li><a href="#s15">15 — Results</a></li><li><a href="#s16">16 — Reflection <span class="star">★</span></a></li><li><a href="#s17">17 — Next Steps</a></li></ol>
+</nav>
+
+
+<section class="sec" id="s01">
+  <h2 class="sec-title"><span class="num">01</span>Hero </h2>
+  <p class="sec-intro">Η πρώτη εντύπωση. Ένας Design Manager αποφασίζει μέσα σε 10 δευτερόλεπτα αν θα συνεχίσει να διαβάζει. Αυτό το section πρέπει να λειτουργεί σαν TL;DR — όχι σαν αφήγηση.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Τι είναι το project σε μία πρόταση;</li><li>Ποιος ήταν ο ρόλος σου και ποιες οι ευθύνες σου;</li><li>Πόσο κράτησε το project και με ποια ομάδα;</li><li>Ποιο ήταν το πιο σημαντικό αποτέλεσμα;</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Μία πρόταση value proposition — όχι περιγραφή feature</li><li>Ξεκάθαρο ρόλο (π.χ. 'Product Designer &amp; Developer'), όχι γενικόλογο 'UX/UI Design'</li><li>Ένα πραγματικό, μετρήσιμο ή έστω συγκεκριμένο outcome — όχι επίθετα τύπου 'beautiful', 'modern', 'innovative'</li><li>Δομή σε scan (TL;DR bullets), όχι block κειμένου</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Green Helios — πλατφόρμα οικονομικής διαχείρισης για ιδιοκτήτες Airbnb. Σχεδίασα και ανέπτυξα end-to-end, solo, σε 6 εβδομάδες. Βοήθησε τους ιδιοκτήτες να καταλάβουν πραγματική κερδοφορία ανά ακίνητο — όχι μόνο έσοδα.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Τίτλοι τύπου 'A redesign of X' χωρίς αναφορά σε αξία</li><li>Απουσία ρόλου, timeline ή outcome στην πρώτη οθόνη</li><li>Μεγάλο παράγραφο κειμένου αντί για scannable δομή</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s02">
+  <h2 class="sec-title"><span class="num">02</span>Business Context </h2>
+  <p class="sec-intro">Δείχνει ότι καταλαβαίνεις το προϊόν ως business asset και όχι μόνο ως interface. Οι senior designers σκέφτονται 'γιατί υπάρχει αυτό' πριν σκεφτούν 'πώς θα μοιάζει'.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Τι προϊόν είναι;</li><li>Γιατί δημιουργήθηκε;</li><li>Ποιο πρόβλημα λύνει σε επίπεδο αγοράς/επιχείρησης;</li><li>Γιατί έχει αξία — για ποιον και γιατί θα πλήρωνε γι' αυτό;</li><li>Γιατί τώρα — τι άλλαξε ώστε να είναι η κατάλληλη στιγμή;</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Σύνδεση με πραγματικό business model ή market gap</li><li>Κατανόηση του timing — γιατί τώρα και όχι πριν 5 χρόνια</li><li>Καθαρή διαχωριστική γραμμή από το user problem (αυτό ανήκει στο section 03)</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Η διαχείριση πολλαπλών Airbnb ακινήτων γίνεται σήμερα σε spreadsheets. Καθώς οι ιδιοκτήτες κλιμακώνουν από 1 σε 5+ ακίνητα, η πολυπλοκότητα μεγαλώνει γραμμικά αλλά τα εργαλεία τους παραμένουν χειροκίνητα — δημιουργώντας χώρο για ένα εξειδικευμένο, οικονομικά προσανατολισμένο εργαλείο.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Σύγχυση business context με user pain (ανήκουν σε διαφορετικά sections)</li><li>Marketing γλώσσα χωρίς ουσιαστική τεκμηρίωση</li><li>Παράλειψη του 'γιατί τώρα' — δείχνει έλλειψη market awareness</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s03">
+  <h2 class="sec-title"><span class="num">03</span>The Problem </h2>
+  <p class="sec-intro">Καθαρότητα στο πραγματικό pain point. Αν αυτό το section είναι ασαφές, όλο το case study χάνει νόημα — γιατί ο αναγνώστης δεν καταλαβαίνει τι λύνεις.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Ποιος υποφέρει συγκεκριμένα;</li><li>Τι κάνει σήμερα για να αντιμετωπίσει το πρόβλημα (workaround);</li><li>Γιατί είναι δύσκολο — ποια είναι η ρίζα της δυσκολίας;</li><li>Ποια είναι η επιχειρηματική επίπτωση αυτού του προβλήματος;</li><li>Τι θα συμβεί αν παραμείνει άλυτο;</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Συγκεκριμένο persona pain, όχι γενικόλογη διατύπωση ('users find it hard')</li><li>Ποσοτικοποίηση της επίπτωσης όπου είναι δυνατόν (χρόνος, κόστος, churn)</li><li>Ξεκάθαρη σύνδεση ανάμεσα στο πρόβλημα και το business consequence</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Οι ιδιοκτήτες Airbnb με 3+ ακίνητα ξοδεύουν κατά μέσο όρο 4+ ώρες/μήνα προσπαθώντας να συγκεντρώσουν έξοδα και έσοδα σε spreadsheets, συχνά καταλήγοντας σε λάθος εκτιμήσεις κερδοφορίας — και σε αποφάσεις πώλησης ή διατήρησης ακινήτου βασισμένες σε λάθος δεδομένα.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Γενικόλογες διατυπώσεις χωρίς αναφορά σε συγκεκριμένο persona</li><li>Απουσία business impact — μένει μόνο σε επίπεδο 'δυσκολίας'</li><li>Πρόβλημα που στην ουσία περιγράφει λύση ('δεν έχουν dashboard') αντί για ανάγκη</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s04">
+  <h2 class="sec-title"><span class="num">04</span>Constraints </h2>
+  <p class="sec-intro">Δείχνει ρεαλισμό και ωριμότητα. Κανένα πραγματικό project δεν σχεδιάζεται σε κενό — οι senior designers ονομάζουν τους περιορισμούς αντί να τους αποκρύπτουν.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Τι περιορισμούς είχες;</li><li>Χρόνος — πόσος ήταν διαθέσιμος και πώς επηρέασε το scope;</li><li>Τεχνολογία — τι υπήρχε ήδη, τι έπρεπε να δουλέψεις γύρω από αυτό;</li><li>Accessibility — υπήρχαν απαιτήσεις συμμόρφωσης;</li><li>Business — υπήρχαν εμπορικοί περιορισμοί (π.χ. brand guidelines, compliance);</li><li>Legal / Budget — υπήρχαν νομικοί ή οικονομικοί περιορισμοί;</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Συγκεκριμένους περιορισμούς, όχι γενικόλογη λίστα</li><li>Ρητή σύνδεση: 'επειδή Χ περιορισμός, αποφάσισα Υ'</li><li>Ειλικρίνεια — η απόκρυψη περιορισμών κάνει το case study να φαίνεται λιγότερο αξιόπιστο</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Ως solo developer-designer, δεν είχα πρόσβαση σε QA team — αυτό με ανάγκασε να χτίσω ένα απλούστερο design system με λιγότερα edge cases, ώστε να μειώσω τον κίνδυνο σφαλμάτων χωρίς αφιερωμένο testing.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Απόκρυψη περιορισμών — φαίνεται σαν να μη γνωρίζεις ή να μη θέλεις να παραδεχτείς δυσκολίες</li><li>Αναφορά περιορισμών χωρίς να δείχνεις πώς επηρέασαν συγκεκριμένες αποφάσεις</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s05">
+  <h2 class="sec-title"><span class="num">05</span>Users </h2>
+  <p class="sec-intro">Δείχνει εμπάθεια βασισμένη σε έρευνα, όχι persona fiction. Το Jobs-To-Be-Done framework δείχνει ότι καταλαβαίνεις το κίνητρο πίσω από τη συμπεριφορά.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Ποιος είναι ο χρήστης — συγκεκριμένα, όχι γενικόλογα;</li><li>Τι προσπαθεί να πετύχει;</li><li>Τι τον αγχώνει σε αυτή τη διαδικασία;</li><li>Τι θεωρεί επιτυχία;</li><li>JTBD: 'Όταν… θέλω να… ώστε να…'</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Πραγματικό JTBD statement βασισμένο σε research, όχι σε υπόθεση</li><li>Καμία fake persona με ονόματα/ηλικίες/φωτογραφίες χωρίς ουσιαστικό research πίσω</li><li>Σύνδεση ανάμεσα στο άγχος του χρήστη και τις design αποφάσεις που ακολουθούν</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Όταν κλείνω τον μήνα και πρέπει να αποφασίσω αν κρατάω ή πουλάω ένα ακίνητο, θέλω να δω αμέσως το καθαρό κέρδος ανά ακίνητο, ώστε να πάρω την απόφαση με βάση δεδομένα και όχι με 'το αίσθημα' ότι πάει καλά.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Fake personas με φανταστικές λεπτομέρειες χωρίς research backing</li><li>JTBD statements που στην ουσία περιγράφουν feature request</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s06">
+  <h2 class="sec-title"><span class="num">06</span>Research </h2>
+  <p class="sec-intro">Δείχνει μεθοδικότητα. Το πιο σημαντικό εδώ δεν είναι το 'τι έκανες' αλλά το 'τι έμαθες που δεν περίμενες'.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Πώς έκανες research — ποια μέθοδο/α χρησιμοποίησες;</li><li>Τι έμαθες που ήταν πραγματικά χρήσιμο;</li><li>Ποιο assumption σου αποδείχθηκε λάθος;</li><li>Τι σε εξέπληξε περισσότερο;</li><li>Ποια είναι τα top 5 insights;</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Ονομασμένη μέθοδο (interviews, analytics, heuristic evaluation) με αριθμούς όπου γίνεται (π.χ. '8 συνεντεύξεις')</li><li>Τουλάχιστον ένα insight που είναι πραγματικά surprising, όχι απλώς επιβεβαιωτικό</li><li>Ξεκάθαρη σύνδεση insight → design decision αργότερα στο case study</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Περίμενα ότι οι χρήστες ήθελαν περισσότερα analytics charts. Στην πράξη, 6 στους 8 συμμετέχοντες ζήτησαν λιγότερα δεδομένα, πιο ξεκάθαρα — ήθελαν μία απάντηση, όχι μια αναφορά.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>'Κάναμε research' χωρίς αναφορά μεθόδου ή αριθμού συμμετεχόντων</li><li>Insights που είναι απλώς προφανείς δηλώσεις χωρίς αξία ('οι χρήστες θέλουν απλότητα')</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s07">
+  <h2 class="sec-title"><span class="num">07</span>Success Metrics </h2>
+  <p class="sec-intro">Δείχνει επιχειρηματική σκέψη — τη σύνδεση ανάμεσα σε ένα UX metric και ένα business KPI, ορισμένη πριν την υλοποίηση.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Πώς θα ήξερες ότι το project πέτυχε;</li><li>Ποιο business KPI επηρεάζεται;</li><li>Ποιο UX metric επηρεάζεται (π.χ. task completion, time-on-task);</li><li>Πώς μετρήθηκαν αυτά στην πράξη;</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Στόχους που ορίστηκαν ΠΡΙΝ την υλοποίηση, όχι αναδρομικά</li><li>Ξεκάθαρη διάκριση business metric vs UX metric</li><li>Ρεαλισμό — αν δεν υπήρχε δυνατότητα μέτρησης, ειλικρινή αναγνώριση αυτού</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Business metric: μείωση churn ιδιοκτητών με 3+ ακίνητα. UX metric: μείωση χρόνου εντοπισμού καθαρού κέρδους ανά ακίνητο από &gt;10 λεπτά (spreadsheet) σε &lt;30 δευτερόλεπτα (dashboard).
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Metrics που προστέθηκαν εκ των υστέρων για να φαίνεται εντυπωσιακό το αποτέλεσμα</li><li>Ασαφείς στόχοι τύπου 'βελτίωση εμπειρίας χρήστη' χωρίς μετρήσιμο δείκτη</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s08">
+  <h2 class="sec-title"><span class="num">08</span>Design Strategy </h2>
+  <p class="sec-intro">Δείχνει ότι έχεις αρχές πίσω από τις αποφάσεις σου — όχι μόνο αισθητική προτίμηση.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Ποιες αρχές αποφάσισες να ακολουθήσεις;</li><li>Γιατί αυτές και όχι άλλες;</li><li>Ποιες αποφάσεις πήρες πρώτες, και γιατί εκείνες πρώτα;</li><li>Ποιες αποφάσεις σκόπιμα ΔΕΝ πήρες (και γιατί);</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Ονομασμένες, συγκεκριμένες αρχές — όχι γενικόλογα κλισέ όπως 'user-centered design'</li><li>Ιεράρχηση: ποιο ήταν το πρώτο πράγμα που έπρεπε να αποφασιστεί σωστά</li><li>Σαφή λογική πίσω από την ιεράρχηση</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Αρχή #1: 'Μία απάντηση πριν από δέκα γραφήματα' — κάθε οθόνη έπρεπε πρώτα να απαντά στο 'κερδίζω ή χάνω;' πριν δείξει οτιδήποτε άλλο. Αυτό καθόρισε την ιεραρχία όλου του dashboard.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Γενικόλογες αρχές χωρίς εξειδίκευση στο συγκεκριμένο project</li><li>Απουσία ιεράρχησης — φαίνεται σαν όλες οι αποφάσεις να πάρθηκαν ταυτόχρονα</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s09">
+  <h2 class="sec-title"><span class="num">09</span>Information Architecture </h2>
+  <p class="sec-intro">Δομική σκέψη. Δείχνει πώς οργάνωσες πολυπλοκότητα σε κατανοητή ιεραρχία.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Γιατί επέλεξες αυτή τη δομή;</li><li>Ποιο flow διάλεξες και γιατί;</li><li>Τι πέταξες έξω από το scope;</li><li>Τι κράτησες παρά τις πιέσεις να το αφαιρέσεις;</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Rationale για το flow, όχι μόνο παρουσίαση του τελικού αποτελέσματος</li><li>Αναφορά σε εναλλακτικές δομές που εξετάστηκαν</li><li>Ξεκάθαρη λογική για το τι κόπηκε από το scope και γιατί</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Αρχικά σχεδίασα ξεχωριστό tab για κάθε ακίνητο. Το άλλαξα σε ενιαία ροή με φίλτρο επάνω, επειδή οι χρήστες με πολλά ακίνητα ήθελαν σύγκριση, όχι απομόνωση.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Παρουσίαση μόνο του τελικού flow χωρίς αναφορά σε εναλλακτικές</li><li>Απουσία σύνδεσης ανάμεσα σε IA αποφάσεις και user research insights</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <h2 class="sec-title"><span class="num">10</span>Design Decisions <span class="stars">★★★★★</span></h2>
+  <p class="sec-intro">Το πιο σημαντικό section όλου του case study. Εδώ φαίνεται η πραγματική σου σκέψη ως designer — όχι το τελικό αποτέλεσμα, αλλά η διαδρομή. Ανέλυσε τουλάχιστον 3 αποφάσεις με πλήρη δομή.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Decision #1 — Τι αποφάσισες;</li><li>Γιατί το αποφάσισες έτσι;</li><li>Ποιες εναλλακτικές εξέτασες;</li><li>Ποια ήταν τα trade-offs κάθε επιλογής;</li><li>Ποιο ήταν το αποτέλεσμα της απόφασης; (επανάλαβε τη δομή για Decision #2, #3…)</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Πραγματικές εναλλακτικές που εξετάστηκαν και απορρίφθηκαν — όχι μόνο η τελική λύση</li><li>Ρητή ονομασία των trade-offs (τι κέρδισες, τι θυσίασες)</li><li>Τουλάχιστον 3 πλήρεις αποφάσεις σε αυτή τη δομή</li><li>Αυτό είναι το section που δείχνει reasoning — τα AI εργαλεία κάνουν εύκολο το polish, αλλά όχι το σκεπτικό</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Decision: Εμφάνιση καθαρού κέρδους ως ένα μεγάλο νούμερο επάνω-επάνω, αντί για γράφημα. Alternatives: (1) line chart εσόδων/εξόδων, (2) πίνακας με όλες τις γραμμές. Trade-off: το νούμερο είναι λιγότερο 'πλούσιο' σε δεδομένα αλλά απαντά αμέσως στην κύρια ερώτηση του χρήστη. Outcome: μειωμένος χρόνος κατανόησης, θετικό feedback σε usability test.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Παρουσίαση μόνο του τελικού design χωρίς αναφορά σε ό,τι απορρίφθηκε</li><li>Trade-offs που δεν ονομάζονται ρητά — μένουν υπονοούμενα</li><li>Λιγότερες από 2-3 πλήρεις αποφάσεις σε αυτό το section</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <h2 class="sec-title"><span class="num">11</span>Design System </h2>
+  <p class="sec-intro">Δείχνει σκέψη γύρω από κλιμάκωση (scale) και συνεργασία με engineering — όχι απλώς μια λίστα από components.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Τι components δημιούργησες;</li><li>Γιατί χρειάστηκαν αυτά συγκεκριμένα;</li><li>Πώς βοηθούν την ομάδα (designers/devs) στην καθημερινή δουλειά;</li><li>Πώς βοηθούν στο scale του προϊόντος μακροπρόθεσμα;</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Σύνδεση με ομάδα/scale, όχι μόνο 'έφτιαξα ένα component library'</li><li>Αναφορά σε tokens/primitives αν υπάρχουν (πολύ σχετικό με τη δική σου εμπειρία σε epay/Piraeus)</li><li>Παράδειγμα πώς ένα component απέτρεψε ασυνέπεια ή επανάληψη δουλειάς</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Έχτισα primitives και semantic tokens σε Figma (Tokens Studio) ώστε το rebranding μιας εταιρείας να μην απαιτεί χειροκίνητη αλλαγή σε κάθε οθόνη — μία αλλαγή στο token, αυτόματη ενημέρωση παντού.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Λίστα components χωρίς rationale για το γιατί υπάρχουν</li><li>Απουσία αναφοράς στο πώς εξυπηρετεί την ομάδα ή το μέλλον του προϊόντος</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s12">
+  <h2 class="sec-title"><span class="num">12</span>Accessibility </h2>
+  <p class="sec-intro">Δείχνει τεχνικό βάθος σε WCAG — ιδιαίτερα σχετικό δεδομένου του θέματος της πτυχιακής σου. Οι περισσότεροι designers το αναφέρουν επιφανειακά· εδώ μπορείς να ξεχωρίσεις.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Ποια κριτήρια WCAG έλαβες υπόψη συγκεκριμένα;</li><li>Contrast — ποιο επίπεδο πέτυχες και πώς το επαλήθευσες;</li><li>Typography — πώς εξασφάλισες αναγνωσιμότητα;</li><li>Keyboard navigation — δοκιμάστηκε;</li><li>Screen reader — δοκιμάστηκε με πραγματικό εργαλείο (π.χ. VoiceOver, NVDA);</li><li>Error prevention — πώς αποτρέπονται λάθη χρήστη;</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Συγκεκριμένα κριτήρια WCAG (π.χ. 1.4.3 Contrast Minimum), όχι γενικόλογη αναφορά</li><li>Απόδειξη πραγματικού testing, όχι μόνο πρόθεσης</li><li>Σύνδεση accessibility αποφάσεων με real users (π.χ. ηλικιωμένοι χρήστες σε mobile banking)</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Επαλήθευσα contrast ratio 4.5:1 σε όλο το κείμενο (WCAG AA, 1.4.3) και δοκίμασα πλήρη πλοήγηση με πληκτρολόγιο και VoiceOver — εντόπισα και διόρθωσα 3 focus traps στο modal του πίνακα εξόδων.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>'Σχεδιάστηκε με accessibility στο μυαλό' χωρίς καμία συγκεκριμένη λεπτομέρεια</li><li>Καμία αναφορά σε πραγματικό testing εργαλείο</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s13">
+  <h2 class="sec-title"><span class="num">13</span>Prototype </h2>
+  <p class="sec-intro">Απόδειξη υλοποίησης. Ένα interactive prototype δείχνει ότι η σκέψη έφτασε μέχρι το τέλος — όχι μόνο μέχρι το mockup.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Υπάρχει interactive prototype (Figma link, live URL);</li><li>Καλύπτει το βασικό flow από άκρη σε άκρη;</li><li>Λειτουργεί σωστά σε mobile αν είναι responsive;</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Λειτουργικό prototype, όχι μόνο στατικές οθόνες</li><li>Ενεργό link που πραγματικά δουλεύει κατά τη στιγμή που το βλέπει ο reviewer</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Πλήρες clickable prototype σε Figma που καλύπτει τη ροή από login έως προβολή κερδοφορίας ανά ακίνητο, με πραγματικά δεδομένα δείγματος.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Σπασμένα links</li><li>Prototype χωρίς πραγματική διαδραστικότητα (μόνο screenshots σε σειρά)</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s14">
+  <h2 class="sec-title"><span class="num">14</span>Technical Collaboration </h2>
+  <p class="sec-intro">Σχεδόν κανένα portfolio δεν έχει αυτό το section — αυτό ακριβώς το κάνει πολύτιμο. Δείχνει ωριμότητα στη συνεργασία με engineering, κάτι που ζητούν ρητά ρόλοι Design Technologist.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Τι δυσκόλεψε τον developer στην υλοποίηση;</li><li>Τι άλλαξες στο design εξαιτίας τεχνικού περιορισμού;</li><li>Τι compromise έκανες, και ποιο ήταν το κόστος του;</li><li>Τι έμαθες για το πώς να σχεδιάζεις με το engineering στο μυαλό;</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Πραγματική, ονομασμένη τεχνική τριβή (friction) — όχι γενικόλογο 'δουλέψαμε στενά'</li><li>Συγκεκριμένο compromise με σαφές κόστος/όφελος</li><li>Learning που θα εφαρμόσεις στο επόμενο project</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Ο developer δεν μπορούσε να υλοποιήσει το animated chart transition μέσα στο διαθέσιμο timeframe. Το αντικατέστησα με ένα απλούστερο static state change — έχασα λίγο 'delight' αλλά κερδίσαμε μία εβδομάδα χρόνου παράδοσης.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Παράλειψη ολόκληρου του section (το κάνουν οι περισσότεροι — δική σου ευκαιρία να ξεχωρίσεις)</li><li>Γενικόλογη αναφορά χωρίς συγκεκριμένο compromise ή μάθημα</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s15">
+  <h2 class="sec-title"><span class="num">15</span>Results </h2>
+  <p class="sec-intro">Λογοδοσία για το αποτέλεσμα. Αν δεν υπάρχουν σκληρά νούμερα, ένα ειλικρινές qualitative αποτέλεσμα είναι καλύτερο από την εφεύρεση μετρικών.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Τι πέτυχε τελικά το προϊόν;</li><li>Τι feedback πήρες — από χρήστες, stakeholders, ή την αγορά;</li><li>Ποια metrics υπάρχουν;</li><li>Αν δεν υπάρχουν metrics: ποιο qualitative αποτέλεσμα υπάρχει (υιοθέτηση, adoption, quote);</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Πραγματικό νούμερο όπου υπάρχει διαθέσιμο</li><li>Αξιόπιστο qualitative σήμα όταν δεν υπάρχουν hard metrics — όχι εφεύρεση</li><li>Ειλικρίνεια σε ό,τι δεν πήγε τέλεια</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Δεν υπήρχε A/B testing δυνατότητα σε αυτό το solo project. Ποιοτικά: 4 από τους 5 δοκιμαστές usability testing ολοκλήρωσαν το task 'βρες αν κερδίζεις ή χάνεις σε αυτό το ακίνητο' σε λιγότερο από 15 δευτερόλεπτα, χωρίς βοήθεια.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Εφεύρεση μετρικών που δεν μετρήθηκαν ποτέ</li><li>Απουσία section αποτελεσμάτων — αφήνει το case study να φαίνεται ημιτελές</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s16">
+  <h2 class="sec-title"><span class="num">16</span>Reflection <span class="stars">★★★★★</span></h2>
+  <p class="sec-intro">Μεταγνώση και νοοτροπία ανάπτυξης. Εταιρείες σαν τη Revolut δίνουν ιδιαίτερη βαρύτητα εδώ — δείχνει αν μαθαίνεις πραγματικά από κάθε project ή απλά παραδίδεις.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Αν το ξεκινούσες σήμερα, τι θα έκανες διαφορετικά;</li><li>Τι θα άλλαζες με βάση όσα ξέρεις τώρα;</li><li>Τι λάθος έκανες — συγκεκριμένα, όχι γενικόλογα;</li><li>Τι έμαθες που δεν ήξερες πριν;</li><li>Πώς σε έκανε αυτό το project καλύτερο Product Designer;</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Πραγματική αυτοκριτική, όχι ψεύτικη σεμνότητα ('θα το έκανα ίσως λίγο καλύτερο')</li><li>Συγκεκριμένο λάθος με πραγματικό αντίκτυπο</li><li>Σύνδεση με το πώς άλλαξε η προσέγγισή σου σε επόμενα projects</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Ξεκίνησα υπερβολικά προσκολλημένη στην ιδέα του 'πλούσιου dashboard με τα πάντα'. Το usability testing μου έδειξε ότι αυτό δημιουργούσε άγχος, όχι σιγουριά. Έμαθα να ξεκινάω από το ερώτημα του χρήστη, όχι από τα διαθέσιμα δεδομένα.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Γενικόλογο reflection τύπου 'έμαθα ότι η επικοινωνία είναι σημαντική'</li><li>Απουσία οποιασδήποτε αναφοράς σε πραγματικό λάθος</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+<section class="sec" id="s17">
+  <h2 class="sec-title"><span class="num">17</span>Next Steps </h2>
+  <p class="sec-intro">Δείχνει προϊοντική σκέψη πέρα από την παράδοση — ότι βλέπεις το προϊόν ως συνεχή διαδικασία, όχι ως ολοκληρωμένο έργο που το ξεχνάς.</p>
+
+  <div class="block questions">
+    <h3>Ερωτήσεις να απαντήσεις</h3>
+    <ul><li>Τι feature θα έφτιαχνες μετά, και γιατί αυτό πρώτα;</li><li>Τι θα έκανες διαφορετικά στην επόμενη φάση;</li><li>Τι έρευνα χρειάζεται ακόμα πριν προχωρήσεις;</li></ul>
+  </div>
+
+  <div class="block expects">
+    <h3>Τι περιμένει να δει ένας Design Manager</h3>
+    <ul><li>Συγκεκριμένο, ονομασμένο επόμενο βήμα — όχι γενικόλογο 'θα βελτιώναμε συνεχώς'</li><li>Σύνδεση του επόμενου βήματος με ένα insight ή περιορισμό που αναφέρθηκε νωρίτερα</li></ul>
+  </div>
+
+  <div class="example-block">
+    <b>Παράδειγμα καλής απάντησης</b>
+    Επόμενο βήμα: πρόβλεψη κερδοφορίας βασισμένη σε εποχικότητα, ώστε ο χρήστης να βλέπει όχι μόνο το 'τώρα' αλλά και το 'τι έρχεται' — κάτι που ζητήθηκε ρητά από 3 συμμετέχοντες στο research.
+  </div>
+
+  <div class="mistakes-block">
+    <b>Συνηθισμένα λάθη</b>
+    <ul><li>Απουσία section — το project φαίνεται 'κλειστό και ξεχασμένο'</li><li>Ασαφές 'θα το βελτιώναμε με τον καιρό' χωρίς συγκεκριμένη κατεύθυνση</li></ul>
+  </div>
+
+  <div class="reflection-box">
+    <b>💡 Product Designer Reflection</b> — Κλείσε αυτό το section με 2-3 προτάσεις που δείχνουν ΠΩΣ σκέφτηκες, όχι τι παρέδωσες.
+    <textarea placeholder="Γράψε εδώ το reflection σου..."></textarea>
+  </div>
+</section>
+
+
+<div class="roadmap">
+  <h2>Πώς προχωράμε</h2>
+  <p style="font-size:14px;"><b>Πρόταση σειράς εφαρμογής:</b></p>
+  <ol>
+    <li><b>Green Helios πρώτα</b> — solo project, έχεις ήδη όλο το υλικό, καλή βάση για να εξασκηθείς στη δομή.</li>
+    <li><b>Ένα από epay Developer Portal ή Worldline merchant dashboard δεύτερο</b> — δείχνει fintech scale και συνεργασία με engineering (πολύτιμο για Section 14).</li>
+    <li><b>Τρίτο case study από Piraeus</b> (design tokens / rebranding) — δείχνει design systems thinking σε επίπεδο brand.</li>
+  </ol>
+  <div class="goal">Στόχος: 3 case studies με αυτό το framework, όχι 6 μέτρια. Ένα πυκνό, ολοκληρωμένο case study "φωνάζει" πιο δυνατά από τρία μισοτελειωμένα.</div>
+</div>
+
+<footer>Ioanna Product Design Framework — Master Product Design Case Study Workbook, 2026</footer>
+
+</body>
+</html>

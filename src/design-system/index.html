@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design System — Ioanna Zarkadoula</title>
+  <meta name="description" content="Portfolio design system — neutral, documentation-first foundations with one accent color, built for clarity over decoration.">
+  <link rel="canonical" href="https://ioannazarkadoula.com/design-system/">
+  <meta property="og:title" content="Design System — Ioanna Zarkadoula">
+  <meta property="og:description" content="Neutral, documentation-first system with one accent color — color, type, spacing, and case-study components.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="{{ROOT}}/assets/images/brand/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ROOT}}/assets/css/main.css">
+</head>
+<body class="page">
+  <!-- include:skip-link -->
+  <!-- include:header -->
+
+  <main id="main" class="page__main">
+    <section class="hero section--flush-top">
+      <div class="container">
+        <p class="t-micro hero__eyebrow">Foundations</p>
+        <h1 class="t-display hero__title">Design System</h1>
+        <p class="t-body-lg hero__lead">
+          A neutral, documentation-first system with one accent color, built for clarity over decoration.
+        </p>
+        <nav class="cluster" aria-label="On this page">
+          <a class="c-button c-button--text" href="#color">Color</a>
+          <a class="c-button c-button--text" href="#type">Type</a>
+          <a class="c-button c-button--text" href="#spacing">Spacing</a>
+          <a class="c-button c-button--text" href="#components">Components</a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="section" id="color" aria-labelledby="color-heading">
+      <div class="container">
+        <header class="section__header">
+          <p class="t-micro">Color</p>
+          <h2 id="color-heading" class="t-h1">Neutral scale + one accent</h2>
+          <p class="section__lead">Accent is reserved for links, focus states, and primary actions. No gradients. Verified contrast 4.5:1 against WCAG 1.4.3 for body text.</p>
+        </header>
+
+        <h3 class="t-h3" style="margin-bottom: var(--space-4);">Accent</h3>
+        <div class="swatch-row" style="margin-bottom: var(--space-8);">
+          <div class="swatch"><div class="swatch__chip" style="background:#ecf0fc;"></div><p class="swatch__label">50</p><p class="swatch__hex">#ECF0FC</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#dce4fc;"></div><p class="swatch__label">100</p><p class="swatch__hex">#DCE4FC</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#90b0f8;"></div><p class="swatch__label">300</p><p class="swatch__hex">#90B0F8</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#2060e8;"></div><p class="swatch__label">500</p><p class="swatch__hex">#2060E8</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#1848d0;"></div><p class="swatch__label">600</p><p class="swatch__hex">#1848D0</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#1840a8;"></div><p class="swatch__label">700</p><p class="swatch__hex">#1840A8</p></div>
+        </div>
+
+        <h3 class="t-h3" style="margin-bottom: var(--space-4);">Neutral</h3>
+        <div class="swatch-row">
+          <div class="swatch"><div class="swatch__chip" style="background:#ffffff;"></div><p class="swatch__label">0</p><p class="swatch__hex">#FFFFFF</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#f7f7f5;"></div><p class="swatch__label">50</p><p class="swatch__hex">#F7F7F5</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#ecece8;"></div><p class="swatch__label">100</p><p class="swatch__hex">#ECECE8</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#d8d8d4;"></div><p class="swatch__label">200</p><p class="swatch__hex">#D8D8D4</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#a0a09a;"></div><p class="swatch__label">400</p><p class="swatch__hex">#A0A09A</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#6e6e68;"></div><p class="swatch__label">500</p><p class="swatch__hex">#6E6E68</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#3a3a36;"></div><p class="swatch__label">700</p><p class="swatch__hex">#3A3A36</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#14141c;"></div><p class="swatch__label">900</p><p class="swatch__hex">#14141C</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#000000;"></div><p class="swatch__label">1000</p><p class="swatch__hex">#000000</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="type" aria-labelledby="type-heading">
+      <div class="container">
+        <header class="section__header">
+          <p class="t-micro">Typography</p>
+          <h2 id="type-heading" class="t-h1">Serif · Sans · Mono</h2>
+          <p class="section__lead">Editorial headings in Source Serif 4. UI and body in Source Sans 3. Metrics, tags, and section numbers in IBM Plex Mono.</p>
+        </header>
+
+        <div class="type-specimen"><p class="t-micro type-specimen__meta">display — Source Serif 4</p><p class="t-display">Aa Editorial</p></div>
+        <div class="type-specimen"><p class="t-micro type-specimen__meta">h1 — Source Serif 4</p><p class="t-h1">Aa Section title</p></div>
+        <div class="type-specimen"><p class="t-micro type-specimen__meta">h2 — Source Serif 4</p><p class="t-h2">Aa Subsection</p></div>
+        <div class="type-specimen"><p class="t-micro type-specimen__meta">h3 — Source Sans 3</p><p class="t-h3">Aa Card title</p></div>
+        <div class="type-specimen"><p class="t-micro type-specimen__meta">body-lg — Source Sans 3</p><p class="t-body-lg">Aa Reading paragraph for long-form case studies.</p></div>
+        <div class="type-specimen"><p class="t-micro type-specimen__meta">body — Source Sans 3</p><p class="t-body">Aa Default text for interface and supporting copy.</p></div>
+        <div class="type-specimen"><p class="t-micro type-specimen__meta">small — Source Sans 3</p><p class="t-small">Aa Caption / meta</p></div>
+        <div class="type-specimen"><p class="t-micro type-specimen__meta">micro — IBM Plex Mono</p><p class="t-micro">Aa Eyebrow label</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="spacing" aria-labelledby="spacing-heading">
+      <div class="container">
+        <header class="section__header">
+          <p class="t-micro">Spacing &amp; grid</p>
+          <h2 id="spacing-heading" class="t-h1">4px base · 12 columns · 1200px</h2>
+          <p class="section__lead">Page gutter 32px on desktop. Content max-width 1200px. Case study prose measure 700–800px.</p>
+        </header>
+        <div class="spacing-bars" aria-hidden="true">
+          <div class="spacing-bars__bar" style="height: 8px;" title="8"></div>
+          <div class="spacing-bars__bar" style="height: 16px;" title="16"></div>
+          <div class="spacing-bars__bar" style="height: 24px;" title="24"></div>
+          <div class="spacing-bars__bar" style="height: 32px;" title="32"></div>
+          <div class="spacing-bars__bar" style="height: 48px;" title="48"></div>
+          <div class="spacing-bars__bar" style="height: 64px;" title="64"></div>
+        </div>
+        <p class="t-small" style="margin-top: var(--space-4);">Scale shown: 8 · 16 · 24 · 32 · 48 · 64</p>
+      </div>
+    </section>
+
+    <section class="section" id="components" aria-labelledby="components-heading">
+      <div class="container">
+        <header class="section__header">
+          <p class="t-micro">Components</p>
+          <h2 id="components-heading" class="t-h1">Buttons, tags &amp; case-study blocks</h2>
+        </header>
+
+        <h3 class="t-h3">Buttons</h3>
+        <div class="ds-demo-row">
+          <a class="c-button c-button--primary" href="#">View prototype</a>
+          <a class="c-button c-button--secondary" href="#">Download PDF</a>
+          <a class="c-button c-button--text" href="#">← Back to index</a>
+          <span class="c-button c-button--primary is-disabled" aria-disabled="true">Disabled</span>
+        </div>
+
+        <h3 class="t-h3" style="margin-top: var(--space-10);">Tags</h3>
+        <div class="ds-demo-row">
+          <span class="c-tag">Section 06</span>
+          <span class="c-tag c-tag--accent">Design Decision</span>
+          <span class="c-tag c-tag--success">+18%</span>
+          <span class="c-tag c-tag--danger">−11%</span>
+        </div>
+
+        <h3 class="t-h3" style="margin-top: var(--space-10);">Decision block</h3>
+        <div class="c-decision" style="margin-top: var(--space-5);">
+          <p class="t-micro c-decision__label"><span class="c-tag c-tag--accent">Decision 1</span></p>
+          <h4 class="c-decision__title">Net profit as one number at the top of the dashboard</h4>
+          <div class="c-decision__block">
+            <h4>Decision</h4>
+            <p>Lead with a single net-profit figure before charts or tables.</p>
+          </div>
+          <div class="c-decision__block">
+            <h4>Alternatives considered</h4>
+            <ul>
+              <li>Line chart of income vs expenses</li>
+              <li>Full transaction table as the primary view</li>
+            </ul>
+          </div>
+          <div class="c-decision__block">
+            <h4>Trade-off</h4>
+            <p>Less data density in exchange for an immediate answer to the user’s primary question.</p>
+          </div>
+          <div class="c-decision__block">
+            <h4>Outcome</h4>
+            <p>Faster comprehension of portfolio health in early usability sessions.</p>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: var(--space-8);">
+          <div class="c-insight">
+            <p class="t-micro c-insight__label"><span class="c-tag c-tag--accent">Insight</span></p>
+            <p class="c-insight__text">Participants asked for fewer charts and a clearer answer — not more analytics.</p>
+          </div>
+          <div class="c-interview">
+            <div class="c-interview__header">
+              <h4 class="t-h3">User interviews</h4>
+              <span class="c-tag">Example</span>
+            </div>
+            <p class="t-small">Semi-structured · Hosts managing 2–10 properties</p>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: var(--space-6);">
+          <div class="c-metric">
+            <p class="c-metric__value">&lt;30 sec</p>
+            <p class="c-metric__label">Target time to understand net profit per property</p>
+          </div>
+          <div class="c-metric">
+            <p class="c-metric__value">4/5</p>
+            <p class="c-metric__label">Example completion signal from structured testing</p>
+          </div>
+        </div>
+
+        <blockquote class="c-quote" style="margin-top: var(--space-8);">
+          I just want to know if I’m winning or losing on this property.
+          <footer>— Target user framing</footer>
+        </blockquote>
+
+        <h3 class="t-h3" style="margin-top: var(--space-10);">Process timeline</h3>
+        <div class="c-process" style="margin-top: var(--space-5);">
+          <div class="c-process__item">
+            <span class="c-process__dot" aria-hidden="true"></span>
+            <div>
+              <p class="t-micro c-process__week">Week 1</p>
+              <p class="t-h3">Research</p>
+              <p class="t-small">Needs, constraints, and competitive landscape</p>
+            </div>
+          </div>
+          <div class="c-process__item">
+            <span class="c-process__dot" aria-hidden="true"></span>
+            <div>
+              <p class="t-micro c-process__week">Week 2</p>
+              <p class="t-h3">Information architecture</p>
+              <p class="t-small">Flows, structure, and prioritization</p>
+            </div>
+          </div>
+          <div class="c-process__item">
+            <span class="c-process__dot" aria-hidden="true"></span>
+            <div>
+              <p class="t-micro c-process__week">Week 3</p>
+              <p class="t-h3">Ship</p>
+              <p class="t-small">High-fidelity UI and implementation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap: var(--space-4);">
+        <a class="c-button c-button--text" href="{{ROOT}}/index.html">← Back to homepage</a>
+        <a class="c-button c-button--text" href="{{ROOT}}/contact/index.html">Contact →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- include:footer -->
+  <script src="{{ROOT}}/assets/js/main.js" defer></script>
+</body>
+</html>

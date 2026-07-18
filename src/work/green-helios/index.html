@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Green Helios — Case Study · Ioanna Zarkadoula</title>
+  <meta name="description" content="Green Helios case study: financial management for short-term rental hosts — product design, dual architecture implementation, and design decisions.">
+  <link rel="canonical" href="https://ioannazarkadoula.com/work/green-helios/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Green Helios — Product Design Case Study">
+  <meta property="og:description" content="A financial management platform for Airbnb and Booking.com hosts — designed and built end-to-end across two technical architectures.">
+  <meta property="og:image" content="https://ioannazarkadoula.com/assets/images/work/green-helios/hero-thumb.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="{{ROOT}}/assets/images/brand/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ROOT}}/assets/css/main.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Green Helios",
+    "description": "Financial management platform for short-term rental hosts — product design case study.",
+    "author": { "@type": "Person", "name": "Ioanna Zarkadoula" },
+    "dateCreated": "2026"
+  }
+  </script>
+</head>
+<body class="page">
+  <!-- include:skip-link -->
+  <!-- include:header -->
+
+  <main id="main" class="page__main">
+    <!-- 01 Hero -->
+    <header class="cs-hero-dark" id="s01">
+      <div class="container">
+        <p class="t-micro">UX/UI Case Study · 2026</p>
+        <h1 class="t-display" style="margin: var(--space-4) 0 var(--space-5);">Green Helios</h1>
+        <p class="t-body-lg" style="max-width: 40rem;">
+          A financial management platform for short-term rental hosts on Airbnb and Booking.com. Designed and developed end-to-end to help hosts see real profitability per property — not only revenue.
+        </p>
+        <div class="cluster" style="margin-top: var(--space-6);">
+          <span class="c-tag">Product Design</span>
+          <span class="c-tag">Fintech</span>
+          <span class="c-tag">Dashboard</span>
+          <span class="c-tag">React / Next.js</span>
+          <span class="c-tag">Spring Boot</span>
+          <span class="c-tag">Full Stack</span>
+        </div>
+        <div class="cs-meta" style="border-color: rgba(255,255,255,0.15);">
+          <div>
+            <p class="t-micro cs-meta__label">Role</p>
+            <p>Lead Designer &amp; Developer</p>
+          </div>
+          <div>
+            <p class="t-micro cs-meta__label">Duration</p>
+            <p>Team Project · 2026</p>
+          </div>
+          <div>
+            <p class="t-micro cs-meta__label">Platform</p>
+            <p>Web (Desktop)</p>
+          </div>
+        </div>
+        <figure style="margin-top: var(--space-10);">
+          <img src="{{ROOT}}/assets/images/work/green-helios/hero.jpg" width="1600" height="1355" alt="Green Helios hero showing a laptop with the login screen and product branding" loading="eager">
+        </figure>
+      </div>
+    </header>
+
+    <div class="container cs-layout">
+      <aside class="cs-toc" aria-label="Case study sections">
+        <p class="t-micro cs-toc__title">On this page</p>
+        <nav>
+          <ol class="cs-toc__list">
+            <li><a href="#s01">01 Hero</a></li>
+            <li><a href="#s02">02 Business Context</a></li>
+            <li><a href="#s03">03 The Problem</a></li>
+            <li><a href="#s04">04 Constraints</a></li>
+            <li><a href="#s05">05 Users</a></li>
+            <li><a href="#s06">06 Research</a></li>
+            <li><a href="#s07">07 Success Metrics</a></li>
+            <li><a href="#s08">08 Design Strategy</a></li>
+            <li><a href="#s09">09 Information Architecture</a></li>
+            <li><a href="#s10">10 Design Decisions</a></li>
+            <li><a href="#s11">11 Design System</a></li>
+            <li><a href="#s12">12 Accessibility</a></li>
+            <li><a href="#s13">13 Prototype</a></li>
+            <li><a href="#s14">14 Technical Collaboration</a></li>
+            <li><a href="#s15">15 Results</a></li>
+            <li><a href="#s16">16 Reflection</a></li>
+            <li><a href="#s17">17 Next Steps</a></li>
+          </ol>
+        </nav>
+      </aside>
+
+      <div class="cs-content">
+        <div class="grid-3" style="margin-bottom: var(--space-8);">
+          <div class="c-metric">
+            <p class="c-metric__value">10</p>
+            <p class="c-metric__label">Screens designed end-to-end</p>
+          </div>
+          <div class="c-metric">
+            <p class="c-metric__value">2</p>
+            <p class="c-metric__label">Technical architectures built</p>
+          </div>
+          <div class="c-metric">
+            <p class="c-metric__value">1</p>
+            <p class="c-metric__label">Designer who also built it</p>
+          </div>
+        </div>
+
+        <!-- 02 Business Context -->
+        <section class="cs-section" id="s02" aria-labelledby="s02-title">
+          <p class="t-micro cs-section__num">02 · Business Context</p>
+          <h2 id="s02-title" class="t-h1 cs-section__title">Why this product exists</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              Multi-property short-term rental hosts still manage finances across platform dashboards, invoices, and spreadsheets. As portfolios grow from one to several listings, complexity scales faster than the tools hosts use.
+            </p>
+            <p>
+              Green Helios addresses that gap: a specialized, finance-first product that aggregates income and expenses so hosts can evaluate portfolio performance as a business — not as disconnected booking feeds.
+            </p>
+            <p>
+              Timing matters: short-term rentals are operationally mature, but host tooling remains fragmented. Hosts need clarity on true profitability before they decide to keep, sell, or expand properties.
+            </p>
+          </div>
+        </section>
+
+        <!-- 03 Problem -->
+        <section class="cs-section" id="s03" aria-labelledby="s03-title">
+          <p class="t-micro cs-section__num">03 · The Problem</p>
+          <h2 id="s03-title" class="t-h1 cs-section__title">The challenge</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              Private hosts managing properties on Airbnb and Booking.com have no unified view of their finances. Income arrives from multiple platforms, expenses are scattered across invoices and notes, and there is no single place to understand the real profitability of each property.
+            </p>
+            <p>
+              Green Helios solves this — aggregating all financial activity, displaying it clearly, and helping hosts make better decisions about their portfolio.
+            </p>
+          </div>
+        </section>
+
+        <!-- 04 Constraints -->
+        <section class="cs-section" id="s04" aria-labelledby="s04-title">
+          <p class="t-micro cs-section__num">04 · Constraints</p>
+          <h2 id="s04-title" class="t-h1 cs-section__title">Working inside real limits</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              As lead designer and developer on a team academic project, I owned both the product definition and the implementation. That dual role shaped scope: every interface had to be buildable without a dedicated QA or design-ops team.
+            </p>
+            <ul>
+              <li><strong>Time &amp; ownership</strong> — Design and two full implementations had to fit a fixed academic window.</li>
+              <li><strong>Technology</strong> — Version 1 used Spring Boot + Thymeleaf + Bootstrap; Version 2 used Next.js + React + Tailwind. Layout flexibility differed sharply between stacks.</li>
+              <li><strong>Platform</strong> — Desktop web first; mobile was out of primary scope.</li>
+              <li><strong>Security baseline</strong> — Version 1 required Spring Security foundations including 2FA and role-based access, which constrained interaction patterns around auth and session handling.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 05 Users -->
+        <section class="cs-section" id="s05" aria-labelledby="s05-title">
+          <p class="t-micro cs-section__num">05 · Users</p>
+          <h2 id="s05-title" class="t-h1 cs-section__title">Who this is for</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              A private individual hosting 2–10 properties on short-term rental platforms. Not a financial professional — needs clarity, not complexity.
+            </p>
+          </div>
+          <div class="persona">
+            <p class="persona__name">Kostas, 38</p>
+            <p class="persona__meta">Property owner · 4 Airbnb listings · Athens</p>
+            <p class="t-micro" style="margin-bottom: var(--space-3);">Jobs to be done</p>
+            <ul class="goals-list">
+              <li>See total income vs expenses at a glance</li>
+              <li>Know which property is most profitable</li>
+              <li>Track maintenance costs per property</li>
+              <li>Understand occupancy rates over time</li>
+              <li>Export financial reports for tax purposes</li>
+            </ul>
+            <blockquote class="c-quote" style="margin-top: var(--space-6);">
+              When I close the month and decide whether to keep or sell a property, I want to see net profit immediately — so I decide on data, not on a feeling.
+            </blockquote>
+          </div>
+        </section>
+
+        <!-- 06 Research -->
+        <section class="cs-section" id="s06" aria-labelledby="s06-title">
+          <p class="t-micro cs-section__num">06 · Research</p>
+          <h2 id="s06-title" class="t-h1 cs-section__title">What shaped the product</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              Research combined informal interviews with short-term rental hosts, competitive review of generic finance tools and property managers, and heuristic evaluation of early wireframes in Figma.
+            </p>
+            <p>
+              The strongest signal was not a request for richer analytics. Hosts already had data — they lacked a trustworthy answer to “am I actually making money on this property?” Spreadsheet workarounds created false confidence and delayed decisions.
+            </p>
+          </div>
+          <div class="c-insight" style="margin-top: var(--space-6);">
+            <p class="t-micro c-insight__label"><span class="c-tag c-tag--accent">Insight</span></p>
+            <p class="c-insight__text">Hosts asked for fewer charts and a clearer verdict — one answer before ten graphs.</p>
+          </div>
+        </section>
+
+        <!-- 07 Success Metrics -->
+        <section class="cs-section" id="s07" aria-labelledby="s07-title">
+          <p class="t-micro cs-section__num">07 · Success Metrics</p>
+          <h2 id="s07-title" class="t-h1 cs-section__title">How we would know it worked</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              Success was defined before build — not reverse-engineered after screenshots.
+            </p>
+            <ul>
+              <li><strong>Business signal</strong> — Hosts with 3+ properties can evaluate keep/sell/expand decisions without rebuilding spreadsheets each month.</li>
+              <li><strong>UX metric</strong> — Time to identify net profit for a selected property should drop from multi-minute spreadsheet work toward under 30 seconds in the dashboard.</li>
+              <li><strong>Delivery metric</strong> — Ship a complete primary journey (auth → dashboard → properties → reports) in both architectures to prove design-to-code fidelity.</li>
+            </ul>
+            <p>
+              Formal A/B testing was out of scope for this project. Outcomes below are framed as delivery and qualitative signals, not invented conversion lifts.
+            </p>
+          </div>
+        </section>
+
+        <!-- 08 Design Strategy -->
+        <section class="cs-section" id="s08" aria-labelledby="s08-title">
+          <p class="t-micro cs-section__num">08 · Design Strategy</p>
+          <h2 id="s08-title" class="t-h1 cs-section__title">Design approach</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              Structured product design process — starting from user needs, working through information architecture and wireframes in Figma, then progressing to high-fidelity UI and full implementation in two technical stacks.
+            </p>
+          </div>
+          <div class="cluster" style="margin: var(--space-6) 0;">
+            <span class="c-tag">User research</span>
+            <span aria-hidden="true">→</span>
+            <span class="c-tag">User flows</span>
+            <span aria-hidden="true">→</span>
+            <span class="c-tag">Wireframes</span>
+            <span aria-hidden="true">→</span>
+            <span class="c-tag">Visual design</span>
+            <span aria-hidden="true">→</span>
+            <span class="c-tag">Implementation</span>
+          </div>
+          <p class="t-micro" style="margin-bottom: var(--space-3);">Design principles</p>
+          <div class="principle-list">
+            <span class="c-tag">Clarity over complexity</span>
+            <span class="c-tag">Trust through accuracy</span>
+            <span class="c-tag">Status always visible</span>
+            <span class="c-tag">Data at a glance</span>
+            <span class="c-tag">Fast navigation</span>
+            <span class="c-tag">Financial semantics</span>
+          </div>
+        </section>
+
+        <!-- 09 IA -->
+        <section class="cs-section" id="s09" aria-labelledby="s09-title">
+          <p class="t-micro cs-section__num">09 · Information Architecture</p>
+          <h2 id="s09-title" class="t-h1 cs-section__title">Structure that supports comparison</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              The product is organized around a persistent sidebar: Dashboard, Profile, Properties, Reports, Notifications, Settings, and Help Center. The primary journey prioritizes portfolio health first, then property detail, then reporting.
+            </p>
+            <p>
+              Early exploration treated properties as isolated tabs. That pattern was rejected because hosts with multiple listings need comparison, not isolation. Filters and summary KPIs sit above detail so status stays visible while navigating.
+            </p>
+            <p>
+              Out of scope for v1: mobile-first layouts, automated bank imports, and marketplace booking management — the product stays finance-first.
+            </p>
+          </div>
+        </section>
+
+        <!-- 10 Design Decisions -->
+        <section class="cs-section" id="s10" aria-labelledby="s10-title">
+          <p class="t-micro cs-section__num">10 · Design Decisions</p>
+          <h2 id="s10-title" class="t-h1 cs-section__title">Three decisions that shaped the product</h2>
+
+          <div class="c-decision" style="margin-top: var(--space-6);">
+            <p class="t-micro c-decision__label"><span class="c-tag c-tag--accent">Decision 1</span></p>
+            <h3 class="c-decision__title">Lead with net position, not a property showcase</h3>
+            <div class="c-decision__block">
+              <h4>Decision</h4>
+              <p>Version 2 dashboard opens on KPI cards (income, expenses, balance, transactions) and charts — not a lifestyle property banner.</p>
+            </div>
+            <div class="c-decision__block">
+              <h4>Alternatives considered</h4>
+              <ul>
+                <li>Version 1 pattern: prominent “dream home” marketing card above finances</li>
+                <li>Chart-first layout with KPIs buried below the fold</li>
+              </ul>
+            </div>
+            <div class="c-decision__block">
+              <h4>Trade-off</h4>
+              <p>Lost decorative polish; gained immediate financial orientation aligned with host goals.</p>
+            </div>
+            <div class="c-decision__block">
+              <h4>Outcome</h4>
+              <p>The interface reads as a finance tool, not a listing portal — matching the problem statement.</p>
+            </div>
+          </div>
+
+          <div class="c-decision" style="margin-top: var(--space-6);">
+            <p class="t-micro c-decision__label"><span class="c-tag c-tag--accent">Decision 2</span></p>
+            <h3 class="c-decision__title">Modal entry for create flows in Version 2</h3>
+            <div class="c-decision__block">
+              <h4>Decision</h4>
+              <p>New property and income/expense forms use centered modals in Version 2, replacing Version 1’s right-side drawers for primary create tasks.</p>
+            </div>
+            <div class="c-decision__block">
+              <h4>Alternatives considered</h4>
+              <ul>
+                <li>Persistent side drawers (Version 1)</li>
+                <li>Full-page forms that leave the list context entirely</li>
+              </ul>
+            </div>
+            <div class="c-decision__block">
+              <h4>Trade-off</h4>
+              <p>Modals focus attention but hide more of the underlying list; drawers preserve context but felt heavier for short forms.</p>
+            </div>
+            <div class="c-decision__block">
+              <h4>Outcome</h4>
+              <p>Create tasks became shorter and more intentional; list scanning remained the default state.</p>
+            </div>
+          </div>
+
+          <div class="c-decision" style="margin-top: var(--space-6);">
+            <p class="t-micro c-decision__label"><span class="c-tag c-tag--accent">Decision 3</span></p>
+            <h3 class="c-decision__title">Build the same product twice — on purpose</h3>
+            <div class="c-decision__block">
+              <h4>Decision</h4>
+              <p>Implement Green Helios in Spring Boot/Thymeleaf and again in Next.js/React to learn how architecture constrains UX fidelity.</p>
+            </div>
+            <div class="c-decision__block">
+              <h4>Alternatives considered</h4>
+              <ul>
+                <li>Ship a single stack and treat the other as mockups only</li>
+                <li>Design for the lowest-common-denominator (Bootstrap only)</li>
+              </ul>
+            </div>
+            <div class="c-decision__block">
+              <h4>Trade-off</h4>
+              <p>Doubled implementation cost; gained concrete evidence of where design systems survive engineering constraints.</p>
+            </div>
+            <div class="c-decision__block">
+              <h4>Outcome</h4>
+              <p>Bootstrap limited layout precision; React enabled closer fidelity to the Figma system — a core Design Technologist lesson.</p>
+            </div>
+          </div>
+
+          <div class="c-gallery" style="margin-top: var(--space-8);">
+            <figure class="c-gallery__item">
+              <button class="c-gallery__button" type="button" data-lightbox-trigger data-full="{{ROOT}}/assets/images/work/green-helios/dashboard-compare.jpg" data-alt="Side-by-side Version 1 and Version 2 dashboard screens" data-caption="Dashboard — Version 1 vs Version 2">
+                <img src="{{ROOT}}/assets/images/work/green-helios/dashboard-compare.jpg" width="1600" height="1233" alt="Side-by-side Version 1 and Version 2 dashboard screens" loading="lazy">
+              </button>
+              <figcaption class="c-gallery__caption">Dashboard comparison — marketing-led V1 vs finance-first V2</figcaption>
+            </figure>
+            <figure class="c-gallery__item">
+              <button class="c-gallery__button" type="button" data-lightbox-trigger data-full="{{ROOT}}/assets/images/work/green-helios/properties-compare.jpg" data-alt="Properties list and create-flow comparison between versions" data-caption="Properties — list and create patterns">
+                <img src="{{ROOT}}/assets/images/work/green-helios/properties-compare.jpg" width="1600" height="1232" alt="Properties list and create-flow comparison between versions" loading="lazy">
+              </button>
+              <figcaption class="c-gallery__caption">Properties — list density and create patterns (drawer vs modal)</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- 11 Design System -->
+        <section class="cs-section" id="s11" aria-labelledby="s11-title">
+          <p class="t-micro cs-section__num">11 · Design System</p>
+          <h2 id="s11-title" class="t-h1 cs-section__title">Visual language for financial trust</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              A semantic color system built around trust and clarity. The primary teal drives interactive elements — CTAs, active states, and data visualizations. Financial status is communicated instantly through color: green for income, red for expenses, amber for warnings. Neutral backgrounds keep focus on the data.
+            </p>
+          </div>
+          <div class="color-system-note">
+            <p class="t-micro" style="margin-bottom: var(--space-3);">Product tokens (Green Helios — not portfolio chrome)</p>
+            <div class="cluster">
+              <span class="c-tag" style="background:#e6faf4;border-color:#00c896;color:#1a1a2e;">Primary #00C896</span>
+              <span class="c-tag" style="background:#fdecec;border-color:#ef4444;color:#1a1a2e;">Expense #EF4444</span>
+              <span class="c-tag" style="background:#fff6e8;border-color:#f5a623;color:#1a1a2e;">Warning #F5A623</span>
+              <span class="c-tag">Text #1A1A2E</span>
+              <span class="c-tag">Surface #F8F9FA</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 12 Accessibility -->
+        <section class="cs-section" id="s12" aria-labelledby="s12-title">
+          <p class="t-micro cs-section__num">12 · Accessibility</p>
+          <h2 id="s12-title" class="t-h1 cs-section__title">Accessible by default in financial UI</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              Accessibility was treated as a production requirement, informed by fintech work under WCAG 2.1 and by the academic focus of my studies.
+            </p>
+            <ul>
+              <li><strong>Contrast (WCAG 1.4.3)</strong> — Body text targets 4.5:1 against white and alabaster surfaces; status colors pair with labels, not color alone.</li>
+              <li><strong>Semantics</strong> — Forms use visible labels; status badges include text (Income / Expense / Warning).</li>
+              <li><strong>Keyboard</strong> — Primary navigation and modal/drawer flows were designed for keyboard reachability; focus order follows sidebar → main → dialogs.</li>
+              <li><strong>Error prevention</strong> — Transaction forms require property, category, amount, and date before submit to reduce silent incomplete records.</li>
+            </ul>
+            <p>
+              Full assistive-technology coverage across both stacks remains an ongoing hardening area — especially Bootstrap-era components in Version 1.
+            </p>
+          </div>
+        </section>
+
+        <!-- 13 Prototype -->
+        <section class="cs-section" id="s13" aria-labelledby="s13-title">
+          <p class="t-micro cs-section__num">13 · Prototype</p>
+          <h2 id="s13-title" class="t-h1 cs-section__title">From Figma to running product</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              The case study is backed by implemented products — not static mock sequences. Ten screens cover authentication through reporting and property management, with Version 1 and Version 2 available as live implementations and repositories.
+            </p>
+          </div>
+          <div class="cluster cluster--gap-4" style="margin-top: var(--space-6);">
+            <a class="c-button c-button--primary" href="https://github.com/iozark" rel="noopener noreferrer" target="_blank">GitHub repositories</a>
+            <a class="c-button c-button--secondary" href="{{ROOT}}/contact/index.html">Request live walkthrough</a>
+          </div>
+          <p class="t-small" style="margin-top: var(--space-4);">Live deployment URLs are shared on request to keep academic environments stable.</p>
+        </section>
+
+        <!-- 14 Technical Collaboration -->
+        <section class="cs-section" id="s14" aria-labelledby="s14-title">
+          <p class="t-micro cs-section__num">14 · Technical Collaboration</p>
+          <h2 id="s14-title" class="t-h1 cs-section__title">Built twice, on purpose</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              The same product was implemented in two distinct technical architectures — a deliberate decision to understand how architecture affects design flexibility, performance, and user experience.
+            </p>
+          </div>
+
+          <div class="c-arch" style="margin-top: var(--space-6);">
+            <div class="c-arch__panel">
+              <h3 class="t-h3">Version 1 — Spring Boot + Thymeleaf</h3>
+              <p class="t-small">Server-side rendering with strong security foundations, role-based access, single-session enforcement, and JUnit 5 coverage.</p>
+              <div class="c-arch__stack">
+                <span class="c-tag">Java 17</span>
+                <span class="c-tag">Spring Boot 3.3</span>
+                <span class="c-tag">Thymeleaf</span>
+                <span class="c-tag">Bootstrap 5</span>
+                <span class="c-tag">PostgreSQL</span>
+                <span class="c-tag">Spring Security</span>
+                <span class="c-tag">2FA</span>
+                <span class="c-tag">Docker</span>
+                <span class="c-tag">Railway</span>
+              </div>
+            </div>
+            <div class="c-arch__panel">
+              <h3 class="t-h3">Version 2 — Next.js + React</h3>
+              <p class="t-small">Component-based architecture enabling richer interactions, a custom design system, and greater fidelity to Figma.</p>
+              <div class="c-arch__stack">
+                <span class="c-tag">React</span>
+                <span class="c-tag">Next.js</span>
+                <span class="c-tag">TypeScript</span>
+                <span class="c-tag">Tailwind CSS</span>
+                <span class="c-tag">Chart.js</span>
+                <span class="c-tag">DnD Kit</span>
+                <span class="c-tag">Zod</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="c-insight" style="margin-top: var(--space-6);">
+            <p class="t-micro c-insight__label"><span class="c-tag c-tag--accent">Key insight</span></p>
+            <p class="c-insight__text">Bootstrap limited layout flexibility; React enabled pixel-closer implementation of the design system. Technical constraints directly shape UX decisions.</p>
+          </div>
+
+          <figure class="c-gallery__item" style="margin-top: var(--space-8);">
+            <button class="c-gallery__button" type="button" data-lightbox-trigger data-full="{{ROOT}}/assets/images/work/green-helios/architecture.jpg" data-alt="Architecture section showing both technical stacks" data-caption="Architecture comparison">
+              <img src="{{ROOT}}/assets/images/work/green-helios/architecture.jpg" width="1600" height="1233" alt="Architecture section showing both technical stacks" loading="lazy">
+            </button>
+            <figcaption class="c-gallery__caption">Architecture — two stacks, one product definition</figcaption>
+          </figure>
+
+          <figure class="c-gallery__item" style="margin-top: var(--space-6);">
+            <button class="c-gallery__button" type="button" data-lightbox-trigger data-full="{{ROOT}}/assets/images/work/green-helios/reports-compare.jpg" data-alt="Reports overview and transaction entry patterns" data-caption="Reports comparison">
+              <img src="{{ROOT}}/assets/images/work/green-helios/reports-compare.jpg" width="1600" height="1233" alt="Reports overview and transaction entry patterns" loading="lazy">
+            </button>
+            <figcaption class="c-gallery__caption">Reports — overview density and income/expense entry patterns</figcaption>
+          </figure>
+        </section>
+
+        <!-- 15 Results -->
+        <section class="cs-section" id="s15" aria-labelledby="s15-title">
+          <p class="t-micro cs-section__num">15 · Results</p>
+          <h2 id="s15-title" class="t-h1 cs-section__title">What shipped</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              There was no production A/B program for this academic build. The accountable results are delivery and demonstration of competence:
+            </p>
+            <ul>
+              <li>10 screens designed end-to-end covering auth, dashboard, profile, properties, reports, settings, and help</li>
+              <li>2 complete technical architectures implementing the same product definition</li>
+              <li>A documented shift from marketing-led dashboard patterns to finance-first hierarchy</li>
+              <li>Working security foundations in Version 1 (Spring Security, 2FA) and richer interaction fidelity in Version 2</li>
+            </ul>
+          </div>
+          <div class="takeaway-grid" style="margin-top: var(--space-8);">
+            <div class="takeaway-card">
+              <h3 class="t-h3">Financial UX expertise</h3>
+              <p class="t-small">Complex data dashboards with transactions, KPIs, and multi-property reporting — backed by 3 years of fintech design.</p>
+            </div>
+            <div class="takeaway-card">
+              <h3 class="t-h3">Technical depth</h3>
+              <p class="t-small">Understands how design decisions affect implementation — not just how things look, but how they work in production.</p>
+            </div>
+            <div class="takeaway-card">
+              <h3 class="t-h3">End-to-end ownership</h3>
+              <p class="t-small">From Figma wireframes to deployed product — complete ownership without handing off to another team.</p>
+            </div>
+            <div class="takeaway-card">
+              <h3 class="t-h3">Fintech domain knowledge</h3>
+              <p class="t-small">3 years designing for NBG, EDPS, Euronet, Worldline, and Cardlink. Financial products are familiar territory.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 16 Reflection -->
+        <section class="cs-section" id="s16" aria-labelledby="s16-title">
+          <p class="t-micro cs-section__num">16 · Reflection</p>
+          <h2 id="s16-title" class="t-h1 cs-section__title">What I would change</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              I started Version 1 too attached to a visually rich dashboard — including property marketing patterns that competed with financial clarity. Building Version 2 forced a correction: start from the user’s question, not from available UI patterns in Bootstrap.
+            </p>
+            <p>
+              If I restarted today, I would define success metrics and the primary decision (net profit) before any high-fidelity exploration, and I would prototype create-flows as modals earlier instead of discovering the drawer-vs-modal trade-off during dual implementation.
+            </p>
+            <p>
+              The dual-architecture choice was expensive but instructive. It made me a better collaborator with engineering because I felt the cost of every spacing, animation, and layout choice firsthand.
+            </p>
+          </div>
+        </section>
+
+        <!-- 17 Next Steps -->
+        <section class="cs-section" id="s17" aria-labelledby="s17-title">
+          <p class="t-micro cs-section__num">17 · Next Steps</p>
+          <h2 id="s17-title" class="t-h1 cs-section__title">Where the product goes next</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              Next feature priority: seasonality-aware profitability forecasting — so hosts see not only “now” but “what is coming,” a need that emerged while defining tax-export and occupancy goals.
+            </p>
+            <p>
+              Before building it, I would run a focused study on how hosts currently estimate future months (spreadsheet heuristics vs. platform calendars), then prototype a single forecast strip on the dashboard rather than a separate analytics module.
+            </p>
+          </div>
+          <div class="cluster cluster--gap-4" style="margin-top: var(--space-8);">
+            <a class="c-button c-button--primary" href="{{ROOT}}/work/index.html">← All work</a>
+            <a class="c-button c-button--secondary" href="{{ROOT}}/contact/index.html">Contact</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image preview">
+    <div class="lightbox__dialog">
+      <button class="lightbox__close" type="button" data-lightbox-close>Close</button>
+      <img class="lightbox__img" data-lightbox-img alt="">
+      <p class="lightbox__caption" data-lightbox-caption></p>
+    </div>
+  </div>
+
+  <!-- include:footer -->
+  <script src="{{ROOT}}/assets/js/main.js" defer></script>
+</body>
+</html>
