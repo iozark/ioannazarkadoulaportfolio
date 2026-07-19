@@ -55,11 +55,26 @@
       if (lastFocus) lastFocus.focus();
     }
 
+    function usableSrc(value) {
+      if (!value) return "";
+      if (value.indexOf("data:image/gif") === 0) return "";
+      return value;
+    }
+
     document.querySelectorAll("[data-lightbox-trigger]").forEach(function (btn) {
       btn.addEventListener("click", function () {
+        var nested = btn.querySelector("img.c-media__img, img");
+        var src = usableSrc(
+          btn.getAttribute("data-full") ||
+            (nested && nested.getAttribute("src")) ||
+            ""
+        );
+        if (!src || (nested && nested.getAttribute("data-media-empty") === "true")) {
+          return;
+        }
         open(
-          btn.getAttribute("data-full") || btn.querySelector("img").src,
-          btn.getAttribute("data-alt") || (btn.querySelector("img") && btn.querySelector("img").alt) || "",
+          src,
+          btn.getAttribute("data-alt") || (nested && nested.alt) || "",
           btn.getAttribute("data-caption") || ""
         );
       });

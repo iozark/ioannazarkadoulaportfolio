@@ -1,0 +1,27 @@
+<!--
+  Media component template (copy into pages; fill src when artwork is ready).
+
+  Ratios: c-media--hero (16/10) | c-media--screen (4/3) | c-media--wide (16/9) | c-media--square (1/1) | c-media--portrait (4/5)
+  Zoom:   add c-media--zoom + .c-media__trigger with data-lightbox-* attributes
+  Layout is locked by aspect-ratio — replacing src never shifts the page.
+
+  To drop in artwork:
+  1. Set img src to the file URL
+  2. Remove data-media-empty="true"
+  3. If zoom enabled, set data-full on .c-media__trigger to the same URL
+-->
+<figure class="c-media c-media--screen">
+  <div class="c-media__frame">
+    <span class="c-media__placeholder" aria-hidden="true">Media</span>
+    <img
+      class="c-media__img"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      data-media-empty="true"
+      alt=""
+      width="1600"
+      height="1200"
+      loading="lazy"
+    >
+  </div>
+  <figcaption class="c-media__caption">Caption</figcaption>
+</figure>
