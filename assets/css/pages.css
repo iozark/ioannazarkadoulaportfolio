@@ -268,8 +268,8 @@
 }
 
 .cs-hero-dark .c-media__frame {
-  background: var(--color-neutral-900);
-  border-color: rgba(255, 255, 255, 0.12);
+  background: var(--color-neutral-50);
+  border-color: var(--color-neutral-200);
 }
 
 .cs-hero-dark .c-media__img {
@@ -477,10 +477,6 @@
 
 .cs-hero-figure--merchant {
   --media-ratio: 2000 / 728;
-}
-
-.cs-hero-dark .cs-hero-figure--flow .c-media__frame {
-  background: var(--color-neutral-0);
 }
 
 .cs-hero-dark .cs-hero-figure--flow .c-media__img {

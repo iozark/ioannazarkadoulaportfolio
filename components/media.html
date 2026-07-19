@@ -1,0 +1,32 @@
+<!--
+  Media component (copy into pages).
+
+  Ratios: c-media--hero (16/10) | c-media--screen (4/3) | c-media--wide (16/9)
+          c-media--square (1/1) | c-media--portrait (4/5)
+          Case-study flow: cs-hero-figure--flow / --merchant
+
+  Editorial panel shows while the image has data-media-empty="true".
+  To publish artwork later:
+  1. Set img src to the final file
+  2. Remove data-media-empty="true"
+  Layout (aspect-ratio) does not change.
+-->
+<figure class="c-media c-media--wide">
+  <div class="c-media__frame">
+    <div class="c-media__panel">
+      <p class="c-media__panel-kicker">Project Preview</p>
+      <p class="c-media__panel-meta">Production Product</p>
+      <p class="c-media__panel-body">Selected product visuals are intentionally limited in the public portfolio.</p>
+      <p class="c-media__panel-note">Additional materials and walkthroughs are available during interviews.</p>
+    </div>
+    <img
+      class="c-media__img"
+      src=""
+      data-media-empty="true"
+      alt=""
+      width="1600"
+      height="900"
+      loading="lazy"
+    >
+  </div>
+</figure>
