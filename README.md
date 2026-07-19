@@ -1,34 +1,39 @@
-# Ioanna Zarkadoula – Product Design Portfolio
+# Ioanna Zarkadoula — Product Design Portfolio
 
-A personal portfolio showcasing product design case studies, design systems, and professional experience.
+Static portfolio for Product Design work in fintech and payments. Documentation-first case studies, custom design tokens, no frameworks.
 
-## Purpose
+**Live domain (intended):** https://ioannazarkadoula.com
 
-This website presents Product Design work through detailed case studies that demonstrate product thinking, UX research, interaction design, design systems, business impact, and collaboration with engineering.
+## Stack
 
-## Tech Stack
+- HTML5, CSS3 (custom properties), vanilla JavaScript
+- Include-based build (`scripts/build.js`) → `dist/`
+- No React, Bootstrap, or Tailwind
 
-- HTML5
-- CSS3 (custom properties / component CSS)
-- Vanilla JavaScript
-
-No frameworks. No Bootstrap. No Tailwind. No React.
-
-## Develop
+## Commands
 
 ```bash
-node scripts/build.js
-npx serve dist
+npm run build    # Assemble pages into dist/
+npm run serve    # Preview dist/ at http://localhost:4173
 ```
 
-Source pages live in `src/`. Shared partials live in `components/`. The build assembles includes into `dist/`.
+## Structure
 
-## Design tokens (frozen)
+```
+src/                 Page sources + robots.txt + sitemap.xml
+components/          header, footer, skip-link, head-icons
+assets/              css, js, fonts, images
+public/              favicon, manifest, root headers
+scripts/build.js     Include assembler
+dist/                Build output (gitignored)
+docs/                Source material (not shipped as site pages)
+```
+
+## Design tokens
 
 | Role | Value |
 |------|-------|
 | Accent 500 | `#2060E8` |
-| Accent 600 / 700 | `#1848D0` / `#1840A8` |
 | Neutral ink | `#14141C` |
 | Background | `#FFFFFF` |
 | Spacing base | 4px |
@@ -36,23 +41,15 @@ Source pages live in `src/`. Shared partials live in `components/`. The build as
 | Prose measure | 760px |
 | Fonts | Source Serif 4 · Source Sans 3 · IBM Plex Mono |
 
-Full token map: `assets/css/tokens.css`
+Full map: `assets/css/tokens.css`
 
-## Project Structure
+## Deployment
 
-```
-src/                 # Page sources
-components/          # header, footer, skip-link
-assets/css|js|images|fonts|icons
-scripts/build.js     # Include assembler
-docs/                # Source of truth (not shipped as content pages)
-dist/                # Build output
-```
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for Vercel, Netlify, and GitHub Pages (including custom domain).
 
 ## Goals
 
-- Accessible (WCAG AA)
+- Accessible (WCAG AA targets)
 - Responsive (desktop-first)
-- Fast (Lighthouse 95+)
-- Semantic HTML
-- SEO friendly
+- Fast static delivery
+- Semantic HTML and SEO-ready metadata

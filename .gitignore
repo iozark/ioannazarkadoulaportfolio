@@ -1,26 +1,32 @@
 # macOS
 .DS_Store
+.AppleDouble
+.LSOverride
 
-# VS Code
+# Editors
 .vscode/
+.idea/
+*.swp
+*.swo
 
-# Cursor
+# Cursor local cache
 .cursor/cache/
 .cursor/history/
 
-# Logs
+# Logs & temp
 *.log
-
-# Temporary files
 *.tmp
 *.temp
+.tmp-pdf-preview/
 
-# Node (if used later)
+# Dependencies
 node_modules/
 
-# Build folders
+# Build output
 dist/
 build/
 
-# Research previews
-.tmp-pdf-preview/
+# Environment
+.env
+.env.*
+!.env.example

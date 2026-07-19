@@ -750,54 +750,6 @@ a.work-card:hover {
   color: var(--color-neutral-400);
 }
 
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-6);
-  background: rgba(20, 20, 28, 0.88);
-}
-
-.lightbox.is-open {
-  display: flex;
-}
-
-.lightbox__dialog {
-  position: relative;
-  max-width: min(1100px, 100%);
-  max-height: 90vh;
-}
-
-.lightbox__img {
-  max-height: 85vh;
-  width: auto;
-  max-width: 100%;
-  margin-inline: auto;
-  border-radius: var(--radius-sm);
-  object-fit: contain;
-}
-
-.lightbox__close {
-  position: absolute;
-  top: calc(-1 * var(--space-10));
-  right: 0;
-  min-width: 44px;
-  min-height: 44px;
-  color: var(--color-neutral-0);
-  font-size: var(--text-body);
-  font-weight: var(--font-weight-semibold);
-}
-
-.lightbox__caption {
-  margin-top: var(--space-3);
-  color: var(--color-neutral-200);
-  font-size: var(--text-small);
-  text-align: center;
-}
-
 /* —— Case study TOC —— */
 .cs-toc {
   position: sticky;

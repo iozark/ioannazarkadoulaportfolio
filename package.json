@@ -1,8 +1,14 @@
 {
   "name": "ioanna-portfolio",
   "private": true,
+  "version": "1.0.0",
+  "description": "Ioanna Zarkadoula — Product Design portfolio (static site)",
   "scripts": {
     "build": "node scripts/build.js",
-    "serve": "npx --yes serve dist -l 4173"
+    "serve": "npx --yes serve dist -l 4173",
+    "preview": "npm run build && npm run serve"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
