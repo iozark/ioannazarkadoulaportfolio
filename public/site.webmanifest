@@ -1,0 +1,31 @@
+{
+  "name": "Ioanna Zarkadoula — Product Designer",
+  "short_name": "Ioanna Z.",
+  "description": "Product Designer for fintech and payment products.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#14141C",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32",
+      "purpose": "any"
+    }
+  ]
+}

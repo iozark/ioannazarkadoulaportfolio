@@ -13,6 +13,7 @@ const SRC = path.join(ROOT, "src");
 const DIST = path.join(ROOT, "dist");
 const COMPONENTS = path.join(ROOT, "components");
 const ASSETS = path.join(ROOT, "assets");
+const PUBLIC = path.join(ROOT, "public");
 
 function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
@@ -58,6 +59,17 @@ function copyDir(src, dest) {
   }
 }
 
+function copyPublic() {
+  if (!fs.existsSync(PUBLIC)) return;
+  for (const entry of fs.readdirSync(PUBLIC, { withFileTypes: true })) {
+    const s = path.join(PUBLIC, entry.name);
+    const d = path.join(DIST, entry.name);
+    if (entry.isDirectory()) copyDir(s, d);
+    else fs.copyFileSync(s, d);
+  }
+  console.log("copied public/");
+}
+
 function build() {
   if (fs.existsSync(DIST)) fs.rmSync(DIST, { recursive: true, force: true });
   ensureDir(DIST);
@@ -76,7 +88,6 @@ function build() {
     console.log("built", rel);
   }
 
-  // Root-level static files (non-walked or special)
   for (const name of ["robots.txt", "sitemap.xml"]) {
     const srcFile = path.join(SRC, name);
     if (fs.existsSync(srcFile)) {
@@ -85,18 +96,9 @@ function build() {
     }
   }
 
-  // 404 may already be built via walk if under src/
-  const notFoundSrc = path.join(SRC, "404.html");
-  if (fs.existsSync(notFoundSrc) && !fs.existsSync(path.join(DIST, "404.html"))) {
-    let html = fs.readFileSync(notFoundSrc, "utf8");
-    html = resolveIncludes(html);
-    html = html.replace(/\{\{ROOT\}\}/g, ".");
-    fs.writeFileSync(path.join(DIST, "404.html"), html, "utf8");
-    console.log("built", "404.html");
-  }
-
   copyDir(ASSETS, path.join(DIST, "assets"));
   console.log("copied assets/");
+  copyPublic();
   console.log("Done → dist/");
 }
 
