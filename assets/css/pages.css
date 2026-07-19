@@ -479,8 +479,18 @@
   --media-ratio: 2000 / 728;
 }
 
-.cs-hero-dark .cs-hero-figure--flow .c-media__img {
+.cs-hero-figure--gh {
+  --media-ratio: 1024 / 550;
+}
+
+.cs-hero-dark .cs-hero-figure--flow .c-media__img,
+.cs-hero-dark .cs-hero-figure--gh .c-media__img {
   object-fit: contain;
+}
+
+.cs-hero-dark .cs-hero-figure--gh .c-media__frame {
+  background: #000000;
+  border-color: rgba(255, 255, 255, 0.12);
 }
 .cs-metrics-row { margin-bottom: var(--space-8); }
 .cs-hero-title { margin: var(--space-4) 0 var(--space-5); }
