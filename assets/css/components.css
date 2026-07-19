@@ -632,31 +632,81 @@ a.work-card:hover {
   object-fit: cover;
 }
 
-.c-media__placeholder {
+/* Editorial panel — shown when image is empty; hides when a real src is set */
+.c-media__panel {
   position: absolute;
   inset: 0;
   z-index: 0;
-  display: grid;
-  place-items: center;
-  gap: var(--space-2);
-  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-10) var(--space-8);
+  text-align: center;
+  background: var(--color-neutral-50);
+  pointer-events: none;
+}
+
+.c-media__panel-kicker {
+  margin: 0;
   font-family: var(--font-mono);
   font-size: var(--text-micro);
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--tracking-micro);
   text-transform: uppercase;
   color: var(--color-neutral-500);
-  pointer-events: none;
+  line-height: var(--leading-tight);
 }
 
-.c-media__placeholder::before {
-  content: "";
-  width: 40px;
-  height: 28px;
-  border: 1px solid var(--color-neutral-400);
-  border-radius: var(--radius-sm);
-  background: var(--color-neutral-0);
-  opacity: 0.9;
+.c-media__panel-meta {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-900);
+  line-height: var(--leading-body);
+}
+
+.c-media__panel-body,
+.c-media__panel-note {
+  margin: 0;
+  max-width: 28rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-500);
+  line-height: var(--leading-body);
+}
+
+.c-media__panel-body {
+  margin-top: var(--space-2);
+}
+
+.c-media__panel-note {
+  margin-top: var(--space-1);
+}
+
+/* Compact copy for wide, short hero ratios */
+.cs-hero-figure--flow .c-media__panel {
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-5);
+}
+
+.cs-hero-figure--flow .c-media__panel-body {
+  margin-top: var(--space-1);
+}
+
+@media (max-width: 767px) {
+  .c-media__panel {
+    gap: var(--space-2);
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .c-media__panel-body,
+  .c-media__panel-note {
+    max-width: 22rem;
+  }
 }
 
 .c-media__img {
@@ -670,13 +720,18 @@ a.work-card:hover {
   background: transparent;
 }
 
-/* Empty / stub image stays invisible so the frame placeholder remains */
+/* Empty / stub image stays invisible so the editorial panel remains */
 .c-media__img:not([src]),
 .c-media__img[src=""],
 .c-media__img[src="about:blank"],
 .c-media__img[data-media-empty="true"] {
   opacity: 0;
   pointer-events: none;
+}
+
+/* When a real image is present, hide the panel without layout shift */
+.c-media__frame:has(.c-media__img:not([data-media-empty="true"])) .c-media__panel {
+  visibility: hidden;
 }
 
 .c-media__trigger {
@@ -731,19 +786,10 @@ a.work-card:hover {
   }
 }
 
-/* Dark hero surface: quieter placeholder chrome */
+/* Dark hero: light documentation surface for media panels */
 .cs-hero-dark .c-media__frame {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.cs-hero-dark .c-media__placeholder {
-  color: var(--color-neutral-400);
-}
-
-.cs-hero-dark .c-media__placeholder::before {
-  border-color: var(--color-neutral-500);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--color-neutral-200);
+  background: var(--color-neutral-50);
 }
 
 .cs-hero-dark .c-media__caption {
