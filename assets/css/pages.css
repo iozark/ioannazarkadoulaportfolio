@@ -193,164 +193,79 @@
 }
 
 /* Documentation walkthrough — interactive payment journey */
-.cs-walk {
+/* Production walkthrough — horizontal documentation strip */
+.cs-flow {
   margin-top: var(--space-10);
-}
-
-.cs-walk__tabs {
-  margin: 0 0 var(--space-10);
   overflow-x: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  border-bottom: 1px solid var(--color-neutral-200);
-}
-
-.cs-walk__tab-list {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  min-width: min-content;
-}
-
-.cs-walk__tab {
-  flex: 0 0 auto;
-  margin: 0;
-  padding: var(--space-4) var(--space-5);
-  border: 0;
-  border-bottom: 2px solid transparent;
-  border-radius: 0;
-  background: transparent;
-  color: var(--color-neutral-500);
-  font-family: var(--font-sans);
-  font-size: var(--text-small);
-  font-weight: var(--font-weight-medium);
-  line-height: var(--leading-tight);
-  white-space: nowrap;
-  cursor: pointer;
-  transition:
-    color var(--duration-fast) var(--ease-standard),
-    border-color var(--duration-fast) var(--ease-standard);
-}
-
-.cs-walk__tab:hover {
-  color: var(--color-neutral-900);
-}
-
-.cs-walk__tab[aria-selected="true"] {
-  color: var(--color-neutral-900);
-  border-bottom-color: var(--color-accent-500);
-}
-
-.cs-walk__stage {
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  cursor: grab;
   outline: none;
 }
 
-.cs-walk__viewport {
-  position: relative;
-  touch-action: pan-y;
-  margin: 0 auto var(--space-8);
-  max-width: 28rem;
-  min-height: 36rem;
+.cs-flow.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  user-select: none;
 }
 
-.cs-walk__panel {
-  position: absolute;
-  inset: 0;
+.cs-flow__track {
   display: flex;
-  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: var(--space-10);
   margin: 0;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateX(12px);
-  transition:
-    opacity 280ms var(--ease-standard),
-    transform 280ms var(--ease-standard),
-    visibility 0s linear 280ms;
+  padding: 0 var(--space-1) var(--space-4);
+  list-style: none;
+  width: max-content;
 }
 
-.cs-walk__panel.is-active {
-  position: relative;
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateX(0);
-  transition:
-    opacity 280ms var(--ease-standard),
-    transform 280ms var(--ease-standard),
-    visibility 0s linear 0s;
+.cs-flow__item {
+  flex: 0 0 13.5rem;
+  width: 13.5rem;
+  margin: 0;
 }
 
-.cs-walk__figure {
-  margin: 0 0 var(--space-8);
+.cs-flow__figure {
+  margin: 0 0 var(--space-5);
 }
 
-.cs-walk__figure img {
+.cs-flow__figure img {
   display: block;
   width: 100%;
   height: auto;
   border: var(--elevation-border);
   border-radius: var(--radius-md);
   background: var(--color-neutral-50);
+  pointer-events: none;
 }
 
-.cs-walk__meta {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  max-width: 36rem;
-}
-
-.cs-walk__title {
-  margin: 0;
-  font-family: var(--font-serif);
-  font-size: var(--text-h2);
+.cs-flow__title {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
   font-weight: var(--font-weight-semibold);
-  line-height: var(--leading-heading);
+  line-height: var(--leading-tight);
   color: var(--color-neutral-900);
 }
 
-.cs-walk__caption {
+.cs-flow__caption {
   margin: 0;
-  font-size: var(--text-body);
+  font-size: var(--text-small);
   line-height: var(--leading-body);
   color: var(--color-neutral-700);
 }
 
-.cs-walk__controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
-  margin-top: var(--space-10);
-  padding-top: var(--space-6);
-  border-top: 1px solid var(--color-neutral-200);
-}
-
-.cs-walk__status {
-  font-family: var(--font-mono);
-  font-size: var(--text-micro);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: var(--tracking-micro);
-  text-transform: uppercase;
-  color: var(--color-neutral-500);
-}
-
-.cs-walk__controls .c-button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-@media (max-width: 767px) {
-  .cs-walk__viewport {
-    max-width: 22rem;
-    min-height: 30rem;
+@media (min-width: 768px) {
+  .cs-flow__item {
+    flex-basis: 15rem;
+    width: 15rem;
   }
 
-  .cs-walk__tab {
-    padding: var(--space-3) var(--space-4);
+  .cs-flow__track {
+    gap: var(--space-12);
   }
 }
 
