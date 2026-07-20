@@ -70,9 +70,21 @@ function copyPublic() {
   console.log("copied public/");
 }
 
+function copyEmblaVendor() {
+  const from = path.join(ROOT, "node_modules", "embla-carousel", "embla-carousel.umd.js");
+  const toDir = path.join(ASSETS, "vendor");
+  const to = path.join(toDir, "embla-carousel.umd.js");
+  if (!fs.existsSync(from)) return;
+  ensureDir(toDir);
+  fs.copyFileSync(from, to);
+  console.log("synced assets/vendor/embla-carousel.umd.js");
+}
+
 function build() {
   if (fs.existsSync(DIST)) fs.rmSync(DIST, { recursive: true, force: true });
   ensureDir(DIST);
+
+  copyEmblaVendor();
 
   const pages = walk(SRC);
   for (const file of pages) {
