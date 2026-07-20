@@ -603,7 +603,12 @@
 }
 
 .cs-hero-figure--merchant {
-  --media-ratio: 2400 / 634;
+  --media-ratio: 1024 / 370;
+}
+
+.cs-hero-dark .cs-hero-figure--merchant .c-media__frame {
+  background: #000000;
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .cs-hero-figure--gh {
