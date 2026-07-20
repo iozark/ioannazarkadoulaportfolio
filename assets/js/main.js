@@ -41,71 +41,41 @@
     });
   }
 
-  function initEmblaCarousel(root) {
-    if (typeof window.EmblaCarousel !== "function") return;
+  function initGlider(root) {
+    if (typeof window.Glider !== "function") return;
 
-    var viewport = root.querySelector("[data-embla-viewport]");
-    var prevBtn = root.querySelector("[data-embla-prev]");
-    var nextBtn = root.querySelector("[data-embla-next]");
-    if (!viewport) return;
+    var contain = root.closest(".glider-contain") || root.parentElement;
+    var prevBtn = contain ? contain.querySelector(".glider-prev") : null;
+    var nextBtn = contain ? contain.querySelector(".glider-next") : null;
 
-    var emblaApi = window.EmblaCarousel(viewport, {
-      loop: false,
-      align: "start",
-      containScroll: "trimSnaps",
-      watchDrag: true
-    });
-
-    function syncButtons() {
-      if (prevBtn) prevBtn.disabled = !emblaApi.canScrollPrev();
-      if (nextBtn) nextBtn.disabled = !emblaApi.canScrollNext();
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener("click", function () {
-        emblaApi.scrollPrev();
-      });
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener("click", function () {
-        emblaApi.scrollNext();
-      });
-    }
-
-    root.addEventListener("keydown", function (e) {
-      if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
-      if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        emblaApi.scrollPrev();
-      } else if (e.key === "ArrowRight") {
-        e.preventDefault();
-        emblaApi.scrollNext();
-      } else if (e.key === "Home") {
-        e.preventDefault();
-        emblaApi.scrollTo(0);
-      } else if (e.key === "End") {
-        e.preventDefault();
-        emblaApi.scrollTo(emblaApi.scrollSnapList().length - 1);
+    new window.Glider(root, {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      draggable: true,
+      dragVelocity: 3.3,
+      scrollLock: true,
+      scrollLockDelay: 150,
+      resizeLock: true,
+      rewind: false,
+      duration: 0.5,
+      arrows: {
+        prev: prevBtn,
+        next: nextBtn
       }
     });
-
-    if (!root.hasAttribute("tabindex")) {
-      root.setAttribute("tabindex", "0");
-    }
-
-    emblaApi.on("select", syncButtons);
-    emblaApi.on("reInit", syncButtons);
-    syncButtons();
   }
 
-  function initEmblaCarousels() {
-    document.querySelectorAll("[data-embla]").forEach(initEmblaCarousel);
+  function initGliders() {
+    document.querySelectorAll("[data-glider]").forEach(initGlider);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     initNav();
     initActiveNav();
-    initEmblaCarousels();
+  });
+
+  // Glider docs recommend initializing on window load.
+  window.addEventListener("load", function () {
+    initGliders();
   });
 })();
