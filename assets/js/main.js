@@ -71,8 +71,9 @@
       });
 
       gotoBtns.forEach(function (btn, i) {
-        if (i === index) btn.setAttribute("aria-current", "step");
-        else btn.removeAttribute("aria-current");
+        var active = i === index;
+        btn.setAttribute("aria-selected", active ? "true" : "false");
+        btn.tabIndex = active ? 0 : -1;
       });
 
       if (status) status.textContent = pad2(index + 1) + " / " + pad2(total);
@@ -93,6 +94,18 @@
       btn.addEventListener("click", function () {
         var target = parseInt(btn.getAttribute("data-walk-goto"), 10);
         if (!isNaN(target)) goTo(target);
+      });
+
+      btn.addEventListener("keydown", function (e) {
+        var next = -1;
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") next = Math.min(index + 1, total - 1);
+        else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = Math.max(index - 1, 0);
+        else if (e.key === "Home") next = 0;
+        else if (e.key === "End") next = total - 1;
+        if (next < 0 || next === index) return;
+        e.preventDefault();
+        goTo(next);
+        if (gotoBtns[next]) gotoBtns[next].focus();
       });
     });
 
