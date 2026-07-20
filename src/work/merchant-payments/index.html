@@ -19,7 +19,6 @@
   <meta name="twitter:image" content="https://ioannazarkadoula.com/assets/images/work/merchant-payments/hero.png">
   <!-- include:head-icons -->
   <link rel="stylesheet" href="{{ROOT}}/assets/css/main.css">
-  <link rel="stylesheet" href="{{ROOT}}/assets/vendor/glider.min.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -73,7 +72,7 @@
             <li><a href="#role">My Role</a></li>
             <li><a href="#challenge">Challenge</a></li>
             <li><a href="#process">Process</a></li>
-            <li><a href="#payment-flow">Selected Payment Flow</a></li>
+            <li><a href="#production-walkthrough">Production Walkthrough</a></li>
             <li><a href="#outcome">Outcome</a></li>
             <li><a href="#reflection">Reflection</a></li>
           </ol>
@@ -148,25 +147,27 @@
           </div>
         </section>
 
-        <section class="cs-section" id="payment-flow" aria-labelledby="payment-flow-title">
+        <section class="cs-section" id="production-walkthrough" aria-labelledby="production-walkthrough-title">
           <p class="t-micro cs-section__num">05</p>
-          <h2 id="payment-flow-title" class="t-h1 cs-section__title">Selected Payment Flow</h2>
-          <div class="prose">
-            <p class="t-body-lg">
-              The following screens illustrate the complete merchant payment journey, from transaction creation to successful completion. Rather than redesigning isolated screens, the work focused on improving the entire operational flow used daily by merchants.
-            </p>
-          </div>
+          <h2 id="production-walkthrough-title" class="t-h1 cs-section__title">Production Walkthrough</h2>
+          <p class="t-body-lg pw-carousel__intro">
+            The following walkthrough presents the production payment journey from transaction initiation to successful completion.
+          </p>
 
           <div
-            class="glider-contain doc-carousel"
+            class="pw-carousel"
+            data-pw-carousel
+            tabindex="0"
             role="region"
             aria-roledescription="carousel"
-            aria-label="Selected payment flow"
+            aria-label="Production payment walkthrough"
           >
-            <div class="doc-carousel__shell">
+            <div class="pw-carousel__frame">
               <button
                 type="button"
-                class="glider-prev doc-carousel__arrow"
+                class="pw-carousel__btn pw-carousel__btn--prev"
+                data-pw-prev
+                disabled
                 aria-label="Previous slide"
               >
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
@@ -174,130 +175,119 @@
                 </svg>
               </button>
 
-              <div class="glider" data-glider tabindex="0">
-                <div class="doc-carousel__slide">
-                  <figure class="doc-carousel__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg"
-                      alt="Sale screen — enter charge amount with numeric keypad"
-                      width="488"
-                      height="872"
-                      loading="eager"
-                      draggable="false"
-                    >
-                  </figure>
-                  <h3 class="doc-carousel__title">Enter Amount</h3>
-                  <p class="doc-carousel__copy">
-                    Cashiers begin the payment by entering the transaction amount using a touch-optimized keypad designed for speed and readability.
-                  </p>
-                </div>
+              <div class="pw-carousel__viewport" data-pw-viewport>
+                <div class="pw-carousel__track" data-pw-track>
+                  <article class="pw-carousel__slide is-active" data-pw-slide aria-hidden="false">
+                    <figure class="pw-carousel__media">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg"
+                        alt="Sale screen — enter charge amount with numeric keypad"
+                        width="488"
+                        height="872"
+                        loading="eager"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="pw-carousel__title">Enter Amount</h3>
+                    <p class="pw-carousel__text">Cashiers begin the payment by entering the transaction amount.</p>
+                  </article>
 
-                <div class="doc-carousel__slide">
-                  <figure class="doc-carousel__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-02.jpg"
-                      alt="Installments screen — select number of installments"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                      draggable="false"
-                    >
-                  </figure>
-                  <h3 class="doc-carousel__title">Installments</h3>
-                  <p class="doc-carousel__copy">
-                    When supported, the terminal allows merchants to define the number of installments before continuing the payment flow.
-                  </p>
-                </div>
+                  <article class="pw-carousel__slide" data-pw-slide aria-hidden="true">
+                    <figure class="pw-carousel__media">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-02.jpg"
+                        alt="Installments screen — select number of installments"
+                        width="488"
+                        height="872"
+                        loading="lazy"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="pw-carousel__title">Installments</h3>
+                    <p class="pw-carousel__text">When supported, merchants select the desired number of installments.</p>
+                  </article>
 
-                <div class="doc-carousel__slide">
-                  <figure class="doc-carousel__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-03.jpg"
-                      alt="Present card screen — tap card or phone with purchase summary"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                      draggable="false"
-                    >
-                  </figure>
-                  <h3 class="doc-carousel__title">Present Card</h3>
-                  <p class="doc-carousel__copy">
-                    Customers can pay using contactless or chip cards while the interface clearly communicates the purchase summary.
-                  </p>
-                </div>
+                  <article class="pw-carousel__slide" data-pw-slide aria-hidden="true">
+                    <figure class="pw-carousel__media">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-03.jpg"
+                        alt="Present card screen — tap card or phone with purchase summary"
+                        width="488"
+                        height="872"
+                        loading="lazy"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="pw-carousel__title">Present Card</h3>
+                    <p class="pw-carousel__text">Customers complete the payment using contactless or chip cards.</p>
+                  </article>
 
-                <div class="doc-carousel__slide">
-                  <figure class="doc-carousel__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-04.jpg"
-                      alt="PIN verification screen — enter card PIN"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                      draggable="false"
-                    >
-                  </figure>
-                  <h3 class="doc-carousel__title">PIN Verification</h3>
-                  <p class="doc-carousel__copy">
-                    PIN entry follows familiar banking interaction patterns to support secure and intuitive authentication.
-                  </p>
-                </div>
+                  <article class="pw-carousel__slide" data-pw-slide aria-hidden="true">
+                    <figure class="pw-carousel__media">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-04.jpg"
+                        alt="PIN verification screen — enter card PIN"
+                        width="488"
+                        height="872"
+                        loading="lazy"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="pw-carousel__title">PIN Verification</h3>
+                    <p class="pw-carousel__text">PIN entry follows familiar banking interaction patterns.</p>
+                  </article>
 
-                <div class="doc-carousel__slide">
-                  <figure class="doc-carousel__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-05.jpg"
-                      alt="Authorization screen — connecting to network"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                      draggable="false"
-                    >
-                  </figure>
-                  <h3 class="doc-carousel__title">Authorization</h3>
-                  <p class="doc-carousel__copy">
-                    During authorization the interface minimizes distractions while clearly communicating transaction progress.
-                  </p>
-                </div>
+                  <article class="pw-carousel__slide" data-pw-slide aria-hidden="true">
+                    <figure class="pw-carousel__media">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-05.jpg"
+                        alt="Authorization screen — connecting to network"
+                        width="488"
+                        height="872"
+                        loading="lazy"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="pw-carousel__title">Authorization</h3>
+                    <p class="pw-carousel__text">The interface communicates transaction progress clearly.</p>
+                  </article>
 
-                <div class="doc-carousel__slide">
-                  <figure class="doc-carousel__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-06.jpg"
-                      alt="Signature screen — sign in the field below"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                      draggable="false"
-                    >
-                  </figure>
-                  <h3 class="doc-carousel__title">Signature</h3>
-                  <p class="doc-carousel__copy">
-                    When required, the terminal captures the customer's signature before completing the payment.
-                  </p>
-                </div>
+                  <article class="pw-carousel__slide" data-pw-slide aria-hidden="true">
+                    <figure class="pw-carousel__media">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-06.jpg"
+                        alt="Signature screen — sign in the field below"
+                        width="488"
+                        height="872"
+                        loading="lazy"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="pw-carousel__title">Signature</h3>
+                    <p class="pw-carousel__text">When required, customers provide a signature directly on the terminal.</p>
+                  </article>
 
-                <div class="doc-carousel__slide">
-                  <figure class="doc-carousel__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-07.jpg"
-                      alt="Success screen — transaction completed with receipt options"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                      draggable="false"
-                    >
-                  </figure>
-                  <h3 class="doc-carousel__title">Success &amp; Receipt</h3>
-                  <p class="doc-carousel__copy">
-                    The payment concludes with confirmation and multiple receipt delivery options.
-                  </p>
+                  <article class="pw-carousel__slide" data-pw-slide aria-hidden="true">
+                    <figure class="pw-carousel__media">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-07.jpg"
+                        alt="Success screen — transaction completed with receipt options"
+                        width="488"
+                        height="872"
+                        loading="lazy"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="pw-carousel__title">Success &amp; Receipt</h3>
+                    <p class="pw-carousel__text">The payment concludes with confirmation and receipt options.</p>
+                  </article>
                 </div>
               </div>
 
               <button
                 type="button"
-                class="glider-next doc-carousel__arrow"
+                class="pw-carousel__btn pw-carousel__btn--next"
+                data-pw-next
                 aria-label="Next slide"
               >
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
@@ -348,7 +338,6 @@
   </main>
 
   <!-- include:footer -->
-  <script src="{{ROOT}}/assets/vendor/glider.min.js" defer></script>
   <script src="{{ROOT}}/assets/js/main.js" defer></script>
 </body>
 </html>

@@ -70,25 +70,9 @@ function copyPublic() {
   console.log("copied public/");
 }
 
-function copyGliderVendor() {
-  const pkg = path.join(ROOT, "node_modules", "glider-js");
-  const toDir = path.join(ASSETS, "vendor");
-  const files = ["glider.min.js", "glider.min.css"];
-  if (!fs.existsSync(pkg)) return;
-  ensureDir(toDir);
-  for (const name of files) {
-    const from = path.join(pkg, name);
-    if (!fs.existsSync(from)) continue;
-    fs.copyFileSync(from, path.join(toDir, name));
-  }
-  console.log("synced assets/vendor/glider.min.{js,css}");
-}
-
 function build() {
   if (fs.existsSync(DIST)) fs.rmSync(DIST, { recursive: true, force: true });
   ensureDir(DIST);
-
-  copyGliderVendor();
 
   const pages = walk(SRC);
   for (const file of pages) {

@@ -41,41 +41,106 @@
     });
   }
 
-  function initGlider(root) {
-    if (typeof window.Glider !== "function") return;
+  function initPwCarousel(root) {
+    var track = root.querySelector("[data-pw-track]");
+    var viewport = root.querySelector("[data-pw-viewport]");
+    var slides = Array.prototype.slice.call(root.querySelectorAll("[data-pw-slide]"));
+    var prevBtn = root.querySelector("[data-pw-prev]");
+    var nextBtn = root.querySelector("[data-pw-next]");
+    if (!track || !slides.length) return;
 
-    var contain = root.closest(".glider-contain") || root.parentElement;
-    var prevBtn = contain ? contain.querySelector(".glider-prev") : null;
-    var nextBtn = contain ? contain.querySelector(".glider-next") : null;
+    var index = 0;
+    var total = slides.length;
+    var touchStartX = null;
+    var touchStartY = null;
 
-    new window.Glider(root, {
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      draggable: true,
-      dragVelocity: 3.3,
-      scrollLock: true,
-      scrollLockDelay: 150,
-      resizeLock: true,
-      rewind: false,
-      duration: 0.5,
-      arrows: {
-        prev: prevBtn,
-        next: nextBtn
+    function goTo(nextIndex) {
+      if (nextIndex < 0 || nextIndex >= total || nextIndex === index) return;
+      index = nextIndex;
+      track.style.transform = "translateX(-" + index * 100 + "%)";
+
+      slides.forEach(function (slide, i) {
+        var active = i === index;
+        slide.classList.toggle("is-active", active);
+        slide.setAttribute("aria-hidden", active ? "false" : "true");
+      });
+
+      if (prevBtn) prevBtn.disabled = index === 0;
+      if (nextBtn) nextBtn.disabled = index === total - 1;
+
+      root.setAttribute(
+        "aria-label",
+        "Production payment walkthrough, slide " + (index + 1) + " of " + total
+      );
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function () {
+        goTo(index - 1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function () {
+        goTo(index + 1);
+      });
+    }
+
+    root.addEventListener("keydown", function (e) {
+      if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        goTo(index - 1);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        goTo(index + 1);
+      } else if (e.key === "Home") {
+        e.preventDefault();
+        goTo(0);
+      } else if (e.key === "End") {
+        e.preventDefault();
+        goTo(total - 1);
       }
     });
+
+    var swipeTarget = viewport || root;
+    swipeTarget.addEventListener(
+      "touchstart",
+      function (e) {
+        if (!e.changedTouches || !e.changedTouches.length) return;
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
+      },
+      { passive: true }
+    );
+
+    swipeTarget.addEventListener(
+      "touchend",
+      function (e) {
+        if (touchStartX === null || !e.changedTouches || !e.changedTouches.length) return;
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        var dy = e.changedTouches[0].clientY - touchStartY;
+        touchStartX = null;
+        touchStartY = null;
+        if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
+        if (dx < 0) goTo(index + 1);
+        else goTo(index - 1);
+      },
+      { passive: true }
+    );
+
+    track.style.transform = "translateX(0%)";
+    if (prevBtn) prevBtn.disabled = true;
+    if (nextBtn) nextBtn.disabled = total <= 1;
   }
 
-  function initGliders() {
-    document.querySelectorAll("[data-glider]").forEach(initGlider);
+  function initPwCarousels() {
+    document.querySelectorAll("[data-pw-carousel]").forEach(initPwCarousel);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     initNav();
     initActiveNav();
-  });
-
-  // Glider docs recommend initializing on window load.
-  window.addEventListener("load", function () {
-    initGliders();
+    initPwCarousels();
   });
 })();
