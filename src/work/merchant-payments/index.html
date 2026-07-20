@@ -175,18 +175,121 @@
                 </svg>
               </button>
 
-              <figure class="doc-carousel__frame">
-                <img
-                  class="doc-carousel__image"
-                  data-doc-carousel-image
-                  src="{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg"
-                  alt="Sale screen — enter charge amount with numeric keypad"
-                  width="488"
-                  height="872"
-                  loading="eager"
-                  draggable="false"
-                >
-              </figure>
+              <div class="doc-carousel__viewport" data-doc-carousel-viewport>
+                <div class="doc-carousel__track" data-doc-carousel-track>
+                  <figure
+                    class="doc-carousel__slide is-active"
+                    data-doc-carousel-slide
+                    data-title="Enter Amount"
+                    data-copy="Cashiers begin the payment by entering the transaction amount using a touch-optimized keypad designed for speed and readability."
+                  >
+                    <img
+                      src="{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg"
+                      alt="Sale screen — enter charge amount with numeric keypad"
+                      width="488"
+                      height="872"
+                      loading="eager"
+                      draggable="false"
+                    >
+                  </figure>
+
+                  <figure
+                    class="doc-carousel__slide"
+                    data-doc-carousel-slide
+                    data-title="Installments"
+                    data-copy="When supported, the terminal allows merchants to define the number of installments before continuing the payment flow."
+                  >
+                    <img
+                      src="{{ROOT}}/assets/images/work/merchant-payments/step-02.jpg"
+                      alt="Installments screen — select number of installments"
+                      width="488"
+                      height="872"
+                      loading="lazy"
+                      draggable="false"
+                    >
+                  </figure>
+
+                  <figure
+                    class="doc-carousel__slide"
+                    data-doc-carousel-slide
+                    data-title="Present Card"
+                    data-copy="Customers can pay using contactless or chip cards while the interface clearly communicates the purchase summary."
+                  >
+                    <img
+                      src="{{ROOT}}/assets/images/work/merchant-payments/step-03.jpg"
+                      alt="Present card screen — tap card or phone with purchase summary"
+                      width="488"
+                      height="872"
+                      loading="lazy"
+                      draggable="false"
+                    >
+                  </figure>
+
+                  <figure
+                    class="doc-carousel__slide"
+                    data-doc-carousel-slide
+                    data-title="PIN Verification"
+                    data-copy="PIN entry follows familiar banking interaction patterns to support secure and intuitive authentication."
+                  >
+                    <img
+                      src="{{ROOT}}/assets/images/work/merchant-payments/step-04.jpg"
+                      alt="PIN verification screen — enter card PIN"
+                      width="488"
+                      height="872"
+                      loading="lazy"
+                      draggable="false"
+                    >
+                  </figure>
+
+                  <figure
+                    class="doc-carousel__slide"
+                    data-doc-carousel-slide
+                    data-title="Authorization"
+                    data-copy="During authorization the interface minimizes distractions while clearly communicating transaction progress."
+                  >
+                    <img
+                      src="{{ROOT}}/assets/images/work/merchant-payments/step-05.jpg"
+                      alt="Authorization screen — connecting to network"
+                      width="488"
+                      height="872"
+                      loading="lazy"
+                      draggable="false"
+                    >
+                  </figure>
+
+                  <figure
+                    class="doc-carousel__slide"
+                    data-doc-carousel-slide
+                    data-title="Signature"
+                    data-copy="When required, the terminal captures the customer's signature before completing the payment."
+                  >
+                    <img
+                      src="{{ROOT}}/assets/images/work/merchant-payments/step-06.jpg"
+                      alt="Signature screen — sign in the field below"
+                      width="488"
+                      height="872"
+                      loading="lazy"
+                      draggable="false"
+                    >
+                  </figure>
+
+                  <figure
+                    class="doc-carousel__slide"
+                    data-doc-carousel-slide
+                    data-title="Success &amp; Receipt"
+                    data-copy="The payment concludes with confirmation and multiple receipt delivery options."
+                  >
+                    <img
+                      src="{{ROOT}}/assets/images/work/merchant-payments/step-07.jpg"
+                      alt="Success screen — transaction completed with receipt options"
+                      width="488"
+                      height="872"
+                      loading="lazy"
+                      draggable="false"
+                    >
+                  </figure>
+                </div>
+              </div>
 
               <button
                 type="button"
@@ -200,58 +303,10 @@
               </button>
             </div>
 
-            <p class="t-micro doc-carousel__count" data-doc-carousel-count aria-live="polite">01 / 07</p>
             <h3 class="doc-carousel__title" data-doc-carousel-title>Enter Amount</h3>
             <p class="doc-carousel__copy" data-doc-carousel-copy>
               Cashiers begin the payment by entering the transaction amount using a touch-optimized keypad designed for speed and readability.
             </p>
-
-            <script type="application/json" data-doc-carousel-slides>
-              [
-                {
-                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg",
-                  "alt": "Sale screen — enter charge amount with numeric keypad",
-                  "title": "Enter Amount",
-                  "copy": "Cashiers begin the payment by entering the transaction amount using a touch-optimized keypad designed for speed and readability."
-                },
-                {
-                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-02.jpg",
-                  "alt": "Installments screen — select number of installments",
-                  "title": "Installments",
-                  "copy": "When supported, the terminal allows merchants to define the number of installments before continuing the payment flow."
-                },
-                {
-                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-03.jpg",
-                  "alt": "Present card screen — tap card or phone with purchase summary",
-                  "title": "Present Card",
-                  "copy": "Customers can pay using contactless or chip cards while the interface clearly communicates the purchase summary."
-                },
-                {
-                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-04.jpg",
-                  "alt": "PIN verification screen — enter card PIN",
-                  "title": "PIN Verification",
-                  "copy": "PIN entry follows familiar banking interaction patterns to support secure and intuitive authentication."
-                },
-                {
-                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-05.jpg",
-                  "alt": "Authorization screen — connecting to network",
-                  "title": "Authorization",
-                  "copy": "During authorization the interface minimizes distractions while clearly communicating transaction progress."
-                },
-                {
-                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-06.jpg",
-                  "alt": "Signature screen — sign in the field below",
-                  "title": "Signature",
-                  "copy": "When required, the terminal captures the customer's signature before completing the payment."
-                },
-                {
-                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-07.jpg",
-                  "alt": "Success screen — transaction completed with receipt options",
-                  "title": "Success & Receipt",
-                  "copy": "The payment concludes with confirmation and multiple receipt delivery options."
-                }
-              ]
-            </script>
           </div>
         </section>
 
