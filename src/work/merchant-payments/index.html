@@ -150,163 +150,108 @@
         <section class="cs-section" id="production-walkthrough" aria-labelledby="production-walkthrough-title">
           <p class="t-micro cs-section__num">05</p>
           <h2 id="production-walkthrough-title" class="t-h1 cs-section__title">Production Walkthrough</h2>
-          <p class="t-body-lg cs-walk__lead">
+          <p class="t-body-lg doc-carousel__intro">
             A documented payment journey from transaction initiation to successful completion.
           </p>
 
-          <div class="cs-walk" data-walkthrough>
-            <div class="cs-walk__indicator">
-              <p class="t-micro cs-walk__status" data-walk-status aria-live="polite">01 / 07</p>
-              <p class="cs-walk__step" data-walk-step>Enter Amount</p>
-            </div>
-
-            <div class="cs-walk__display">
+          <div
+            class="doc-carousel"
+            data-doc-carousel
+            tabindex="0"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Production payment walkthrough"
+          >
+            <div class="doc-carousel__shell">
               <button
                 type="button"
-                class="cs-walk__nav cs-walk__nav--prev"
-                data-walk-prev
+                class="doc-carousel__arrow"
+                data-doc-carousel-prev
                 disabled
                 aria-label="Previous slide"
               >
-                <svg class="cs-walk__nav-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
                   <path d="M12.25 4.5 6.75 10l5.5 5.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </button>
 
-              <div
-                class="cs-walk__stage"
-                data-walk-stage
-                tabindex="0"
-                role="region"
-                aria-roledescription="carousel"
-                aria-label="Production payment walkthrough"
-              >
-                <div class="cs-walk__viewport" data-walk-viewport>
-                  <article class="cs-walk__panel is-active" data-walk-panel data-walk-label="Enter Amount" aria-hidden="false">
-                    <figure class="cs-walk__figure">
-                      <img
-                        src="{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg"
-                        alt="Sale screen — enter charge amount with numeric keypad"
-                        width="488"
-                        height="872"
-                        loading="eager"
-                        draggable="false"
-                      >
-                    </figure>
-                    <p class="cs-walk__caption">
-                      Cashiers begin the transaction by entering the payment amount using a touch-optimized keypad designed for speed and readability.
-                    </p>
-                  </article>
-
-                  <article class="cs-walk__panel" data-walk-panel data-walk-label="Installments" aria-hidden="true">
-                    <figure class="cs-walk__figure">
-                      <img
-                        src="{{ROOT}}/assets/images/work/merchant-payments/step-02.jpg"
-                        alt="Installments screen — select number of installments"
-                        width="488"
-                        height="872"
-                        loading="lazy"
-                        draggable="false"
-                      >
-                    </figure>
-                    <p class="cs-walk__caption">
-                      When supported, the terminal allows merchants to define the number of installments before continuing the payment flow.
-                    </p>
-                  </article>
-
-                  <article class="cs-walk__panel" data-walk-panel data-walk-label="Present Card" aria-hidden="true">
-                    <figure class="cs-walk__figure">
-                      <img
-                        src="{{ROOT}}/assets/images/work/merchant-payments/step-03.jpg"
-                        alt="Present card screen — tap card or phone with purchase summary"
-                        width="488"
-                        height="872"
-                        loading="lazy"
-                        draggable="false"
-                      >
-                    </figure>
-                    <p class="cs-walk__caption">
-                      Customers can pay using contactless or chip cards while the interface clearly communicates the purchase summary.
-                    </p>
-                  </article>
-
-                  <article class="cs-walk__panel" data-walk-panel data-walk-label="PIN Verification" aria-hidden="true">
-                    <figure class="cs-walk__figure">
-                      <img
-                        src="{{ROOT}}/assets/images/work/merchant-payments/step-04.jpg"
-                        alt="PIN verification screen — enter card PIN"
-                        width="488"
-                        height="872"
-                        loading="lazy"
-                        draggable="false"
-                      >
-                    </figure>
-                    <p class="cs-walk__caption">
-                      PIN entry follows familiar banking interaction patterns to support secure and intuitive authentication.
-                    </p>
-                  </article>
-
-                  <article class="cs-walk__panel" data-walk-panel data-walk-label="Authorization" aria-hidden="true">
-                    <figure class="cs-walk__figure">
-                      <img
-                        src="{{ROOT}}/assets/images/work/merchant-payments/step-05.jpg"
-                        alt="Authorization screen — connecting to network"
-                        width="488"
-                        height="872"
-                        loading="lazy"
-                        draggable="false"
-                      >
-                    </figure>
-                    <p class="cs-walk__caption">
-                      During authorization the interface minimizes distractions while clearly communicating transaction progress.
-                    </p>
-                  </article>
-
-                  <article class="cs-walk__panel" data-walk-panel data-walk-label="Signature" aria-hidden="true">
-                    <figure class="cs-walk__figure">
-                      <img
-                        src="{{ROOT}}/assets/images/work/merchant-payments/step-06.jpg"
-                        alt="Signature screen — sign in the field below"
-                        width="488"
-                        height="872"
-                        loading="lazy"
-                        draggable="false"
-                      >
-                    </figure>
-                    <p class="cs-walk__caption">
-                      When required, the terminal captures the customer's signature before completing the payment.
-                    </p>
-                  </article>
-
-                  <article class="cs-walk__panel" data-walk-panel data-walk-label="Success &amp; Receipt" aria-hidden="true">
-                    <figure class="cs-walk__figure">
-                      <img
-                        src="{{ROOT}}/assets/images/work/merchant-payments/step-07.jpg"
-                        alt="Success screen — transaction completed with receipt options"
-                        width="488"
-                        height="872"
-                        loading="lazy"
-                        draggable="false"
-                      >
-                    </figure>
-                    <p class="cs-walk__caption">
-                      The payment concludes with confirmation and multiple receipt delivery options.
-                    </p>
-                  </article>
-                </div>
-              </div>
+              <figure class="doc-carousel__frame">
+                <img
+                  class="doc-carousel__image"
+                  data-doc-carousel-image
+                  src="{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg"
+                  alt="Sale screen — enter charge amount with numeric keypad"
+                  width="488"
+                  height="872"
+                  loading="eager"
+                  draggable="false"
+                >
+              </figure>
 
               <button
                 type="button"
-                class="cs-walk__nav cs-walk__nav--next"
-                data-walk-next
+                class="doc-carousel__arrow"
+                data-doc-carousel-next
                 aria-label="Next slide"
               >
-                <svg class="cs-walk__nav-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
                   <path d="M7.75 4.5 13.25 10l-5.5 5.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </button>
             </div>
+
+            <p class="t-micro doc-carousel__count" data-doc-carousel-count aria-live="polite">01 / 07</p>
+            <h3 class="doc-carousel__title" data-doc-carousel-title>Enter Amount</h3>
+            <p class="doc-carousel__copy" data-doc-carousel-copy>
+              Cashiers begin the payment by entering the transaction amount using a touch-optimized keypad designed for speed and readability.
+            </p>
+
+            <script type="application/json" data-doc-carousel-slides>
+              [
+                {
+                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg",
+                  "alt": "Sale screen — enter charge amount with numeric keypad",
+                  "title": "Enter Amount",
+                  "copy": "Cashiers begin the payment by entering the transaction amount using a touch-optimized keypad designed for speed and readability."
+                },
+                {
+                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-02.jpg",
+                  "alt": "Installments screen — select number of installments",
+                  "title": "Installments",
+                  "copy": "When supported, the terminal allows merchants to define the number of installments before continuing the payment flow."
+                },
+                {
+                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-03.jpg",
+                  "alt": "Present card screen — tap card or phone with purchase summary",
+                  "title": "Present Card",
+                  "copy": "Customers can pay using contactless or chip cards while the interface clearly communicates the purchase summary."
+                },
+                {
+                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-04.jpg",
+                  "alt": "PIN verification screen — enter card PIN",
+                  "title": "PIN Verification",
+                  "copy": "PIN entry follows familiar banking interaction patterns to support secure and intuitive authentication."
+                },
+                {
+                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-05.jpg",
+                  "alt": "Authorization screen — connecting to network",
+                  "title": "Authorization",
+                  "copy": "During authorization the interface minimizes distractions while clearly communicating transaction progress."
+                },
+                {
+                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-06.jpg",
+                  "alt": "Signature screen — sign in the field below",
+                  "title": "Signature",
+                  "copy": "When required, the terminal captures the customer's signature before completing the payment."
+                },
+                {
+                  "src": "{{ROOT}}/assets/images/work/merchant-payments/step-07.jpg",
+                  "alt": "Success screen — transaction completed with receipt options",
+                  "title": "Success & Receipt",
+                  "copy": "The payment concludes with confirmation and multiple receipt delivery options."
+                }
+              ]
+            </script>
           </div>
         </section>
 
