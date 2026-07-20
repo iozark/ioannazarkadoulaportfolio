@@ -899,8 +899,9 @@ a.work-card:hover {
 /* —— Documentation carousel —— */
 .doc-carousel {
   --doc-carousel-arrow: 3.25rem;
+  --doc-carousel-gap: var(--space-5);
   margin-top: var(--space-10);
-  max-width: 36rem;
+  max-width: min(100%, 60rem);
   outline: none;
 }
 
@@ -914,27 +915,42 @@ a.work-card:hover {
   display: grid;
   grid-template-columns: var(--doc-carousel-arrow) minmax(0, 1fr) var(--doc-carousel-arrow);
   align-items: center;
-  column-gap: var(--space-5);
+  column-gap: var(--doc-carousel-gap);
 }
 
-.doc-carousel__frame {
+.doc-carousel__viewport {
+  min-width: 0;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.doc-carousel__track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  transition: transform 300ms ease;
+  will-change: transform;
+}
+
+.doc-carousel__slide {
+  flex: 0 0 100%;
+  width: 100%;
   margin: 0;
   min-width: 0;
 }
 
-.doc-carousel__image {
+.doc-carousel__slide img {
   display: block;
   width: 100%;
+  max-width: 1000px;
   height: auto;
+  margin-inline: auto;
   object-fit: contain;
   border: var(--elevation-border);
   border-radius: var(--radius-md);
   background: var(--color-neutral-50);
-  transition: opacity 250ms ease;
-}
-
-.doc-carousel__image.is-fading {
-  opacity: 0;
+  pointer-events: none;
+  user-select: none;
 }
 
 .doc-carousel__arrow {
@@ -987,14 +1003,8 @@ a.work-card:hover {
   cursor: default;
 }
 
-.doc-carousel__count {
-  margin: var(--space-8) 0 0;
-  text-align: center;
-  color: var(--color-neutral-500);
-}
-
 .doc-carousel__title {
-  margin: var(--space-3) 0 0;
+  margin: var(--space-8) 0 0;
   text-align: center;
   font-family: var(--font-sans);
   font-size: var(--text-body);
@@ -1005,7 +1015,7 @@ a.work-card:hover {
 
 .doc-carousel__copy {
   margin: var(--space-3) auto 0;
-  max-width: 28rem;
+  max-width: 32rem;
   text-align: center;
   font-size: var(--text-body);
   line-height: var(--leading-body);
@@ -1015,11 +1025,7 @@ a.work-card:hover {
 @media (max-width: 767px) {
   .doc-carousel {
     --doc-carousel-arrow: 3rem;
-    max-width: 100%;
-  }
-
-  .doc-carousel__shell {
-    column-gap: var(--space-3);
+    --doc-carousel-gap: var(--space-3);
   }
 
   .doc-carousel__arrow {

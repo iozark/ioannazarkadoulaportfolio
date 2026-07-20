@@ -46,78 +46,58 @@
   }
 
   function initDocCarousel(root) {
-    var dataNode = root.querySelector("[data-doc-carousel-slides]");
-    var image = root.querySelector("[data-doc-carousel-image]");
-    var count = root.querySelector("[data-doc-carousel-count]");
+    var track = root.querySelector("[data-doc-carousel-track]");
+    var viewport = root.querySelector("[data-doc-carousel-viewport]");
+    var slides = Array.prototype.slice.call(root.querySelectorAll("[data-doc-carousel-slide]"));
     var title = root.querySelector("[data-doc-carousel-title]");
     var copy = root.querySelector("[data-doc-carousel-copy]");
     var prevBtn = root.querySelector("[data-doc-carousel-prev]");
     var nextBtn = root.querySelector("[data-doc-carousel-next]");
-    if (!dataNode || !image) return;
-
-    var slides;
-    try {
-      slides = JSON.parse(dataNode.textContent);
-    } catch (err) {
-      return;
-    }
-    if (!slides || !slides.length) return;
+    if (!track || !slides.length) return;
 
     var index = 0;
     var total = slides.length;
-    var animating = false;
     var touchStartX = null;
     var touchStartY = null;
 
-    function render(nextIndex, animate) {
-      if (nextIndex < 0 || nextIndex >= total) return;
-      if (nextIndex === index && animate) return;
-      if (animating) return;
+    function goTo(nextIndex) {
+      if (nextIndex < 0 || nextIndex >= total || nextIndex === index) return;
+      index = nextIndex;
 
-      var apply = function () {
-        index = nextIndex;
-        var slide = slides[index];
-        image.src = slide.src;
-        image.alt = slide.alt || "";
-        if (count) count.textContent = pad2(index + 1) + " / " + pad2(total);
-        if (title) title.textContent = slide.title || "";
-        if (copy) copy.textContent = slide.copy || "";
-        if (prevBtn) prevBtn.disabled = index === 0;
-        if (nextBtn) nextBtn.disabled = index === total - 1;
-        root.setAttribute(
-          "aria-label",
-          "Production payment walkthrough, step " +
-            pad2(index + 1) +
-            " of " +
-            pad2(total) +
-            ": " +
-            (slide.title || "")
-        );
-      };
+      track.style.transform = "translateX(-" + index * 100 + "%)";
 
-      if (!animate) {
-        apply();
-        return;
-      }
+      slides.forEach(function (slide, i) {
+        var active = i === index;
+        slide.classList.toggle("is-active", active);
+        slide.setAttribute("aria-hidden", active ? "false" : "true");
+      });
 
-      animating = true;
-      image.classList.add("is-fading");
-      window.setTimeout(function () {
-        apply();
-        image.classList.remove("is-fading");
-        animating = false;
-      }, 250);
+      var active = slides[index];
+      if (title) title.textContent = active.getAttribute("data-title") || "";
+      if (copy) copy.textContent = active.getAttribute("data-copy") || "";
+      if (prevBtn) prevBtn.disabled = index === 0;
+      if (nextBtn) nextBtn.disabled = index === total - 1;
+
+      root.setAttribute(
+        "aria-label",
+        "Production payment walkthrough, step " +
+          pad2(index + 1) +
+          " of " +
+          pad2(total) +
+          ": " +
+          (active.getAttribute("data-title") || "")
+      );
     }
 
     if (prevBtn) {
       prevBtn.addEventListener("click", function () {
-        render(index - 1, true);
+        goTo(index - 1);
       });
     }
 
     if (nextBtn) {
       nextBtn.addEventListener("click", function () {
-        render(index + 1, true);
+        goTo(index + 1);
       });
     }
 
@@ -125,20 +105,21 @@
       if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
       if (e.key === "ArrowLeft") {
         e.preventDefault();
-        render(index - 1, true);
+        goTo(index - 1);
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
-        render(index + 1, true);
+        goTo(index + 1);
       } else if (e.key === "Home") {
         e.preventDefault();
-        render(0, true);
+        goTo(0);
       } else if (e.key === "End") {
         e.preventDefault();
-        render(total - 1, true);
+        goTo(total - 1);
       }
     });
 
-    root.addEventListener(
+    var swipeTarget = viewport || root;
+    swipeTarget.addEventListener(
       "touchstart",
       function (e) {
         if (!e.changedTouches || !e.changedTouches.length) return;
@@ -148,7 +129,7 @@
       { passive: true }
     );
 
-    root.addEventListener(
+    swipeTarget.addEventListener(
       "touchend",
       function (e) {
         if (touchStartX === null || !e.changedTouches || !e.changedTouches.length) return;
@@ -157,13 +138,18 @@
         touchStartX = null;
         touchStartY = null;
         if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
-        if (dx < 0) render(index + 1, true);
-        else render(index - 1, true);
+        if (dx < 0) goTo(index + 1);
+        else goTo(index - 1);
       },
       { passive: true }
     );
 
-    render(0, false);
+    slides.forEach(function (slide, i) {
+      slide.setAttribute("aria-hidden", i === 0 ? "false" : "true");
+    });
+    track.style.transform = "translateX(0%)";
+    if (prevBtn) prevBtn.disabled = true;
+    if (nextBtn) nextBtn.disabled = total <= 1;
   }
 
   function initDocCarousels() {
