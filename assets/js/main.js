@@ -41,63 +41,35 @@
     });
   }
 
-  function pad2(n) {
-    return n < 10 ? "0" + n : String(n);
-  }
+  function initEmblaCarousel(root) {
+    if (typeof window.EmblaCarousel !== "function") return;
 
-  function initDocCarousel(root) {
-    var track = root.querySelector("[data-doc-carousel-track]");
-    var viewport = root.querySelector("[data-doc-carousel-viewport]");
-    var slides = Array.prototype.slice.call(root.querySelectorAll("[data-doc-carousel-slide]"));
-    var title = root.querySelector("[data-doc-carousel-title]");
-    var copy = root.querySelector("[data-doc-carousel-copy]");
-    var prevBtn = root.querySelector("[data-doc-carousel-prev]");
-    var nextBtn = root.querySelector("[data-doc-carousel-next]");
-    if (!track || !slides.length) return;
+    var viewport = root.querySelector("[data-embla-viewport]");
+    var prevBtn = root.querySelector("[data-embla-prev]");
+    var nextBtn = root.querySelector("[data-embla-next]");
+    if (!viewport) return;
 
-    var index = 0;
-    var total = slides.length;
-    var touchStartX = null;
-    var touchStartY = null;
+    var emblaApi = window.EmblaCarousel(viewport, {
+      loop: false,
+      align: "start",
+      containScroll: "trimSnaps",
+      watchDrag: true
+    });
 
-    function goTo(nextIndex) {
-      if (nextIndex < 0 || nextIndex >= total || nextIndex === index) return;
-      index = nextIndex;
-
-      track.style.transform = "translateX(-" + index * 100 + "%)";
-
-      slides.forEach(function (slide, i) {
-        var active = i === index;
-        slide.classList.toggle("is-active", active);
-        slide.setAttribute("aria-hidden", active ? "false" : "true");
-      });
-
-      var active = slides[index];
-      if (title) title.textContent = active.getAttribute("data-title") || "";
-      if (copy) copy.textContent = active.getAttribute("data-copy") || "";
-      if (prevBtn) prevBtn.disabled = index === 0;
-      if (nextBtn) nextBtn.disabled = index === total - 1;
-
-      root.setAttribute(
-        "aria-label",
-        "Production payment walkthrough, step " +
-          pad2(index + 1) +
-          " of " +
-          pad2(total) +
-          ": " +
-          (active.getAttribute("data-title") || "")
-      );
+    function syncButtons() {
+      if (prevBtn) prevBtn.disabled = !emblaApi.canScrollPrev();
+      if (nextBtn) nextBtn.disabled = !emblaApi.canScrollNext();
     }
 
     if (prevBtn) {
       prevBtn.addEventListener("click", function () {
-        goTo(index - 1);
+        emblaApi.scrollPrev();
       });
     }
 
     if (nextBtn) {
       nextBtn.addEventListener("click", function () {
-        goTo(index + 1);
+        emblaApi.scrollNext();
       });
     }
 
@@ -105,60 +77,35 @@
       if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
       if (e.key === "ArrowLeft") {
         e.preventDefault();
-        goTo(index - 1);
+        emblaApi.scrollPrev();
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
-        goTo(index + 1);
+        emblaApi.scrollNext();
       } else if (e.key === "Home") {
         e.preventDefault();
-        goTo(0);
+        emblaApi.scrollTo(0);
       } else if (e.key === "End") {
         e.preventDefault();
-        goTo(total - 1);
+        emblaApi.scrollTo(emblaApi.scrollSnapList().length - 1);
       }
     });
 
-    var swipeTarget = viewport || root;
-    swipeTarget.addEventListener(
-      "touchstart",
-      function (e) {
-        if (!e.changedTouches || !e.changedTouches.length) return;
-        touchStartX = e.changedTouches[0].clientX;
-        touchStartY = e.changedTouches[0].clientY;
-      },
-      { passive: true }
-    );
+    if (!root.hasAttribute("tabindex")) {
+      root.setAttribute("tabindex", "0");
+    }
 
-    swipeTarget.addEventListener(
-      "touchend",
-      function (e) {
-        if (touchStartX === null || !e.changedTouches || !e.changedTouches.length) return;
-        var dx = e.changedTouches[0].clientX - touchStartX;
-        var dy = e.changedTouches[0].clientY - touchStartY;
-        touchStartX = null;
-        touchStartY = null;
-        if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
-        if (dx < 0) goTo(index + 1);
-        else goTo(index - 1);
-      },
-      { passive: true }
-    );
-
-    slides.forEach(function (slide, i) {
-      slide.setAttribute("aria-hidden", i === 0 ? "false" : "true");
-    });
-    track.style.transform = "translateX(0%)";
-    if (prevBtn) prevBtn.disabled = true;
-    if (nextBtn) nextBtn.disabled = total <= 1;
+    emblaApi.on("select", syncButtons);
+    emblaApi.on("reInit", syncButtons);
+    syncButtons();
   }
 
-  function initDocCarousels() {
-    document.querySelectorAll("[data-doc-carousel]").forEach(initDocCarousel);
+  function initEmblaCarousels() {
+    document.querySelectorAll("[data-embla]").forEach(initEmblaCarousel);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     initNav();
     initActiveNav();
-    initDocCarousels();
+    initEmblaCarousels();
   });
 })();

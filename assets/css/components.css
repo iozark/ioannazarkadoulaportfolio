@@ -896,13 +896,12 @@ a.work-card:hover {
   color: var(--color-neutral-700);
 }
 
-/* —— Documentation carousel —— */
+/* —— Documentation carousel (Embla) —— */
 .doc-carousel {
   --doc-carousel-arrow: 3.25rem;
   --doc-carousel-gap: var(--space-5);
   margin-top: var(--space-10);
   max-width: min(100%, 60rem);
-  outline: none;
 }
 
 .doc-carousel__intro {
@@ -918,28 +917,31 @@ a.work-card:hover {
   column-gap: var(--doc-carousel-gap);
 }
 
-.doc-carousel__viewport {
+.doc-carousel__viewport,
+.embla__viewport {
   min-width: 0;
   overflow: hidden;
-  touch-action: pan-y;
 }
 
-.doc-carousel__track {
+.doc-carousel__container,
+.embla__container {
   display: flex;
-  flex-wrap: nowrap;
-  width: 100%;
-  transition: transform 300ms ease;
-  will-change: transform;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--space-4) * -1);
 }
 
-.doc-carousel__slide {
+.doc-carousel__slide,
+.embla__slide {
   flex: 0 0 100%;
-  width: 100%;
-  margin: 0;
   min-width: 0;
+  padding-left: var(--space-4);
 }
 
-.doc-carousel__slide img {
+.doc-carousel__figure {
+  margin: 0;
+}
+
+.doc-carousel__figure img {
   display: block;
   width: 100%;
   max-width: 1000px;
@@ -949,8 +951,8 @@ a.work-card:hover {
   border: var(--elevation-border);
   border-radius: var(--radius-md);
   background: var(--color-neutral-50);
-  pointer-events: none;
   user-select: none;
+  -webkit-user-drag: none;
 }
 
 .doc-carousel__arrow {

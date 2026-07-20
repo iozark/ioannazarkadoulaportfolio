@@ -156,8 +156,7 @@
 
           <div
             class="doc-carousel"
-            data-doc-carousel
-            tabindex="0"
+            data-embla
             role="region"
             aria-roledescription="carousel"
             aria-label="Production payment walkthrough"
@@ -166,7 +165,7 @@
               <button
                 type="button"
                 class="doc-carousel__arrow"
-                data-doc-carousel-prev
+                data-embla-prev
                 disabled
                 aria-label="Previous slide"
               >
@@ -175,126 +174,133 @@
                 </svg>
               </button>
 
-              <div class="doc-carousel__viewport" data-doc-carousel-viewport>
-                <div class="doc-carousel__track" data-doc-carousel-track>
-                  <figure
-                    class="doc-carousel__slide is-active"
-                    data-doc-carousel-slide
-                    data-title="Enter Amount"
-                    data-copy="Cashiers begin the payment by entering the transaction amount using a touch-optimized keypad designed for speed and readability."
-                  >
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg"
-                      alt="Sale screen — enter charge amount with numeric keypad"
-                      width="488"
-                      height="872"
-                      loading="eager"
-                      draggable="false"
-                    >
-                  </figure>
+              <div class="embla__viewport doc-carousel__viewport" data-embla-viewport>
+                <div class="embla__container doc-carousel__container">
+                  <div class="embla__slide doc-carousel__slide">
+                    <figure class="doc-carousel__figure">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg"
+                        alt="Sale screen — enter charge amount with numeric keypad"
+                        width="488"
+                        height="872"
+                        loading="eager"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="doc-carousel__title">Enter Amount</h3>
+                    <p class="doc-carousel__copy">
+                      Cashiers begin the payment by entering the transaction amount using a touch-optimized keypad designed for speed and readability.
+                    </p>
+                  </div>
 
-                  <figure
-                    class="doc-carousel__slide"
-                    data-doc-carousel-slide
-                    data-title="Installments"
-                    data-copy="When supported, the terminal allows merchants to define the number of installments before continuing the payment flow."
-                  >
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-02.jpg"
-                      alt="Installments screen — select number of installments"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                      draggable="false"
-                    >
-                  </figure>
+                  <div class="embla__slide doc-carousel__slide">
+                    <figure class="doc-carousel__figure">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-02.jpg"
+                        alt="Installments screen — select number of installments"
+                        width="488"
+                        height="872"
+                        loading="lazy"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="doc-carousel__title">Installments</h3>
+                    <p class="doc-carousel__copy">
+                      When supported, the terminal allows merchants to define the number of installments before continuing the payment flow.
+                    </p>
+                  </div>
 
-                  <figure
-                    class="doc-carousel__slide"
-                    data-doc-carousel-slide
-                    data-title="Present Card"
-                    data-copy="Customers can pay using contactless or chip cards while the interface clearly communicates the purchase summary."
-                  >
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-03.jpg"
-                      alt="Present card screen — tap card or phone with purchase summary"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                      draggable="false"
-                    >
-                  </figure>
+                  <div class="embla__slide doc-carousel__slide">
+                    <figure class="doc-carousel__figure">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-03.jpg"
+                        alt="Present card screen — tap card or phone with purchase summary"
+                        width="488"
+                        height="872"
+                        loading="lazy"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="doc-carousel__title">Present Card</h3>
+                    <p class="doc-carousel__copy">
+                      Customers can pay using contactless or chip cards while the interface clearly communicates the purchase summary.
+                    </p>
+                  </div>
 
-                  <figure
-                    class="doc-carousel__slide"
-                    data-doc-carousel-slide
-                    data-title="PIN Verification"
-                    data-copy="PIN entry follows familiar banking interaction patterns to support secure and intuitive authentication."
-                  >
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-04.jpg"
-                      alt="PIN verification screen — enter card PIN"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                      draggable="false"
-                    >
-                  </figure>
+                  <div class="embla__slide doc-carousel__slide">
+                    <figure class="doc-carousel__figure">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-04.jpg"
+                        alt="PIN verification screen — enter card PIN"
+                        width="488"
+                        height="872"
+                        loading="lazy"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="doc-carousel__title">PIN Verification</h3>
+                    <p class="doc-carousel__copy">
+                      PIN entry follows familiar banking interaction patterns to support secure and intuitive authentication.
+                    </p>
+                  </div>
 
-                  <figure
-                    class="doc-carousel__slide"
-                    data-doc-carousel-slide
-                    data-title="Authorization"
-                    data-copy="During authorization the interface minimizes distractions while clearly communicating transaction progress."
-                  >
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-05.jpg"
-                      alt="Authorization screen — connecting to network"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                      draggable="false"
-                    >
-                  </figure>
+                  <div class="embla__slide doc-carousel__slide">
+                    <figure class="doc-carousel__figure">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-05.jpg"
+                        alt="Authorization screen — connecting to network"
+                        width="488"
+                        height="872"
+                        loading="lazy"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="doc-carousel__title">Authorization</h3>
+                    <p class="doc-carousel__copy">
+                      During authorization the interface minimizes distractions while clearly communicating transaction progress.
+                    </p>
+                  </div>
 
-                  <figure
-                    class="doc-carousel__slide"
-                    data-doc-carousel-slide
-                    data-title="Signature"
-                    data-copy="When required, the terminal captures the customer's signature before completing the payment."
-                  >
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-06.jpg"
-                      alt="Signature screen — sign in the field below"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                      draggable="false"
-                    >
-                  </figure>
+                  <div class="embla__slide doc-carousel__slide">
+                    <figure class="doc-carousel__figure">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-06.jpg"
+                        alt="Signature screen — sign in the field below"
+                        width="488"
+                        height="872"
+                        loading="lazy"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="doc-carousel__title">Signature</h3>
+                    <p class="doc-carousel__copy">
+                      When required, the terminal captures the customer's signature before completing the payment.
+                    </p>
+                  </div>
 
-                  <figure
-                    class="doc-carousel__slide"
-                    data-doc-carousel-slide
-                    data-title="Success &amp; Receipt"
-                    data-copy="The payment concludes with confirmation and multiple receipt delivery options."
-                  >
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-07.jpg"
-                      alt="Success screen — transaction completed with receipt options"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                      draggable="false"
-                    >
-                  </figure>
+                  <div class="embla__slide doc-carousel__slide">
+                    <figure class="doc-carousel__figure">
+                      <img
+                        src="{{ROOT}}/assets/images/work/merchant-payments/step-07.jpg"
+                        alt="Success screen — transaction completed with receipt options"
+                        width="488"
+                        height="872"
+                        loading="lazy"
+                        draggable="false"
+                      >
+                    </figure>
+                    <h3 class="doc-carousel__title">Success &amp; Receipt</h3>
+                    <p class="doc-carousel__copy">
+                      The payment concludes with confirmation and multiple receipt delivery options.
+                    </p>
+                  </div>
                 </div>
               </div>
 
               <button
                 type="button"
                 class="doc-carousel__arrow"
-                data-doc-carousel-next
+                data-embla-next
                 aria-label="Next slide"
               >
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
@@ -302,11 +308,6 @@
                 </svg>
               </button>
             </div>
-
-            <h3 class="doc-carousel__title" data-doc-carousel-title>Enter Amount</h3>
-            <p class="doc-carousel__copy" data-doc-carousel-copy>
-              Cashiers begin the payment by entering the transaction amount using a touch-optimized keypad designed for speed and readability.
-            </p>
           </div>
         </section>
 
@@ -350,6 +351,7 @@
   </main>
 
   <!-- include:footer -->
+  <script src="{{ROOT}}/assets/vendor/embla-carousel.umd.js" defer></script>
   <script src="{{ROOT}}/assets/js/main.js" defer></script>
 </body>
 </html>
