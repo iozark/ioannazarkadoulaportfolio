@@ -403,6 +403,12 @@
   object-fit: cover;
 }
 
+.cs-hero-dark .cs-hero-figure--merchant .c-media__img,
+.cs-hero-dark .cs-hero-figure--flow .c-media__img,
+.cs-hero-dark .cs-hero-figure--gh .c-media__img {
+  object-fit: contain;
+}
+
 .principle-list {
   display: flex;
   flex-wrap: wrap;
@@ -613,11 +619,6 @@
 
 .cs-hero-figure--gh {
   --media-ratio: 1024 / 550;
-}
-
-.cs-hero-dark .cs-hero-figure--flow .c-media__img,
-.cs-hero-dark .cs-hero-figure--gh .c-media__img {
-  object-fit: contain;
 }
 
 .cs-hero-dark .cs-hero-figure--gh .c-media__frame {
