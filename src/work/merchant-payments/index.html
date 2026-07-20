@@ -155,56 +155,82 @@
           <h2 id="payment-flow-title" class="t-h1 cs-section__title">Selected Payment Flow</h2>
           <div class="prose">
             <p class="t-body-lg">
-              The following screens illustrate the complete merchant payment journey, from transaction creation to successful completion. Rather than redesigning isolated screens, the work focused on improving the entire operational flow used daily by merchants.
+              The following walkthrough presents the core merchant payment journey used in a production payment application.
+            </p>
+            <p>
+              Rather than redesigning individual screens, the work focused on improving the complete transaction flow, ensuring consistency, speed and clarity across every step of the payment experience.
             </p>
           </div>
 
           <div class="cs-walk" data-walkthrough>
-            <nav class="cs-walk__progress" aria-label="Payment flow steps">
-              <ol class="cs-walk__progress-list" role="list">
-                <li>
-                  <button type="button" class="cs-walk__progress-btn" data-walk-goto="0" aria-current="step">
-                    <span class="cs-walk__progress-num">01</span>
-                    <span class="cs-walk__progress-label">Enter Amount</span>
+            <nav class="cs-walk__tabs" aria-label="Payment flow steps">
+              <ul class="cs-walk__tab-list" role="tablist">
+                <li role="presentation">
+                  <button
+                    type="button"
+                    class="cs-walk__tab"
+                    role="tab"
+                    id="walk-tab-01"
+                    data-walk-goto="0"
+                    aria-selected="true"
+                    aria-controls="walk-step-01"
+                  >
+                    Enter Amount
                   </button>
                 </li>
-                <li>
-                  <button type="button" class="cs-walk__progress-btn" data-walk-goto="1">
-                    <span class="cs-walk__progress-num">02</span>
-                    <span class="cs-walk__progress-label">Installments</span>
+                <li role="presentation">
+                  <button
+                    type="button"
+                    class="cs-walk__tab"
+                    role="tab"
+                    id="walk-tab-02"
+                    data-walk-goto="1"
+                    aria-selected="false"
+                    aria-controls="walk-step-02"
+                  >
+                    Present Card
                   </button>
                 </li>
-                <li>
-                  <button type="button" class="cs-walk__progress-btn" data-walk-goto="2">
-                    <span class="cs-walk__progress-num">03</span>
-                    <span class="cs-walk__progress-label">Present Card</span>
+                <li role="presentation">
+                  <button
+                    type="button"
+                    class="cs-walk__tab"
+                    role="tab"
+                    id="walk-tab-03"
+                    data-walk-goto="2"
+                    aria-selected="false"
+                    aria-controls="walk-step-03"
+                  >
+                    PIN Verification
                   </button>
                 </li>
-                <li>
-                  <button type="button" class="cs-walk__progress-btn" data-walk-goto="3">
-                    <span class="cs-walk__progress-num">04</span>
-                    <span class="cs-walk__progress-label">PIN Verification</span>
+                <li role="presentation">
+                  <button
+                    type="button"
+                    class="cs-walk__tab"
+                    role="tab"
+                    id="walk-tab-04"
+                    data-walk-goto="3"
+                    aria-selected="false"
+                    aria-controls="walk-step-04"
+                  >
+                    Authorization
                   </button>
                 </li>
-                <li>
-                  <button type="button" class="cs-walk__progress-btn" data-walk-goto="4">
-                    <span class="cs-walk__progress-num">05</span>
-                    <span class="cs-walk__progress-label">Authorization</span>
+                <li role="presentation">
+                  <button
+                    type="button"
+                    class="cs-walk__tab"
+                    role="tab"
+                    id="walk-tab-05"
+                    data-walk-goto="4"
+                    aria-selected="false"
+                    aria-controls="walk-step-05"
+                  >
+                    Success &amp; Receipt
                   </button>
                 </li>
-                <li>
-                  <button type="button" class="cs-walk__progress-btn" data-walk-goto="5">
-                    <span class="cs-walk__progress-num">06</span>
-                    <span class="cs-walk__progress-label">Signature</span>
-                  </button>
-                </li>
-                <li>
-                  <button type="button" class="cs-walk__progress-btn" data-walk-goto="6">
-                    <span class="cs-walk__progress-num">07</span>
-                    <span class="cs-walk__progress-label">Success</span>
-                  </button>
-                </li>
-              </ol>
+              </ul>
             </nav>
 
             <div
@@ -214,7 +240,14 @@
               aria-label="Merchant payment walkthrough"
             >
               <div class="cs-walk__viewport" data-walk-viewport>
-                <article class="cs-walk__panel is-active" data-walk-panel id="walk-step-01" aria-hidden="false">
+                <article
+                  class="cs-walk__panel is-active"
+                  data-walk-panel
+                  role="tabpanel"
+                  id="walk-step-01"
+                  aria-labelledby="walk-tab-01"
+                  aria-hidden="false"
+                >
                   <figure class="cs-walk__figure">
                     <img
                       src="{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg"
@@ -225,34 +258,21 @@
                     >
                   </figure>
                   <div class="cs-walk__meta">
-                    <p class="t-micro cs-walk__num">01</p>
                     <h3 class="cs-walk__title">Enter Amount</h3>
                     <p class="cs-walk__caption">
-                      Cashiers begin the payment by entering the transaction amount using a touch-optimized keypad designed for speed, readability and error prevention.
+                      Cashiers begin the payment by entering the transaction amount using a touch-optimized numeric keypad designed for speed, readability and accuracy.
                     </p>
                   </div>
                 </article>
 
-                <article class="cs-walk__panel" data-walk-panel id="walk-step-02" aria-hidden="true">
-                  <figure class="cs-walk__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-02.jpg"
-                      alt="Installments screen — select number of installments"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                    >
-                  </figure>
-                  <div class="cs-walk__meta">
-                    <p class="t-micro cs-walk__num">02</p>
-                    <h3 class="cs-walk__title">Installments</h3>
-                    <p class="cs-walk__caption">
-                      When applicable, the merchant selects the number of installments before continuing the payment process.
-                    </p>
-                  </div>
-                </article>
-
-                <article class="cs-walk__panel" data-walk-panel id="walk-step-03" aria-hidden="true">
+                <article
+                  class="cs-walk__panel"
+                  data-walk-panel
+                  role="tabpanel"
+                  id="walk-step-02"
+                  aria-labelledby="walk-tab-02"
+                  aria-hidden="true"
+                >
                   <figure class="cs-walk__figure">
                     <img
                       src="{{ROOT}}/assets/images/work/merchant-payments/step-03.jpg"
@@ -263,15 +283,21 @@
                     >
                   </figure>
                   <div class="cs-walk__meta">
-                    <p class="t-micro cs-walk__num">03</p>
                     <h3 class="cs-walk__title">Present Card</h3>
                     <p class="cs-walk__caption">
-                      The terminal guides customers through contactless and chip card payments while clearly presenting the purchase summary.
+                      Customers can pay using contactless or chip cards while the interface clearly communicates the purchase summary.
                     </p>
                   </div>
                 </article>
 
-                <article class="cs-walk__panel" data-walk-panel id="walk-step-04" aria-hidden="true">
+                <article
+                  class="cs-walk__panel"
+                  data-walk-panel
+                  role="tabpanel"
+                  id="walk-step-03"
+                  aria-labelledby="walk-tab-03"
+                  aria-hidden="true"
+                >
                   <figure class="cs-walk__figure">
                     <img
                       src="{{ROOT}}/assets/images/work/merchant-payments/step-04.jpg"
@@ -282,15 +308,21 @@
                     >
                   </figure>
                   <div class="cs-walk__meta">
-                    <p class="t-micro cs-walk__num">04</p>
                     <h3 class="cs-walk__title">PIN Verification</h3>
                     <p class="cs-walk__caption">
-                      PIN entry follows familiar banking interaction patterns to support trust, accuracy and secure authentication.
+                      The PIN entry screen follows familiar banking interaction patterns to support secure and intuitive authentication.
                     </p>
                   </div>
                 </article>
 
-                <article class="cs-walk__panel" data-walk-panel id="walk-step-05" aria-hidden="true">
+                <article
+                  class="cs-walk__panel"
+                  data-walk-panel
+                  role="tabpanel"
+                  id="walk-step-04"
+                  aria-labelledby="walk-tab-04"
+                  aria-hidden="true"
+                >
                   <figure class="cs-walk__figure">
                     <img
                       src="{{ROOT}}/assets/images/work/merchant-payments/step-05.jpg"
@@ -301,34 +333,21 @@
                     >
                   </figure>
                   <div class="cs-walk__meta">
-                    <p class="t-micro cs-walk__num">05</p>
                     <h3 class="cs-walk__title">Authorization</h3>
                     <p class="cs-walk__caption">
-                      During transaction authorization the interface minimizes visual noise while communicating progress and system status.
+                      During authorization the interface minimizes distractions while clearly communicating progress and transaction status.
                     </p>
                   </div>
                 </article>
 
-                <article class="cs-walk__panel" data-walk-panel id="walk-step-06" aria-hidden="true">
-                  <figure class="cs-walk__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-06.jpg"
-                      alt="Signature screen — sign in the field below"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                    >
-                  </figure>
-                  <div class="cs-walk__meta">
-                    <p class="t-micro cs-walk__num">06</p>
-                    <h3 class="cs-walk__title">Signature</h3>
-                    <p class="cs-walk__caption">
-                      When signature verification is required, the customer signs directly on the terminal before payment completion.
-                    </p>
-                  </div>
-                </article>
-
-                <article class="cs-walk__panel" data-walk-panel id="walk-step-07" aria-hidden="true">
+                <article
+                  class="cs-walk__panel"
+                  data-walk-panel
+                  role="tabpanel"
+                  id="walk-step-05"
+                  aria-labelledby="walk-tab-05"
+                  aria-hidden="true"
+                >
                   <figure class="cs-walk__figure">
                     <img
                       src="{{ROOT}}/assets/images/work/merchant-payments/step-07.jpg"
@@ -339,10 +358,9 @@
                     >
                   </figure>
                   <div class="cs-walk__meta">
-                    <p class="t-micro cs-walk__num">07</p>
                     <h3 class="cs-walk__title">Success &amp; Receipt</h3>
                     <p class="cs-walk__caption">
-                      The transaction concludes with confirmation and multiple receipt delivery options, allowing merchants to immediately complete the payment flow.
+                      The payment concludes with confirmation and multiple receipt delivery options directly from the terminal.
                     </p>
                   </div>
                 </article>
@@ -353,7 +371,7 @@
               <button type="button" class="c-button c-button--secondary" data-walk-prev disabled>
                 Previous
               </button>
-              <p class="cs-walk__status" data-walk-status aria-live="polite">01 / 07</p>
+              <p class="cs-walk__status" data-walk-status aria-live="polite">01 / 05</p>
               <button type="button" class="c-button c-button--secondary" data-walk-next>
                 Next
               </button>
