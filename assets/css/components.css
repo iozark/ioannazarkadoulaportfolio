@@ -896,19 +896,14 @@ a.work-card:hover {
   color: var(--color-neutral-700);
 }
 
-/* —— Documentation carousel (Glider.js) —— */
+/* —— Selected Payment Flow (Glider.js) —— */
 .doc-carousel {
   --doc-carousel-arrow: 3.25rem;
-  --doc-carousel-gap: var(--space-5);
-  margin-top: var(--space-10);
-  max-width: min(100%, 60rem);
+  --doc-carousel-gap: var(--space-6);
+  --doc-carousel-phone: 17.5rem;
+  margin-top: var(--space-12);
+  max-width: min(100%, 40rem);
   width: 100%;
-}
-
-.doc-carousel__intro {
-  margin: var(--space-4) 0 0;
-  max-width: 40rem;
-  color: var(--color-neutral-700);
 }
 
 .doc-carousel__shell {
@@ -925,27 +920,38 @@ a.work-card:hover {
 
 .doc-carousel .glider:focus-visible {
   outline: 2px solid var(--color-focus);
-  outline-offset: 3px;
+  outline-offset: 4px;
+  border-radius: var(--radius-md);
 }
 
 .doc-carousel__slide {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-block: var(--space-2);
 }
 
 .doc-carousel__figure {
   margin: 0;
+  width: min(100%, var(--doc-carousel-phone));
+  border-radius: 1.25rem;
+  background: var(--color-neutral-0);
+  box-shadow:
+    0 1px 2px rgba(20, 20, 28, 0.04),
+    0 12px 32px rgba(20, 20, 28, 0.08),
+    0 28px 56px rgba(20, 20, 28, 0.06);
+  overflow: hidden;
 }
 
 .doc-carousel__figure img {
   display: block;
   width: 100%;
-  max-width: 1000px;
   height: auto;
-  margin-inline: auto;
+  margin: 0;
   object-fit: contain;
-  border: var(--elevation-border);
-  border-radius: var(--radius-md);
-  background: var(--color-neutral-50);
+  background: var(--color-neutral-0);
 }
 
 .doc-carousel .glider-prev,
@@ -958,20 +964,21 @@ a.work-card:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  align-self: center;
   width: var(--doc-carousel-arrow);
   height: var(--doc-carousel-arrow);
   margin: 0;
   padding: 0;
-  border: 1px solid rgba(15, 15, 15, 0.06);
-  border-radius: 15px;
+  border: 1px solid rgba(20, 20, 28, 0.06);
+  border-radius: 14px;
   background: var(--color-neutral-0);
   color: var(--color-neutral-700);
   font-size: inherit;
   line-height: 1;
   opacity: 1;
   box-shadow:
-    0 1px 2px rgba(15, 15, 15, 0.04),
-    0 8px 24px rgba(15, 15, 15, 0.08);
+    0 1px 2px rgba(20, 20, 28, 0.04),
+    0 10px 28px rgba(20, 20, 28, 0.1);
   cursor: pointer;
   transition:
     transform 180ms ease,
@@ -989,8 +996,8 @@ a.work-card:hover {
 .doc-carousel__arrow:focus-visible {
   color: var(--color-neutral-900);
   box-shadow:
-    0 2px 4px rgba(15, 15, 15, 0.05),
-    0 12px 28px rgba(15, 15, 15, 0.12);
+    0 2px 4px rgba(20, 20, 28, 0.05),
+    0 14px 32px rgba(20, 20, 28, 0.14);
   transform: translateY(-2px);
 }
 
@@ -1001,8 +1008,8 @@ a.work-card:hover {
 
 .doc-carousel__arrow:active:not(:disabled):not(.disabled) {
   box-shadow:
-    0 1px 2px rgba(15, 15, 15, 0.05),
-    0 4px 12px rgba(15, 15, 15, 0.08);
+    0 1px 2px rgba(20, 20, 28, 0.05),
+    0 6px 16px rgba(20, 20, 28, 0.1);
   transform: translateY(0) scale(0.96);
 }
 
@@ -1019,18 +1026,17 @@ a.work-card:hover {
 
 .doc-carousel__title {
   margin: var(--space-8) 0 0;
-  text-align: center;
+  max-width: 22rem;
   font-family: var(--font-sans);
-  font-size: var(--text-body);
+  font-size: var(--text-h3);
   font-weight: var(--font-weight-semibold);
   line-height: var(--leading-tight);
   color: var(--color-neutral-900);
 }
 
 .doc-carousel__copy {
-  margin: var(--space-3) auto 0;
-  max-width: 32rem;
-  text-align: center;
+  margin: var(--space-3) 0 0;
+  max-width: 22rem;
   font-size: var(--text-body);
   line-height: var(--leading-body);
   color: var(--color-neutral-700);
@@ -1040,12 +1046,7 @@ a.work-card:hover {
   .doc-carousel {
     --doc-carousel-arrow: 3rem;
     --doc-carousel-gap: var(--space-3);
-  }
-
-  .doc-carousel .glider-prev,
-  .doc-carousel .glider-next,
-  .doc-carousel__arrow {
-    border-radius: 14px;
+    --doc-carousel-phone: 15.5rem;
   }
 }
 
