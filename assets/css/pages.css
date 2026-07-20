@@ -192,79 +192,129 @@
   margin-top: var(--space-8);
 }
 
-/* Documentation walkthrough — sequential product steps */
-.cs-journey {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2) var(--space-3);
-  margin-top: var(--space-8);
-  margin-bottom: var(--space-12);
+/* Documentation walkthrough — interactive payment journey */
+.cs-walk {
+  margin-top: var(--space-10);
+}
+
+.cs-walk__progress {
+  margin: 0 0 var(--space-10);
   padding: var(--space-5) 0;
   border-top: 1px solid var(--color-neutral-200);
   border-bottom: 1px solid var(--color-neutral-200);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cs-walk__progress-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: min-content;
+}
+
+.cs-walk__progress-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  min-width: 7.5rem;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-neutral-500);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.cs-walk__progress-btn:hover {
+  color: var(--color-neutral-900);
+  background: var(--color-neutral-50);
+}
+
+.cs-walk__progress-btn[aria-current="step"] {
+  color: var(--color-neutral-900);
+  border-color: var(--color-neutral-200);
+  background: var(--color-neutral-50);
+}
+
+.cs-walk__progress-num {
   font-family: var(--font-mono);
   font-size: var(--text-micro);
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--tracking-micro);
   text-transform: uppercase;
-  color: var(--color-neutral-500);
+  color: inherit;
+  opacity: 0.75;
+}
+
+.cs-walk__progress-btn[aria-current="step"] .cs-walk__progress-num {
+  color: var(--color-accent-600);
+  opacity: 1;
+}
+
+.cs-walk__progress-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
   line-height: var(--leading-tight);
+  color: inherit;
+  white-space: nowrap;
 }
 
-.cs-journey__sep {
-  color: var(--color-neutral-400);
+.cs-walk__stage {
+  outline: none;
 }
 
-.cs-journey__item {
-  color: var(--color-neutral-700);
+.cs-walk__viewport {
+  position: relative;
+  touch-action: pan-y;
+  margin: 0 auto var(--space-8);
+  max-width: 28rem;
+  min-height: 36rem;
 }
 
-.cs-flow {
+.cs-walk__panel {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  margin-top: var(--space-10);
-}
-
-.cs-step {
-  padding-block: var(--space-12);
-  border-top: 1px solid var(--color-neutral-200);
-}
-
-.cs-step:first-child {
-  border-top: none;
-  padding-top: 0;
-}
-
-.cs-step__head {
-  margin-bottom: var(--space-6);
-  padding-bottom: var(--space-5);
-  border-bottom: 1px solid var(--color-neutral-200);
-}
-
-.cs-step__num {
-  display: block;
-  margin-bottom: var(--space-2);
-  color: var(--color-accent-600);
-}
-
-.cs-step__title {
   margin: 0;
-  font-family: var(--font-serif);
-  font-size: var(--text-h2);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--leading-heading);
-  color: var(--color-neutral-900);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(12px);
+  transition:
+    opacity 280ms var(--ease-standard),
+    transform 280ms var(--ease-standard),
+    visibility 0s linear 280ms;
 }
 
-.cs-step__figure {
-  margin: 0 0 var(--space-6);
-  width: 76%;
-  max-width: 100%;
+.cs-walk__panel.is-active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+  transition:
+    opacity 280ms var(--ease-standard),
+    transform 280ms var(--ease-standard),
+    visibility 0s linear 0s;
 }
 
-.cs-step__figure img {
+.cs-walk__figure {
+  margin: 0 0 var(--space-8);
+}
+
+.cs-walk__figure img {
   display: block;
   width: 100%;
   height: auto;
@@ -273,49 +323,67 @@
   background: var(--color-neutral-50);
 }
 
-.cs-step--left .cs-step__figure {
-  margin-left: 0;
-  margin-right: auto;
-}
-
-.cs-step--right .cs-step__figure {
-  margin-left: auto;
-  margin-right: 0;
-}
-
-.cs-step--center .cs-step__figure {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.cs-step__caption {
-  margin: 0;
+.cs-walk__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
   max-width: 36rem;
+}
+
+.cs-walk__num {
+  margin: 0;
+  color: var(--color-accent-600);
+}
+
+.cs-walk__title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-heading);
+  color: var(--color-neutral-900);
+}
+
+.cs-walk__caption {
+  margin: 0;
   font-size: var(--text-body);
   line-height: var(--leading-body);
   color: var(--color-neutral-700);
 }
 
-.cs-step--right .cs-step__caption {
-  margin-left: auto;
+.cs-walk__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-10);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-neutral-200);
 }
 
-.cs-step--center .cs-step__caption {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+.cs-walk__status {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-micro);
+  text-transform: uppercase;
+  color: var(--color-neutral-500);
+}
+
+.cs-walk__controls .c-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 @media (max-width: 767px) {
-  .cs-step__figure {
-    width: 100%;
+  .cs-walk__viewport {
+    max-width: 22rem;
+    min-height: 30rem;
   }
 
-  .cs-step--right .cs-step__caption,
-  .cs-step--center .cs-step__caption {
-    margin-left: 0;
-    margin-right: 0;
-    text-align: left;
+  .cs-walk__progress-btn {
+    min-width: 6.5rem;
+    padding: var(--space-2) var(--space-3);
   }
 }
 
