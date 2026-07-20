@@ -194,8 +194,11 @@
 
 /* Production walkthrough — documentation carousel */
 .cs-walk {
+  --cs-walk-screen: 28rem;
+  --cs-walk-nav-size: 3.25rem;
+  --cs-walk-nav-gap: var(--space-5);
   margin-top: var(--space-10);
-  max-width: 28rem;
+  max-width: calc(var(--cs-walk-screen) + (var(--cs-walk-nav-size) + var(--cs-walk-nav-gap)) * 2);
 }
 
 .cs-walk__lead {
@@ -209,6 +212,7 @@
   flex-direction: column;
   gap: var(--space-2);
   margin: 0 0 var(--space-6);
+  padding-inline: calc(var(--cs-walk-nav-size) + var(--cs-walk-nav-gap));
 }
 
 .cs-walk__status {
@@ -225,8 +229,17 @@
   color: var(--color-neutral-900);
 }
 
+.cs-walk__display {
+  position: relative;
+  padding-inline: calc(var(--cs-walk-nav-size) + var(--cs-walk-nav-gap));
+  container-type: inline-size;
+  container-name: walk-display;
+}
+
 .cs-walk__stage {
   outline: none;
+  max-width: var(--cs-walk-screen);
+  margin-inline: auto;
 }
 
 .cs-walk__viewport {
@@ -287,28 +300,92 @@
   color: var(--color-neutral-700);
 }
 
-.cs-walk__controls {
-  display: flex;
+.cs-walk__nav {
+  position: absolute;
+  top: calc(
+    min(
+        var(--cs-walk-screen),
+        100cqw - (var(--cs-walk-nav-size) + var(--cs-walk-nav-gap)) * 2
+      ) * 872 / 488 / 2
+  );
+  z-index: 2;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
-  margin-top: var(--space-8);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--color-neutral-200);
+  justify-content: center;
+  width: var(--cs-walk-nav-size);
+  height: var(--cs-walk-nav-size);
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(15, 15, 15, 0.06);
+  border-radius: 15px;
+  background: var(--color-neutral-0);
+  color: var(--color-neutral-700);
+  box-shadow:
+    0 1px 2px rgba(15, 15, 15, 0.04),
+    0 8px 24px rgba(15, 15, 15, 0.08);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cs-walk__nav--prev {
+  left: 0;
+}
+
+.cs-walk__nav--next {
+  right: 0;
+}
+
+.cs-walk__nav:hover:not(:disabled) {
+  color: var(--color-neutral-900);
+  box-shadow:
+    0 2px 4px rgba(15, 15, 15, 0.05),
+    0 12px 28px rgba(15, 15, 15, 0.12);
+  transform: translateY(calc(-50% - 2px));
+}
+
+.cs-walk__nav:active:not(:disabled) {
+  box-shadow:
+    0 1px 2px rgba(15, 15, 15, 0.05),
+    0 4px 12px rgba(15, 15, 15, 0.08);
+  transform: translateY(-50%) scale(0.96);
+}
+
+.cs-walk__nav:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
 }
 
 .cs-walk__nav:disabled,
 .cs-walk__nav.is-disabled {
-  background: transparent;
-  color: var(--color-neutral-400);
-  border-color: transparent;
-  opacity: 0.45;
+  opacity: 0.35;
   pointer-events: none;
+  cursor: default;
+  box-shadow:
+    0 1px 2px rgba(15, 15, 15, 0.03),
+    0 4px 12px rgba(15, 15, 15, 0.05);
+}
+
+.cs-walk__nav-icon {
+  display: block;
+  flex-shrink: 0;
 }
 
 @media (max-width: 767px) {
   .cs-walk {
-    max-width: 22rem;
+    --cs-walk-screen: 18.5rem;
+    --cs-walk-nav-size: 3rem;
+    --cs-walk-nav-gap: var(--space-3);
+  }
+
+  .cs-walk__nav {
+    border-radius: 14px;
   }
 }
 
@@ -396,7 +473,6 @@
   object-fit: cover;
 }
 
-.cs-hero-dark .cs-hero-figure--merchant .c-media__img,
 .cs-hero-dark .cs-hero-figure--flow .c-media__img,
 .cs-hero-dark .cs-hero-figure--gh .c-media__img {
   object-fit: contain;
@@ -602,12 +678,23 @@
 }
 
 .cs-hero-figure--merchant {
-  --media-ratio: 1024 / 370;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: var(--space-16);
+  margin-bottom: var(--space-8);
+  text-align: center;
 }
 
-.cs-hero-dark .cs-hero-figure--merchant .c-media__frame {
-  background: #000000;
-  border-color: rgba(255, 255, 255, 0.12);
+.cs-hero-figure--merchant img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
+  background: var(--color-neutral-0);
+  border-radius: var(--radius-md);
 }
 
 .cs-hero-figure--gh {
