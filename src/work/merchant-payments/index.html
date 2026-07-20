@@ -62,10 +62,9 @@
             <img
               class="c-media__img"
               src="{{ROOT}}/assets/images/work/merchant-payments/hero.jpg"
-              data-media-empty="true"
-              alt="Merchant Payments project preview"
-              width="2000"
-              height="728"
+              alt="Merchant Payments — complete payment flow across seven production screens"
+              width="2400"
+              height="634"
               loading="eager"
             >
           </div>
@@ -82,6 +81,7 @@
             <li><a href="#role">My Role</a></li>
             <li><a href="#challenge">Challenge</a></li>
             <li><a href="#process">Process</a></li>
+            <li><a href="#payment-flow">Selected Payment Flow</a></li>
             <li><a href="#outcome">Outcome</a></li>
             <li><a href="#reflection">Reflection</a></li>
           </ol>
@@ -156,8 +156,170 @@
           </div>
         </section>
 
-        <section class="cs-section" id="outcome" aria-labelledby="outcome-title">
+        <section class="cs-section" id="payment-flow" aria-labelledby="payment-flow-title">
           <p class="t-micro cs-section__num">05</p>
+          <h2 id="payment-flow-title" class="t-h1 cs-section__title">Selected Payment Flow</h2>
+          <div class="prose">
+            <p class="t-body-lg">
+              The following screens illustrate the complete merchant payment journey, from transaction creation to successful completion. Rather than redesigning isolated screens, the work focused on improving the entire operational flow used daily by merchants.
+            </p>
+          </div>
+
+          <p class="t-micro mt-8 mb-3">Payment Journey</p>
+          <div class="cs-journey" aria-label="Payment journey steps">
+            <span class="cs-journey__item">Amount Entry</span>
+            <span class="cs-journey__sep" aria-hidden="true">↓</span>
+            <span class="cs-journey__item">Installments</span>
+            <span class="cs-journey__sep" aria-hidden="true">↓</span>
+            <span class="cs-journey__item">Card Presentation</span>
+            <span class="cs-journey__sep" aria-hidden="true">↓</span>
+            <span class="cs-journey__item">PIN Verification</span>
+            <span class="cs-journey__sep" aria-hidden="true">↓</span>
+            <span class="cs-journey__item">Authorization</span>
+            <span class="cs-journey__sep" aria-hidden="true">↓</span>
+            <span class="cs-journey__item">Signature</span>
+            <span class="cs-journey__sep" aria-hidden="true">↓</span>
+            <span class="cs-journey__item">Receipt</span>
+          </div>
+
+          <div class="cs-flow">
+            <article class="cs-step cs-step--left" id="step-01" aria-labelledby="step-01-title">
+              <header class="cs-step__head">
+                <p class="t-micro cs-step__num">01</p>
+                <h3 id="step-01-title" class="cs-step__title">Enter Amount</h3>
+              </header>
+              <figure class="cs-step__figure">
+                <img
+                  src="{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg"
+                  alt="Sale screen — enter charge amount with numeric keypad"
+                  width="488"
+                  height="872"
+                  loading="lazy"
+                >
+              </figure>
+              <p class="cs-step__caption">
+                Cashiers begin the payment by entering the transaction amount using a touch-optimized keypad designed for speed, readability and error prevention.
+              </p>
+            </article>
+
+            <article class="cs-step cs-step--right" id="step-02" aria-labelledby="step-02-title">
+              <header class="cs-step__head">
+                <p class="t-micro cs-step__num">02</p>
+                <h3 id="step-02-title" class="cs-step__title">Installments</h3>
+              </header>
+              <figure class="cs-step__figure">
+                <img
+                  src="{{ROOT}}/assets/images/work/merchant-payments/step-02.jpg"
+                  alt="Installments screen — select number of installments"
+                  width="488"
+                  height="872"
+                  loading="lazy"
+                >
+              </figure>
+              <p class="cs-step__caption">
+                When applicable, the merchant selects the number of installments before continuing the payment process.
+              </p>
+            </article>
+
+            <article class="cs-step cs-step--left" id="step-03" aria-labelledby="step-03-title">
+              <header class="cs-step__head">
+                <p class="t-micro cs-step__num">03</p>
+                <h3 id="step-03-title" class="cs-step__title">Present Card</h3>
+              </header>
+              <figure class="cs-step__figure">
+                <img
+                  src="{{ROOT}}/assets/images/work/merchant-payments/step-03.jpg"
+                  alt="Present card screen — tap card or phone with purchase summary"
+                  width="488"
+                  height="872"
+                  loading="lazy"
+                >
+              </figure>
+              <p class="cs-step__caption">
+                The terminal guides customers through contactless and chip card payments while clearly presenting the purchase summary.
+              </p>
+            </article>
+
+            <article class="cs-step cs-step--right" id="step-04" aria-labelledby="step-04-title">
+              <header class="cs-step__head">
+                <p class="t-micro cs-step__num">04</p>
+                <h3 id="step-04-title" class="cs-step__title">PIN Verification</h3>
+              </header>
+              <figure class="cs-step__figure">
+                <img
+                  src="{{ROOT}}/assets/images/work/merchant-payments/step-04.jpg"
+                  alt="PIN verification screen — enter card PIN"
+                  width="488"
+                  height="872"
+                  loading="lazy"
+                >
+              </figure>
+              <p class="cs-step__caption">
+                PIN entry follows familiar banking interaction patterns to support trust, accuracy and secure authentication.
+              </p>
+            </article>
+
+            <article class="cs-step cs-step--left" id="step-05" aria-labelledby="step-05-title">
+              <header class="cs-step__head">
+                <p class="t-micro cs-step__num">05</p>
+                <h3 id="step-05-title" class="cs-step__title">Authorization</h3>
+              </header>
+              <figure class="cs-step__figure">
+                <img
+                  src="{{ROOT}}/assets/images/work/merchant-payments/step-05.jpg"
+                  alt="Authorization screen — connecting to network"
+                  width="488"
+                  height="872"
+                  loading="lazy"
+                >
+              </figure>
+              <p class="cs-step__caption">
+                During transaction authorization the interface minimizes visual noise while communicating progress and system status.
+              </p>
+            </article>
+
+            <article class="cs-step cs-step--right" id="step-06" aria-labelledby="step-06-title">
+              <header class="cs-step__head">
+                <p class="t-micro cs-step__num">06</p>
+                <h3 id="step-06-title" class="cs-step__title">Signature</h3>
+              </header>
+              <figure class="cs-step__figure">
+                <img
+                  src="{{ROOT}}/assets/images/work/merchant-payments/step-06.jpg"
+                  alt="Signature screen — sign in the field below"
+                  width="488"
+                  height="872"
+                  loading="lazy"
+                >
+              </figure>
+              <p class="cs-step__caption">
+                When signature verification is required, the customer signs directly on the terminal before payment completion.
+              </p>
+            </article>
+
+            <article class="cs-step cs-step--center" id="step-07" aria-labelledby="step-07-title">
+              <header class="cs-step__head">
+                <p class="t-micro cs-step__num">07</p>
+                <h3 id="step-07-title" class="cs-step__title">Success &amp; Receipt</h3>
+              </header>
+              <figure class="cs-step__figure">
+                <img
+                  src="{{ROOT}}/assets/images/work/merchant-payments/step-07.jpg"
+                  alt="Success screen — transaction completed with receipt options"
+                  width="488"
+                  height="872"
+                  loading="lazy"
+                >
+              </figure>
+              <p class="cs-step__caption">
+                The transaction concludes with confirmation and multiple receipt delivery options, allowing merchants to immediately complete the payment flow.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="cs-section" id="outcome" aria-labelledby="outcome-title">
+          <p class="t-micro cs-section__num">06</p>
           <h2 id="outcome-title" class="t-h1 cs-section__title">Outcome</h2>
           <div class="prose">
             <p class="t-body-lg">
@@ -170,7 +332,7 @@
         </section>
 
         <section class="cs-section" id="reflection" aria-labelledby="reflection-title">
-          <p class="t-micro cs-section__num">06</p>
+          <p class="t-micro cs-section__num">07</p>
           <h2 id="reflection-title" class="t-h1 cs-section__title">Reflection</h2>
           <div class="prose">
             <p class="t-body-lg">
