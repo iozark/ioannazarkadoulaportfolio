@@ -41,77 +41,126 @@
     });
   }
 
-  function initHScroll(root) {
-    if (!root) return;
+  function pad2(n) {
+    return n < 10 ? "0" + n : String(n);
+  }
 
-    var isDragging = false;
-    var startX = 0;
-    var startScroll = 0;
-    var moved = false;
+  function initWalkthrough(root) {
+    var panels = Array.prototype.slice.call(root.querySelectorAll("[data-walk-panel]"));
+    var prevBtn = root.querySelector("[data-walk-prev]");
+    var nextBtn = root.querySelector("[data-walk-next]");
+    var status = root.querySelector("[data-walk-status]");
+    var stepLabel = root.querySelector("[data-walk-step]");
+    var stage = root.querySelector("[data-walk-stage]");
+    var viewport = root.querySelector("[data-walk-viewport]");
+    if (!panels.length || !stage) return;
 
-    root.addEventListener("keydown", function (e) {
-      var step = Math.max(160, Math.floor(root.clientWidth * 0.7));
-      if (e.key === "ArrowRight") {
-        e.preventDefault();
-        root.scrollBy({ left: step, behavior: "smooth" });
-      } else if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        root.scrollBy({ left: -step, behavior: "smooth" });
-      } else if (e.key === "Home") {
-        e.preventDefault();
-        root.scrollTo({ left: 0, behavior: "smooth" });
-      } else if (e.key === "End") {
-        e.preventDefault();
-        root.scrollTo({ left: root.scrollWidth, behavior: "smooth" });
+    var index = -1;
+    var total = panels.length;
+    var touchStartX = null;
+    var touchStartY = null;
+
+    function goTo(nextIndex) {
+      if (nextIndex < 0 || nextIndex >= total || nextIndex === index) return;
+      index = nextIndex;
+
+      panels.forEach(function (panel, i) {
+        var active = i === index;
+        panel.classList.toggle("is-active", active);
+        panel.setAttribute("aria-hidden", active ? "false" : "true");
+      });
+
+      if (status) status.textContent = pad2(index + 1) + " / " + pad2(total);
+      if (stepLabel) {
+        stepLabel.textContent = panels[index].getAttribute("data-walk-label") || "";
       }
-    });
+      if (prevBtn) prevBtn.disabled = index === 0;
+      if (nextBtn) nextBtn.disabled = index === total - 1;
 
-    root.addEventListener("pointerdown", function (e) {
-      if (e.pointerType === "touch") return;
-      if (e.button !== 0) return;
-      isDragging = true;
-      moved = false;
-      startX = e.clientX;
-      startScroll = root.scrollLeft;
-      root.classList.add("is-dragging");
-      root.setPointerCapture(e.pointerId);
-    });
-
-    root.addEventListener("pointermove", function (e) {
-      if (!isDragging) return;
-      var dx = e.clientX - startX;
-      if (Math.abs(dx) > 3) moved = true;
-      root.scrollLeft = startScroll - dx;
-    });
-
-    function endDrag(e) {
-      if (!isDragging) return;
-      isDragging = false;
-      root.classList.remove("is-dragging");
-      if (root.hasPointerCapture(e.pointerId)) {
-        root.releasePointerCapture(e.pointerId);
+      if (stage) {
+        stage.setAttribute(
+          "aria-label",
+          "Production payment walkthrough, step " +
+            pad2(index + 1) +
+            " of " +
+            pad2(total) +
+            ": " +
+            (panels[index].getAttribute("data-walk-label") || "")
+        );
       }
     }
 
-    root.addEventListener("pointerup", endDrag);
-    root.addEventListener("pointercancel", endDrag);
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function () {
+        goTo(index - 1);
+      });
+    }
 
-    root.addEventListener("click", function (e) {
-      if (moved) {
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function () {
+        goTo(index + 1);
+      });
+    }
+
+    function onKey(e) {
+      if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+      if (e.key === "ArrowLeft") {
         e.preventDefault();
-        e.stopPropagation();
-        moved = false;
+        goTo(index - 1);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        goTo(index + 1);
+      } else if (e.key === "Home") {
+        e.preventDefault();
+        goTo(0);
+      } else if (e.key === "End") {
+        e.preventDefault();
+        goTo(total - 1);
       }
-    }, true);
+    }
+
+    stage.addEventListener("keydown", onKey);
+    root.addEventListener("keydown", function (e) {
+      if (e.target === stage) return;
+      onKey(e);
+    });
+
+    var swipeTarget = viewport || stage;
+    swipeTarget.addEventListener(
+      "touchstart",
+      function (e) {
+        if (!e.changedTouches || !e.changedTouches.length) return;
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
+      },
+      { passive: true }
+    );
+
+    swipeTarget.addEventListener(
+      "touchend",
+      function (e) {
+        if (touchStartX === null || !e.changedTouches || !e.changedTouches.length) return;
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        var dy = e.changedTouches[0].clientY - touchStartY;
+        touchStartX = null;
+        touchStartY = null;
+        if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
+        if (dx < 0) goTo(index + 1);
+        else goTo(index - 1);
+      },
+      { passive: true }
+    );
+
+    goTo(0);
   }
 
-  function initHScrolls() {
-    document.querySelectorAll("[data-hscroll]").forEach(initHScroll);
+  function initWalkthroughs() {
+    document.querySelectorAll("[data-walkthrough]").forEach(initWalkthrough);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     initNav();
     initActiveNav();
-    initHScrolls();
+    initWalkthroughs();
   });
 })();

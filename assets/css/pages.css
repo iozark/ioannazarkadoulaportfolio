@@ -192,80 +192,123 @@
   margin-top: var(--space-8);
 }
 
-/* Documentation walkthrough — interactive payment journey */
-/* Production walkthrough — horizontal documentation strip */
-.cs-flow {
+/* Production walkthrough — documentation carousel */
+.cs-walk {
   margin-top: var(--space-10);
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  overscroll-behavior-x: contain;
-  cursor: grab;
-  outline: none;
+  max-width: 28rem;
 }
 
-.cs-flow.is-dragging {
-  cursor: grabbing;
-  scroll-behavior: auto;
-  user-select: none;
+.cs-walk__lead {
+  margin: var(--space-4) 0 0;
+  max-width: 40rem;
+  color: var(--color-neutral-700);
 }
 
-.cs-flow__track {
+.cs-walk__indicator {
   display: flex;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  gap: var(--space-10);
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-6);
+}
+
+.cs-walk__status {
   margin: 0;
-  padding: 0 var(--space-1) var(--space-4);
-  list-style: none;
-  width: max-content;
+  color: var(--color-neutral-500);
 }
 
-.cs-flow__item {
-  flex: 0 0 13.5rem;
-  width: 13.5rem;
+.cs-walk__step {
   margin: 0;
-}
-
-.cs-flow__figure {
-  margin: 0 0 var(--space-5);
-}
-
-.cs-flow__figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: var(--elevation-border);
-  border-radius: var(--radius-md);
-  background: var(--color-neutral-50);
-  pointer-events: none;
-}
-
-.cs-flow__title {
-  margin: 0 0 var(--space-2);
   font-family: var(--font-sans);
-  font-size: var(--text-small);
+  font-size: var(--text-body);
   font-weight: var(--font-weight-semibold);
   line-height: var(--leading-tight);
   color: var(--color-neutral-900);
 }
 
-.cs-flow__caption {
+.cs-walk__stage {
+  outline: none;
+}
+
+.cs-walk__viewport {
+  position: relative;
+  touch-action: pan-y;
+  overflow: hidden;
+}
+
+.cs-walk__panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
   margin: 0;
-  font-size: var(--text-small);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(16px);
+  transition:
+    opacity 280ms var(--ease-standard),
+    transform 280ms var(--ease-standard),
+    visibility 0s linear 280ms;
+}
+
+.cs-walk__panel.is-active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+  transition:
+    opacity 280ms var(--ease-standard),
+    transform 280ms var(--ease-standard),
+    visibility 0s linear 0s;
+}
+
+.cs-walk__figure {
+  margin: 0 0 var(--space-6);
+  aspect-ratio: 488 / 872;
+  background: var(--color-neutral-50);
+  border: var(--elevation-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.cs-walk__figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+}
+
+.cs-walk__caption {
+  margin: 0;
+  font-size: var(--text-body);
   line-height: var(--leading-body);
   color: var(--color-neutral-700);
 }
 
-@media (min-width: 768px) {
-  .cs-flow__item {
-    flex-basis: 15rem;
-    width: 15rem;
-  }
+.cs-walk__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-neutral-200);
+}
 
-  .cs-flow__track {
-    gap: var(--space-12);
+.cs-walk__nav:disabled,
+.cs-walk__nav.is-disabled {
+  background: transparent;
+  color: var(--color-neutral-400);
+  border-color: transparent;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .cs-walk {
+    max-width: 22rem;
   }
 }
 
