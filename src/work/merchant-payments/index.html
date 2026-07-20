@@ -75,7 +75,7 @@
             <li><a href="#role">My Role</a></li>
             <li><a href="#challenge">Challenge</a></li>
             <li><a href="#process">Process</a></li>
-            <li><a href="#payment-flow">Selected Payment Flow</a></li>
+            <li><a href="#production-walkthrough">Production Walkthrough</a></li>
             <li><a href="#outcome">Outcome</a></li>
             <li><a href="#reflection">Reflection</a></li>
           </ol>
@@ -150,232 +150,104 @@
           </div>
         </section>
 
-        <section class="cs-section" id="payment-flow" aria-labelledby="payment-flow-title">
+        <section class="cs-section" id="production-walkthrough" aria-labelledby="production-walkthrough-title">
           <p class="t-micro cs-section__num">05</p>
-          <h2 id="payment-flow-title" class="t-h1 cs-section__title">Selected Payment Flow</h2>
+          <h2 id="production-walkthrough-title" class="t-h1 cs-section__title">Production Walkthrough</h2>
           <div class="prose">
             <p class="t-body-lg">
-              The following walkthrough presents the core merchant payment journey used in a production payment application.
-            </p>
-            <p>
-              Rather than redesigning individual screens, the work focused on improving the complete transaction flow, ensuring consistency, speed and clarity across every step of the payment experience.
+              The following screens document the core payment journey used in a production merchant application. Rather than redesigning isolated interfaces, the work focused on improving the complete transaction experience through incremental usability, consistency and operational enhancements.
             </p>
           </div>
 
-          <div class="cs-walk" data-walkthrough>
-            <nav class="cs-walk__tabs" aria-label="Payment flow steps">
-              <ul class="cs-walk__tab-list" role="tablist">
-                <li role="presentation">
-                  <button
-                    type="button"
-                    class="cs-walk__tab"
-                    role="tab"
-                    id="walk-tab-01"
-                    data-walk-goto="0"
-                    aria-selected="true"
-                    aria-controls="walk-step-01"
+          <div
+            class="cs-flow"
+            data-hscroll
+            tabindex="0"
+            role="region"
+            aria-label="Production payment flow screens"
+          >
+            <ol class="cs-flow__track">
+              <li class="cs-flow__item">
+                <figure class="cs-flow__figure">
+                  <img
+                    src="{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg"
+                    alt="Sale screen — enter charge amount with numeric keypad"
+                    width="488"
+                    height="872"
+                    loading="eager"
+                    draggable="false"
                   >
-                    Enter Amount
-                  </button>
-                </li>
-                <li role="presentation">
-                  <button
-                    type="button"
-                    class="cs-walk__tab"
-                    role="tab"
-                    id="walk-tab-02"
-                    data-walk-goto="1"
-                    aria-selected="false"
-                    aria-controls="walk-step-02"
+                </figure>
+                <h3 class="cs-flow__title">Enter Amount</h3>
+                <p class="cs-flow__caption">
+                  Cashiers begin the transaction by entering the payment amount using a touch-optimized keypad designed for speed and readability.
+                </p>
+              </li>
+              <li class="cs-flow__item">
+                <figure class="cs-flow__figure">
+                  <img
+                    src="{{ROOT}}/assets/images/work/merchant-payments/step-03.jpg"
+                    alt="Present card screen — tap card or phone with purchase summary"
+                    width="488"
+                    height="872"
+                    loading="lazy"
+                    draggable="false"
                   >
-                    Present Card
-                  </button>
-                </li>
-                <li role="presentation">
-                  <button
-                    type="button"
-                    class="cs-walk__tab"
-                    role="tab"
-                    id="walk-tab-03"
-                    data-walk-goto="2"
-                    aria-selected="false"
-                    aria-controls="walk-step-03"
+                </figure>
+                <h3 class="cs-flow__title">Present Card</h3>
+                <p class="cs-flow__caption">
+                  The terminal supports contactless and chip card payments while clearly presenting the purchase summary.
+                </p>
+              </li>
+              <li class="cs-flow__item">
+                <figure class="cs-flow__figure">
+                  <img
+                    src="{{ROOT}}/assets/images/work/merchant-payments/step-04.jpg"
+                    alt="PIN verification screen — enter card PIN"
+                    width="488"
+                    height="872"
+                    loading="lazy"
+                    draggable="false"
                   >
-                    PIN Verification
-                  </button>
-                </li>
-                <li role="presentation">
-                  <button
-                    type="button"
-                    class="cs-walk__tab"
-                    role="tab"
-                    id="walk-tab-04"
-                    data-walk-goto="3"
-                    aria-selected="false"
-                    aria-controls="walk-step-04"
+                </figure>
+                <h3 class="cs-flow__title">PIN Verification</h3>
+                <p class="cs-flow__caption">
+                  PIN entry follows familiar banking interaction patterns to provide a secure authentication experience.
+                </p>
+              </li>
+              <li class="cs-flow__item">
+                <figure class="cs-flow__figure">
+                  <img
+                    src="{{ROOT}}/assets/images/work/merchant-payments/step-05.jpg"
+                    alt="Authorization screen — connecting to network"
+                    width="488"
+                    height="872"
+                    loading="lazy"
+                    draggable="false"
                   >
-                    Authorization
-                  </button>
-                </li>
-                <li role="presentation">
-                  <button
-                    type="button"
-                    class="cs-walk__tab"
-                    role="tab"
-                    id="walk-tab-05"
-                    data-walk-goto="4"
-                    aria-selected="false"
-                    aria-controls="walk-step-05"
+                </figure>
+                <h3 class="cs-flow__title">Authorization</h3>
+                <p class="cs-flow__caption">
+                  The interface communicates transaction progress while minimizing visual distraction.
+                </p>
+              </li>
+              <li class="cs-flow__item">
+                <figure class="cs-flow__figure">
+                  <img
+                    src="{{ROOT}}/assets/images/work/merchant-payments/step-07.jpg"
+                    alt="Success screen — transaction completed with receipt options"
+                    width="488"
+                    height="872"
+                    loading="lazy"
+                    draggable="false"
                   >
-                    Success &amp; Receipt
-                  </button>
-                </li>
-              </ul>
-            </nav>
-
-            <div
-              class="cs-walk__stage"
-              data-walk-stage
-              tabindex="0"
-              aria-label="Merchant payment walkthrough"
-            >
-              <div class="cs-walk__viewport" data-walk-viewport>
-                <article
-                  class="cs-walk__panel is-active"
-                  data-walk-panel
-                  role="tabpanel"
-                  id="walk-step-01"
-                  aria-labelledby="walk-tab-01"
-                  aria-hidden="false"
-                >
-                  <figure class="cs-walk__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-01.jpg"
-                      alt="Sale screen — enter charge amount with numeric keypad"
-                      width="488"
-                      height="872"
-                      loading="eager"
-                    >
-                  </figure>
-                  <div class="cs-walk__meta">
-                    <h3 class="cs-walk__title">Enter Amount</h3>
-                    <p class="cs-walk__caption">
-                      Cashiers begin the payment by entering the transaction amount using a touch-optimized numeric keypad designed for speed, readability and accuracy.
-                    </p>
-                  </div>
-                </article>
-
-                <article
-                  class="cs-walk__panel"
-                  data-walk-panel
-                  role="tabpanel"
-                  id="walk-step-02"
-                  aria-labelledby="walk-tab-02"
-                  aria-hidden="true"
-                >
-                  <figure class="cs-walk__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-03.jpg"
-                      alt="Present card screen — tap card or phone with purchase summary"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                    >
-                  </figure>
-                  <div class="cs-walk__meta">
-                    <h3 class="cs-walk__title">Present Card</h3>
-                    <p class="cs-walk__caption">
-                      Customers can pay using contactless or chip cards while the interface clearly communicates the purchase summary.
-                    </p>
-                  </div>
-                </article>
-
-                <article
-                  class="cs-walk__panel"
-                  data-walk-panel
-                  role="tabpanel"
-                  id="walk-step-03"
-                  aria-labelledby="walk-tab-03"
-                  aria-hidden="true"
-                >
-                  <figure class="cs-walk__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-04.jpg"
-                      alt="PIN verification screen — enter card PIN"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                    >
-                  </figure>
-                  <div class="cs-walk__meta">
-                    <h3 class="cs-walk__title">PIN Verification</h3>
-                    <p class="cs-walk__caption">
-                      The PIN entry screen follows familiar banking interaction patterns to support secure and intuitive authentication.
-                    </p>
-                  </div>
-                </article>
-
-                <article
-                  class="cs-walk__panel"
-                  data-walk-panel
-                  role="tabpanel"
-                  id="walk-step-04"
-                  aria-labelledby="walk-tab-04"
-                  aria-hidden="true"
-                >
-                  <figure class="cs-walk__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-05.jpg"
-                      alt="Authorization screen — connecting to network"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                    >
-                  </figure>
-                  <div class="cs-walk__meta">
-                    <h3 class="cs-walk__title">Authorization</h3>
-                    <p class="cs-walk__caption">
-                      During authorization the interface minimizes distractions while clearly communicating progress and transaction status.
-                    </p>
-                  </div>
-                </article>
-
-                <article
-                  class="cs-walk__panel"
-                  data-walk-panel
-                  role="tabpanel"
-                  id="walk-step-05"
-                  aria-labelledby="walk-tab-05"
-                  aria-hidden="true"
-                >
-                  <figure class="cs-walk__figure">
-                    <img
-                      src="{{ROOT}}/assets/images/work/merchant-payments/step-07.jpg"
-                      alt="Success screen — transaction completed with receipt options"
-                      width="488"
-                      height="872"
-                      loading="lazy"
-                    >
-                  </figure>
-                  <div class="cs-walk__meta">
-                    <h3 class="cs-walk__title">Success &amp; Receipt</h3>
-                    <p class="cs-walk__caption">
-                      The payment concludes with confirmation and multiple receipt delivery options directly from the terminal.
-                    </p>
-                  </div>
-                </article>
-              </div>
-            </div>
-
-            <div class="cs-walk__controls">
-              <button type="button" class="c-button c-button--secondary" data-walk-prev disabled>
-                Previous
-              </button>
-              <p class="cs-walk__status" data-walk-status aria-live="polite">01 / 05</p>
-              <button type="button" class="c-button c-button--secondary" data-walk-next>
-                Next
-              </button>
-            </div>
+                </figure>
+                <h3 class="cs-flow__title">Success &amp; Receipt</h3>
+                <p class="cs-flow__caption">
+                  The journey concludes with confirmation and multiple receipt delivery options.
+                </p>
+              </li>
+            </ol>
           </div>
         </section>
 
