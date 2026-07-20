@@ -896,12 +896,13 @@ a.work-card:hover {
   color: var(--color-neutral-700);
 }
 
-/* —— Documentation carousel (Embla) —— */
+/* —— Documentation carousel (Glider.js) —— */
 .doc-carousel {
   --doc-carousel-arrow: 3.25rem;
   --doc-carousel-gap: var(--space-5);
   margin-top: var(--space-10);
   max-width: min(100%, 60rem);
+  width: 100%;
 }
 
 .doc-carousel__intro {
@@ -917,24 +918,18 @@ a.work-card:hover {
   column-gap: var(--doc-carousel-gap);
 }
 
-.doc-carousel__viewport,
-.embla__viewport {
+.doc-carousel .glider {
   min-width: 0;
-  overflow: hidden;
+  margin: 0;
 }
 
-.doc-carousel__container,
-.embla__container {
-  display: flex;
-  touch-action: pan-y pinch-zoom;
-  margin-left: calc(var(--space-4) * -1);
+.doc-carousel .glider:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
 }
 
-.doc-carousel__slide,
-.embla__slide {
-  flex: 0 0 100%;
+.doc-carousel__slide {
   min-width: 0;
-  padding-left: var(--space-4);
 }
 
 .doc-carousel__figure {
@@ -951,11 +946,15 @@ a.work-card:hover {
   border: var(--elevation-border);
   border-radius: var(--radius-md);
   background: var(--color-neutral-50);
-  user-select: none;
-  -webkit-user-drag: none;
 }
 
+.doc-carousel .glider-prev,
+.doc-carousel .glider-next,
 .doc-carousel__arrow {
+  position: static;
+  left: auto;
+  right: auto;
+  top: auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -967,6 +966,9 @@ a.work-card:hover {
   border-radius: 15px;
   background: var(--color-neutral-0);
   color: var(--color-neutral-700);
+  font-size: inherit;
+  line-height: 1;
+  opacity: 1;
   box-shadow:
     0 1px 2px rgba(15, 15, 15, 0.04),
     0 8px 24px rgba(15, 15, 15, 0.08);
@@ -979,7 +981,12 @@ a.work-card:hover {
   -webkit-tap-highlight-color: transparent;
 }
 
-.doc-carousel__arrow:hover:not(:disabled) {
+.doc-carousel .glider-prev:hover,
+.doc-carousel .glider-next:hover,
+.doc-carousel .glider-prev:focus,
+.doc-carousel .glider-next:focus,
+.doc-carousel__arrow:hover:not(:disabled):not(.disabled),
+.doc-carousel__arrow:focus-visible {
   color: var(--color-neutral-900);
   box-shadow:
     0 2px 4px rgba(15, 15, 15, 0.05),
@@ -987,22 +994,27 @@ a.work-card:hover {
   transform: translateY(-2px);
 }
 
-.doc-carousel__arrow:active:not(:disabled) {
+.doc-carousel__arrow:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.doc-carousel__arrow:active:not(:disabled):not(.disabled) {
   box-shadow:
     0 1px 2px rgba(15, 15, 15, 0.05),
     0 4px 12px rgba(15, 15, 15, 0.08);
   transform: translateY(0) scale(0.96);
 }
 
-.doc-carousel__arrow:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 3px;
-}
-
-.doc-carousel__arrow:disabled {
+.doc-carousel .glider-prev.disabled,
+.doc-carousel .glider-next.disabled,
+.doc-carousel__arrow:disabled,
+.doc-carousel__arrow.disabled {
   opacity: 0.35;
   pointer-events: none;
   cursor: default;
+  color: var(--color-neutral-700);
+  transform: none;
 }
 
 .doc-carousel__title {
@@ -1030,6 +1042,8 @@ a.work-card:hover {
     --doc-carousel-gap: var(--space-3);
   }
 
+  .doc-carousel .glider-prev,
+  .doc-carousel .glider-next,
   .doc-carousel__arrow {
     border-radius: 14px;
   }

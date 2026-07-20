@@ -12,6 +12,6 @@
     "node": ">=18"
   },
   "dependencies": {
-    "embla-carousel": "^8.6.0"
+    "glider-js": "^1.7.10"
   }
 }
